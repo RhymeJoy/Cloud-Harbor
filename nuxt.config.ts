@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     }
   },
   site: {
-    url: 'https://cloud-harbor.org',
+    url: 'https://www.cloud-harbor.org',
     name: 'Cloud Harbor'
   },
   nitro: {
