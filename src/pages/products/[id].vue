@@ -147,11 +147,6 @@ useHead(() => ({
         <h2>{{ copy.productDetailsTitle }}</h2>
         <p>{{ productDetails }}</p>
       </section>
-
-      <section class="info-block wide">
-        <h2>{{ copy.shippingTitle }}</h2>
-        <p>{{ productShipping }}</p>
-      </section>
     </section>
 
     <section v-if="relatedProducts.length" class="related-section">
