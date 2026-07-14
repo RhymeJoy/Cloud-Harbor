@@ -9,9 +9,18 @@ const logoSrc = publicAsset('favicon.ico');
 const homeHref = publicAsset();
 const currentYear = new Date().getFullYear();
 const { locale, locales, setLocale, t, tm } = useI18n();
-const { isProductsPage } = useAppRoute();
-const primaryNavHref = computed(() => (isProductsPage.value ? routeHref() : routeHref('products/')));
-const primaryNavLabel = computed(() => (isProductsPage.value ? t('footer.home') : t('footer.products')));
+const { isProductsPage, isProductDetailPage } = useAppRoute();
+const footerNavLinks = computed(() => {
+  const links = isProductsPage.value
+    ? [{ href: routeHref(), label: t('footer.home') }]
+    : [{ href: routeHref('products/'), label: t('footer.products') }];
+
+  if (isProductDetailPage.value) {
+    links.push({ href: routeHref('products/'), label: t('footer.products') });
+  }
+
+  return links;
+});
 const quotes = computed(() => {
   const rawQuotes = tm('footer.quotes');
   const list = Array.isArray(rawQuotes) ? rawQuotes : [t('footer.quote')];
@@ -48,7 +57,7 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 
         <nav class="footer-links" :aria-label="t('footer.navAria')">
           <a href="https://twbronycon.org/" target="_blank" rel="noopener noreferrer">{{ t('footer.twbc') }}</a>
-          <a :href="primaryNavHref">{{ primaryNavLabel }}</a>
+          <a v-for="link in footerNavLinks" :key="link.href" :href="link.href">{{ link.label }}</a>
         </nav>
       </div>
 

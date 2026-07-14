@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /Cloud-Harbor/
+Allow: /
 
-Sitemap: https://rhymejoy.github.io/Cloud-Harbor/sitemap.xml
+Sitemap: https://cloud-harbor.org/sitemap.xml

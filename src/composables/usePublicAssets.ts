@@ -1,5 +1,5 @@
 const normalizePublicPath = (path: string) => path.replace(/^\/+/, '');
-export const publicBasePath = '/Cloud-Harbor/';
+export const publicBasePath = '/';
 
 export const publicAsset = (path = '') => `${publicBasePath}${normalizePublicPath(path)}`;
 

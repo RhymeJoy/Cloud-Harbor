@@ -9,9 +9,13 @@ export const routeHref = (path = '') => publicAsset(path);
 export const useAppRoute = () => {
   const route = useRoute();
   const routePath = computed(() => normalizeRoutePath(route.path));
+  const isProductsIndexPage = computed(() => routePath.value === 'products');
+  const isProductDetailPage = computed(() => routePath.value.startsWith('products/'));
 
   return {
     routePath,
-    isProductsPage: computed(() => routePath.value === 'products')
+    isProductsIndexPage,
+    isProductDetailPage,
+    isProductsPage: computed(() => isProductsIndexPage.value || isProductDetailPage.value)
   };
 };

@@ -1,22 +1,26 @@
+import { productDetailRoutes } from './src/data/products';
+
+const sitemapRoutes = ['/', '/products', ...productDetailRoutes];
+
 export default defineNuxtConfig({
   compatibilityDate: '2026-07-14',
   srcDir: 'src/',
   modules: ['@nuxtjs/sitemap'],
   css: ['~/style.css'],
   app: {
-    baseURL: '/Cloud-Harbor/',
+    baseURL: '/',
     head: {
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/Cloud-Harbor/favicon.ico' }]
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
   },
   site: {
-    url: 'https://rhymejoy.github.io',
+    url: 'https://cloud-harbor.org',
     name: 'Cloud Harbor'
   },
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/products', '/sitemap.xml']
+      routes: [...sitemapRoutes, '/sitemap.xml']
     }
   },
   sitemap: {
@@ -29,15 +33,9 @@ export default defineNuxtConfig({
       changefreq: 'monthly',
       lastmod: '2026-07-14'
     },
-    urls: [
-      {
-        loc: '/',
-        priority: 1
-      },
-      {
-        loc: '/products',
-        priority: 0.8
-      }
-    ]
+    urls: sitemapRoutes.map((loc) => ({
+      loc,
+      priority: loc === '/' ? 1 : loc === '/products' ? 0.8 : 0.7
+    }))
   }
 });
