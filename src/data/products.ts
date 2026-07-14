@@ -1,6 +1,15 @@
 import { publicAsset } from '../composables/usePublicAssets';
 
-export const products = [
+export type Product = {
+  id: string;
+  nameKey: string;
+  price: number;
+  tagKey: string;
+  image: string;
+  descriptionKey: string;
+};
+
+export const products: Product[] = [
   {
     id: 'brandPolo',
     nameKey: 'products.items.brandPolo.name',
