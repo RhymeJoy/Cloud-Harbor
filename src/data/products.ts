@@ -9,8 +9,17 @@ export type ProductSectionCopy = {
   pricePrefix: string;
 };
 
+export type ProductPageCopy = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  backHome: string;
+};
+
+export type ProductId = string;
+
 export type Product = {
-  id: string;
+  id: ProductId;
   price: number;
   image: string;
   name: LocalizedText;
@@ -21,21 +30,38 @@ export type Product = {
 export const productSectionCopy: Record<LocaleCode, ProductSectionCopy> = {
   'zh-TW': {
     eyebrow: 'PRODUCTS',
-    title: '預計販售商品會統一整理在這裡，圖片皆放在 public/products。',
+    title: '先挑三款準備中的商品放在這裡，讓你快速掌握雲港商行的攤位風格。',
     pricePrefix: 'NT$'
   },
   en: {
     eyebrow: 'PRODUCTS',
-    title: 'Planned products will be organized here, with images stored in public/products.',
+    title: 'A quick preview of three planned items, giving you a feel for Cloud Harbor before the booth opens.',
     pricePrefix: 'NT$'
+  }
+};
+
+export const productPageCopy: Record<LocaleCode, ProductPageCopy> = {
+  'zh-TW': {
+    eyebrow: 'PRODUCTS',
+    title: '商品頁',
+    description: '這裡會集中整理雲港商行準備販售的商品。後續新增品項時，只要更新 products.ts 就能同步顯示在商品頁。',
+    backHome: '回首頁'
+  },
+  en: {
+    eyebrow: 'PRODUCTS',
+    title: 'Products',
+    description: 'This page gathers the products Cloud Harbor is preparing to sell. New items can be maintained from products.ts and shown here directly.',
+    backHome: 'Back Home'
   }
 };
 
 export const localizeProductText = (text: LocalizedText, locale: LocaleCode) => text[locale] ?? text['zh-TW'];
 
+export const showinmain: ProductId[] = ['01', '02', '03'];
+
 export const products: Product[] = [
   {
-    id: 'brandPolo',
+    id: '01',
     price: 320,
     image: publicAsset('products/brand-polo.svg'),
     name: {
@@ -52,7 +78,7 @@ export const products: Product[] = [
     }
   },
   {
-    id: 'eventBrochure',
+    id: '02',
     price: 180,
     image: publicAsset('products/event-brochure.svg'),
     name: {
@@ -69,7 +95,7 @@ export const products: Product[] = [
     }
   },
   {
-    id: 'canvasBag',
+    id: '03',
     price: 450,
     image: publicAsset('products/canvas-bag.svg'),
     name: {
@@ -86,3 +112,9 @@ export const products: Product[] = [
     }
   }
 ];
+
+export const getProductsByIds = (ids: readonly ProductId[]) => {
+  const idSet = new Set(ids);
+
+  return products.filter((product) => idSet.has(product.id));
+};

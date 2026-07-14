@@ -8,7 +8,6 @@
     "title": "雲港商行，準備在 TWBC 上販售的攤販",
     "intro": "我們正在整理攤位介紹、預計販售商品與上架資訊，讓訪客能快速了解雲港商行的商品方向與後續動態。",
     "productsCta": "查看商品",
-    "aboutCta": "認識雲港",
     "profileLabel": "ABOUT VENDOR",
     "avatarAlt": "雲港商行攤主頭像",
     "profileTitle": "你好，我們是雲港商行",
@@ -25,8 +24,8 @@
     "tagline": "TWBC 販售攤位準備中",
     "navAria": "頁尾連結",
     "twbc": "TWBC",
+    "home": "首頁",
     "products": "商品",
-    "about": "關於雲港",
     "vendorLine": "TWBC 攤販準備中",
     "quote": "「把喜歡的東西，好好帶到攤位上。」",
     "quotes": [

@@ -1,32 +1,31 @@
 {
   "site": {
-    "title": "Yun Gang Shop",
-    "description": "Yun Gang Shop is a vendor preparing to sell at TWBC. This site collects booth details, product information, and upcoming updates."
+    "title": "Cloud Harbor",
+    "description": "Cloud Harbor is a vendor preparing to sell at TWBC. This site collects booth details, product information, and upcoming updates."
   },
   "hero": {
     "eyebrow": "YUN GANG SHOP",
-    "title": "Yun Gang Shop, a vendor preparing for TWBC",
-    "intro": "We are organizing booth details, planned products, and launch updates so visitors can quickly understand what Yun Gang Shop is preparing.",
+    "title": "Cloud Harbor, a vendor preparing for TWBC",
+    "intro": "We are organizing booth details, planned products, and launch updates so visitors can quickly understand what Cloud Harbor is preparing.",
     "productsCta": "View Products",
-    "aboutCta": "About Yun Gang",
     "profileLabel": "ABOUT VENDOR",
-    "avatarAlt": "Yun Gang Shop vendor avatar",
-    "profileTitle": "Hello, we are Yun Gang Shop",
+    "avatarAlt": "Cloud Harbor vendor avatar",
+    "profileTitle": "Hello, we are Cloud Harbor",
     "profileRole": "TWBC Vendor / Product Prep / Booth Sales",
-    "profileText": "Yun Gang Shop is preparing to sell at TWBC. Product details, booth information, and updates will be collected here as the event gets closer."
+    "profileText": "Cloud Harbor is preparing to sell at TWBC. Product details, booth information, and updates will be collected here as the event gets closer."
   },
   "about": {
     "eyebrow": "ABOUT",
-    "title": "Yun Gang Shop gathers the things we love into a booth of creative and practical goods, ready to meet everyone at TWBC.",
-    "body": "This site will keep planned products, booth details, and future updates in one place. Whether visitors want to preview items before the event, check prices, or return later for new listings, they can quickly find Yun Gang Shop's latest information here."
+    "title": "Cloud Harbor gathers the things we love into a booth of creative and practical goods, ready to meet everyone at TWBC.",
+    "body": "This site will keep planned products, booth details, and future updates in one place. Whether visitors want to preview items before the event, check prices, or return later for new listings, they can quickly find Cloud Harbor's latest information here."
   },
   "footer": {
-    "homeAria": "Back to Yun Gang Shop home",
+    "homeAria": "Back to Cloud Harbor home",
     "tagline": "Preparing a vendor booth for TWBC",
     "navAria": "Footer links",
     "twbc": "TWBC",
+    "home": "Home",
     "products": "Products",
-    "about": "About Yun Gang",
     "vendorLine": "Vendor preparing for TWBC",
     "quote": "\"Bring what we love to the booth, carefully.\"",
     "quotes": [

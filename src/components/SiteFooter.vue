@@ -3,11 +3,15 @@ import { computed } from 'vue';
 import { useI18n } from '../i18n';
 import { useQuotes } from '../composables/useQuotes';
 import { publicAsset } from '../composables/usePublicAssets';
+import { routeHref, useAppRoute } from '../composables/useAppRoute';
 
-const logoSrc = publicAsset('favicon.svg');
+const logoSrc = publicAsset('favicon.ico');
 const homeHref = publicAsset();
 const currentYear = new Date().getFullYear();
 const { locale, locales, setLocale, t, tm } = useI18n();
+const { isProductsPage } = useAppRoute();
+const primaryNavHref = computed(() => (isProductsPage.value ? routeHref() : routeHref('products/')));
+const primaryNavLabel = computed(() => (isProductsPage.value ? t('footer.home') : t('footer.products')));
 const quotes = computed(() => {
   const rawQuotes = tm('footer.quotes');
   const list = Array.isArray(rawQuotes) ? rawQuotes : [t('footer.quote')];
@@ -44,8 +48,7 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 
         <nav class="footer-links" :aria-label="t('footer.navAria')">
           <a href="https://twbronycon.org/" target="_blank" rel="noopener noreferrer">{{ t('footer.twbc') }}</a>
-          <a href="#products">{{ t('footer.products') }}</a>
-          <a href="#about">{{ t('footer.about') }}</a>
+          <a :href="primaryNavHref">{{ primaryNavLabel }}</a>
         </nav>
       </div>
 

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from '../i18n';
+import { routeHref } from '../composables/useAppRoute';
 import { publicAsset } from '../composables/usePublicAssets';
 
-const avatarSrc = publicAsset('avatar.svg');
+const avatarSrc = publicAsset('avatar.avif');
+const productsHref = routeHref('products/');
 const { t } = useI18n();
 </script>
 
@@ -15,13 +17,14 @@ const { t } = useI18n();
         {{ t('hero.intro') }}
       </p>
       <div class="hero-actions">
-        <a href="#products" class="primary-btn">{{ t('hero.productsCta') }}</a>
-        <a href="#about" class="ghost-btn">{{ t('hero.aboutCta') }}</a>
+        <a :href="productsHref" class="primary-btn">{{ t('hero.productsCta') }}</a>
       </div>
     </div>
 
     <div class="profile-card">
-      <img class="avatar" :src="avatarSrc" :alt="t('hero.avatarAlt')" />
+      <div class="avatar-frame">
+        <img class="avatar" :src="avatarSrc" :alt="t('hero.avatarAlt')" />
+      </div>
       <p class="card-label">{{ t('hero.profileLabel') }}</p>
       <h2>{{ t('hero.profileTitle') }}</h2>
       <p class="profile-role">{{ t('hero.profileRole') }}</p>
@@ -79,8 +82,7 @@ h1 {
   gap: 12px;
 }
 
-.primary-btn,
-.ghost-btn {
+.primary-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -89,19 +91,13 @@ h1 {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.primary-btn:hover,
-.ghost-btn:hover {
+.primary-btn:hover {
   transform: translateY(-1px);
 }
 
 .primary-btn {
   background: linear-gradient(135deg, #ff7fd8, #7f6cff);
   color: #fff;
-}
-
-.ghost-btn {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
 }
 
 .profile-card {
@@ -111,15 +107,24 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.avatar {
+.avatar-frame {
   width: 112px;
   height: 112px;
-  display: block;
+  overflow: hidden;
   margin-bottom: 18px;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.72);
   box-shadow: 0 18px 36px rgba(6, 8, 26, 0.28);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
   object-fit: cover;
+  object-position: 50% 20%;
+  transform: scale(1.25);
+  transform-origin: center;
 }
 
 .card-label {
