@@ -2,7 +2,8 @@
 import { computed } from 'vue';
 import ProductCard from './ProductCard.vue';
 import { useI18n } from '../i18n';
-import { productSectionCopy, type Product } from '../data/products';
+import { productSectionCopy } from '../data/productContent';
+import type { Product } from '../data/products';
 
 const { locale } = useI18n();
 const sectionCopy = computed(() => productSectionCopy[locale.value]);

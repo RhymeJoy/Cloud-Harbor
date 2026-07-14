@@ -1,17 +1,31 @@
 <script setup lang="ts">
 import SiteFooter from './components/SiteFooter.vue';
+import { createSiteOgMeta } from './composables/useSiteSeo';
 import { useI18n } from './i18n';
 
 const { currentLocale, locale, t } = useI18n();
 
-useHead(() => ({
-  htmlAttrs: {
-    lang: currentLocale.value.htmlLang,
-    'data-locale': locale.value
-  },
-  title: t('site.title'),
-  meta: [{ name: 'description', content: t('site.description') }]
-}));
+useHead(() => {
+  const title = t('site.title');
+  const description = t('site.description');
+
+  return {
+    htmlAttrs: {
+      lang: currentLocale.value.htmlLang,
+      'data-locale': locale.value
+    },
+    title,
+    meta: [
+      { key: 'description', name: 'description', content: description },
+      ...createSiteOgMeta({
+        title,
+        description,
+        locale: locale.value,
+        imageAlt: title
+      })
+    ]
+  };
+});
 </script>
 
 <template>

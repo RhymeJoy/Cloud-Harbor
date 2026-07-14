@@ -3,7 +3,8 @@ import { computed } from 'vue';
 import HeroSection from '../components/HeroSection.vue';
 import AboutSection from '../components/AboutSection.vue';
 import ProductGrid from '../components/ProductGrid.vue';
-import { getProductsByIds, showinmain } from '../data/products';
+import { showinmain } from '../data/productContent';
+import { getProductsByIds } from '../data/products';
 
 const mainProducts = computed(() => getProductsByIds(showinmain));
 </script>
