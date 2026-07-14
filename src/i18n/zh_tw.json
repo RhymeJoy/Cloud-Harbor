@@ -20,30 +20,6 @@
     "title": "雲港商行把喜歡的創作與實用小物整理成攤位，準備在 TWBC 與大家見面。",
     "body": "我們會在這裡更新預計販售的商品、攤位資訊與後續消息。無論是活動當天想先查看品項、確認價格，或之後回來追蹤上架內容，都能從這個網站快速找到雲港商行的最新整理。"
   },
-  "products": {
-    "eyebrow": "PRODUCTS",
-    "title": "預計販售商品會統一整理在這裡，圖片皆放在 public/products。",
-    "pricePrefix": "NT$",
-    "tags": {
-      "apparel": "服飾",
-      "print": "印刷",
-      "merch": "周邊"
-    },
-    "items": {
-      "brandPolo": {
-        "name": "品牌 Polo 衫",
-        "description": "適合日常識別、展場接待與團隊活動，版型俐落、穿著舒適。"
-      },
-      "eventBrochure": {
-        "name": "活動手冊",
-        "description": "整合品牌故事、流程與商品資訊，讓現場溝通更完整。"
-      },
-      "canvasBag": {
-        "name": "訂製帆布袋",
-        "description": "可承載文件、樣品與贈品，兼具實用性與品牌曝光。"
-      }
-    }
-  },
   "footer": {
     "homeAria": "回到雲港商行首頁",
     "tagline": "TWBC 販售攤位準備中",

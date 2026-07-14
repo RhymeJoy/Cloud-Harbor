@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import ProductCard from './ProductCard.vue';
 import { useI18n } from '../i18n';
-import type { Product } from '../data/products';
+import { productSectionCopy, type Product } from '../data/products';
 
-const { t } = useI18n();
+const { locale } = useI18n();
+const sectionCopy = computed(() => productSectionCopy[locale.value]);
 
 defineProps<{
   products: Product[];
@@ -13,8 +15,8 @@ defineProps<{
 <template>
   <section id="products" class="product-section">
     <div class="section-title">
-      <p class="eyebrow">{{ t('products.eyebrow') }}</p>
-      <h3>{{ t('products.title') }}</h3>
+      <p class="eyebrow">{{ sectionCopy.eyebrow }}</p>
+      <h3>{{ sectionCopy.title }}</h3>
     </div>
     <div class="product-grid">
       <ProductCard v-for="item in products" :key="item.id" :item="item" />

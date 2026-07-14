@@ -20,30 +20,6 @@
     "title": "Yun Gang Shop gathers the things we love into a booth of creative and practical goods, ready to meet everyone at TWBC.",
     "body": "This site will keep planned products, booth details, and future updates in one place. Whether visitors want to preview items before the event, check prices, or return later for new listings, they can quickly find Yun Gang Shop's latest information here."
   },
-  "products": {
-    "eyebrow": "PRODUCTS",
-    "title": "Planned products will be organized here, with images stored in public/products.",
-    "pricePrefix": "NT$",
-    "tags": {
-      "apparel": "Apparel",
-      "print": "Print",
-      "merch": "Merch"
-    },
-    "items": {
-      "brandPolo": {
-        "name": "Brand Polo Shirt",
-        "description": "A clean and comfortable team shirt for booth staff, events, and everyday brand use."
-      },
-      "eventBrochure": {
-        "name": "Event Brochure",
-        "description": "A compact printed guide for brand story, schedules, and product information."
-      },
-      "canvasBag": {
-        "name": "Custom Canvas Bag",
-        "description": "A practical item for documents, samples, and gifts while keeping the brand visible."
-      }
-    }
-  },
   "footer": {
     "homeAria": "Back to Yun Gang Shop home",
     "tagline": "Preparing a vendor booth for TWBC",

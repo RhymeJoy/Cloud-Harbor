@@ -1,24 +1,30 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useI18n } from '../i18n';
-import type { Product } from '../data/products';
+import { localizeProductText, productSectionCopy, type Product } from '../data/products';
 
-const { t } = useI18n();
+const { locale } = useI18n();
 
-defineProps<{
+const props = defineProps<{
   item: Product;
 }>();
+
+const productName = computed(() => localizeProductText(props.item.name, locale.value));
+const productTag = computed(() => localizeProductText(props.item.tag, locale.value));
+const productDescription = computed(() => localizeProductText(props.item.description, locale.value));
+const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix);
 </script>
 
 <template>
   <article class="product-card">
-    <img :src="item.image" :alt="t(item.nameKey)" />
+    <img :src="item.image" :alt="productName" />
     <div class="product-body">
       <div class="product-meta">
-        <span class="tag">{{ t(item.tagKey) }}</span>
-        <span class="price">{{ t('products.pricePrefix') }} {{ item.price }}</span>
+        <span class="tag">{{ productTag }}</span>
+        <span class="price">{{ pricePrefix }} {{ item.price }}</span>
       </div>
-      <h4>{{ t(item.nameKey) }}</h4>
-      <p>{{ t(item.descriptionKey) }}</p>
+      <h4>{{ productName }}</h4>
+      <p>{{ productDescription }}</p>
     </div>
   </article>
 </template>
