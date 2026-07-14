@@ -1,0 +1,77 @@
+{
+  "site": {
+    "title": "雲港商行",
+    "description": "雲港商行是準備在 TWBC 上販售商品的攤販，這裡整理攤位介紹、商品資訊與後續上架內容。"
+  },
+  "hero": {
+    "eyebrow": "YUN GANG SHOP",
+    "title": "雲港商行，準備在 TWBC 上販售的攤販",
+    "intro": "我們正在整理攤位介紹、預計販售商品與上架資訊，讓訪客能快速了解雲港商行的商品方向與後續動態。",
+    "productsCta": "查看商品",
+    "aboutCta": "認識雲港",
+    "profileLabel": "ABOUT VENDOR",
+    "avatarAlt": "雲港商行攤主頭像",
+    "profileTitle": "你好，我們是雲港商行",
+    "profileRole": "TWBC 攤販 / 商品準備 / 現場販售",
+    "profileText": "雲港商行將在 TWBC 上販售商品，目前正逐步整理商品資訊、攤位介紹與上架內容。這裡會作為訪客認識我們與查看商品的入口。"
+  },
+  "about": {
+    "eyebrow": "ABOUT",
+    "title": "雲港商行正在準備 TWBC 販售內容，讓商品資訊能更清楚被看見。",
+    "body": "我們會把預計販售的商品、攤位定位與更新資訊整理在這個網站中。後續只要新增商品資料與圖片，就能沿用目前的 Vue 架構快速更新，讓 TWBC 訪客能直接掌握雲港商行的最新內容。"
+  },
+  "products": {
+    "eyebrow": "PRODUCTS",
+    "title": "預計販售商品會統一整理在這裡，圖片皆放在 public/products。",
+    "pricePrefix": "NT$",
+    "tags": {
+      "apparel": "服飾",
+      "print": "印刷",
+      "merch": "周邊"
+    },
+    "items": {
+      "brandPolo": {
+        "name": "品牌 Polo 衫",
+        "description": "適合日常識別、展場接待與團隊活動，版型俐落、穿著舒適。"
+      },
+      "eventBrochure": {
+        "name": "活動手冊",
+        "description": "整合品牌故事、流程與商品資訊，讓現場溝通更完整。"
+      },
+      "canvasBag": {
+        "name": "訂製帆布袋",
+        "description": "可承載文件、樣品與贈品，兼具實用性與品牌曝光。"
+      }
+    }
+  },
+  "footer": {
+    "homeAria": "回到雲港商行首頁",
+    "tagline": "TWBC 販售攤位準備中",
+    "navAria": "頁尾連結",
+    "twbc": "TWBC",
+    "products": "商品",
+    "about": "關於雲港",
+    "vendorLine": "TWBC 攤販準備中",
+    "quote": "「把喜歡的東西，好好帶到攤位上。」",
+    "quotes": [
+      "「不要因為害怕受傷，就把歡笑給丟掉。」- Autumn Blaze",
+      "「不經歷風雨，怎能見彩虹？」- Autumn Blaze",
+      "「不管你做什麼，永遠都不會有萬事俱備的時候。」- Applejack",
+      "「壞事就是會發生，但這並不代表你要放棄！」- Applejack",
+      "「不要失去自我。」- Fluttershy",
+      "「不只是鞭策自己，而是朝著正確的方向鞭策自己。」- Rainbow Dash",
+      "「恐懼並不可怕，放棄才是。」- Princess Luna",
+      "「每個人都值得被原諒一次。」- Princess Celestia",
+      "「你不需要完美，只需要做你自己。」- Starlight Glimmer",
+      "「即使改變很難，也值得去嘗試。」- Sunset Shimmer",
+      "「忠於自己，別讓別人定義你。」- Rainbow Dash",
+      "「笑一笑，事情就會變好一點！」- Pinkie Pie",
+      "「真正的美，來自你自己的內心。」- Rarity",
+      "「誠實，才是最重要、最好的原則。」- Applejack",
+      "「善良比任何力量都強大。」- Fluttershy",
+      "「友情不總是簡單，但值得去守護。」- Twilight Sparkle",
+      "「派對是交朋友最棒的方法！」- Pinkie Pie"
+    ],
+    "quotesLoading": "讀取中..."
+  }
+}

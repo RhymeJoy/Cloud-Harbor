@@ -1,10 +1,20 @@
 <script setup>
+import { computed } from 'vue';
 import { useI18n } from '../i18n';
+import { useQuotes } from '../composables/useQuotes';
+import { publicAsset } from '../composables/usePublicAssets';
 
-const logoSrc = `${import.meta.env.BASE_URL}favicon.svg`;
-const homeHref = import.meta.env.BASE_URL;
+const logoSrc = publicAsset('favicon.svg');
+const homeHref = publicAsset();
 const currentYear = new Date().getFullYear();
-const { locale, locales, setLocale, t } = useI18n();
+const { locale, locales, setLocale, t, tm } = useI18n();
+const quotes = computed(() => {
+  const rawQuotes = tm('footer.quotes');
+  const list = Array.isArray(rawQuotes) ? rawQuotes : [t('footer.quote')];
+
+  return list.filter((quote) => typeof quote === 'string' && quote.trim());
+});
+const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.quotesLoading'));
 </script>
 
 <template>
@@ -46,7 +56,11 @@ const { locale, locales, setLocale, t } = useI18n();
           <p>© {{ currentYear }} {{ t('site.title') }}</p>
           <p>{{ t('footer.vendorLine') }}</p>
         </div>
-        <p class="footer-quote">{{ t('footer.quote') }}</p>
+        <div class="footer-quotes">
+          <p :class="['quote-text', isQuoteFadingOut ? 'fade-out' : 'fade-in']">
+            {{ currentQuote }}
+          </p>
+        </div>
       </div>
     </div>
   </footer>
@@ -107,13 +121,13 @@ const { locale, locales, setLocale, t } = useI18n();
 
 .footer-tagline,
 .footer-copyright p,
-.footer-quote {
+.quote-text {
   margin: 0;
 }
 
 .footer-tagline,
 .footer-copyright,
-.footer-quote,
+.quote-text,
 .lang-link {
   color: #ffb8de;
 }
@@ -182,11 +196,26 @@ const { locale, locales, setLocale, t } = useI18n();
   font-size: 0.86rem;
 }
 
-.footer-quote {
-  max-width: 54%;
+.footer-quotes {
+  flex: 1;
+  max-width: 60%;
   text-align: right;
+}
+
+.quote-text {
   font-size: 0.95rem;
   font-style: italic;
+  transition: all 0.3s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @media (max-width: 760px) {
@@ -213,7 +242,7 @@ const { locale, locales, setLocale, t } = useI18n();
     flex-direction: column-reverse;
   }
 
-  .footer-quote {
+  .footer-quotes {
     max-width: 100%;
     text-align: center;
   }

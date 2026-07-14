@@ -1,0 +1,77 @@
+{
+  "site": {
+    "title": "Yun Gang Shop",
+    "description": "Yun Gang Shop is a vendor preparing to sell at TWBC. This site collects booth details, product information, and upcoming updates."
+  },
+  "hero": {
+    "eyebrow": "YUN GANG SHOP",
+    "title": "Yun Gang Shop, a vendor preparing for TWBC",
+    "intro": "We are organizing booth details, planned products, and launch updates so visitors can quickly understand what Yun Gang Shop is preparing.",
+    "productsCta": "View Products",
+    "aboutCta": "About Yun Gang",
+    "profileLabel": "ABOUT VENDOR",
+    "avatarAlt": "Yun Gang Shop vendor avatar",
+    "profileTitle": "Hello, we are Yun Gang Shop",
+    "profileRole": "TWBC Vendor / Product Prep / Booth Sales",
+    "profileText": "Yun Gang Shop is preparing to sell at TWBC. Product details, booth information, and updates will be collected here as the event gets closer."
+  },
+  "about": {
+    "eyebrow": "ABOUT",
+    "title": "Yun Gang Shop is preparing its TWBC vendor content so product information is easy to find.",
+    "body": "This site will collect planned products, booth positioning, and future updates. When new items and images are ready, the Vue structure can be updated quickly for TWBC visitors."
+  },
+  "products": {
+    "eyebrow": "PRODUCTS",
+    "title": "Planned products will be organized here, with images stored in public/products.",
+    "pricePrefix": "NT$",
+    "tags": {
+      "apparel": "Apparel",
+      "print": "Print",
+      "merch": "Merch"
+    },
+    "items": {
+      "brandPolo": {
+        "name": "Brand Polo Shirt",
+        "description": "A clean and comfortable team shirt for booth staff, events, and everyday brand use."
+      },
+      "eventBrochure": {
+        "name": "Event Brochure",
+        "description": "A compact printed guide for brand story, schedules, and product information."
+      },
+      "canvasBag": {
+        "name": "Custom Canvas Bag",
+        "description": "A practical item for documents, samples, and gifts while keeping the brand visible."
+      }
+    }
+  },
+  "footer": {
+    "homeAria": "Back to Yun Gang Shop home",
+    "tagline": "Preparing a vendor booth for TWBC",
+    "navAria": "Footer links",
+    "twbc": "TWBC",
+    "products": "Products",
+    "about": "About Yun Gang",
+    "vendorLine": "Vendor preparing for TWBC",
+    "quote": "\"Bring what we love to the booth, carefully.\"",
+    "quotes": [
+      "\"No, you can't give up your laughter 'Cause you're scared of a little pain.\" - Autumn Blaze",
+      "\"Rainbows won't light up the sky unless you let it rain!\" - Autumn Blaze",
+      "\"No matter what you do, you're never gonna be prepared for everything.\" - Applejack",
+      "\"Bad things happen, but that doesn't mean you should give up!\" - Applejack",
+      "\"Don't forget who you are.\" - Fluttershy",
+      "\"It's not just about pushing yourself, it's about pushing yourself in the right direction.\" - Rainbow Dash",
+      "\"Fear isn't scary, giving up is.\" - Princess Luna",
+      "\"Everyone deserves to be forgiven once.\" - Princess Celestia",
+      "\"You don't need to be perfect, you just need to be yourself.\" - Starlight Glimmer",
+      "\"Even if change is hard, it's worth a try.\" - Sunset Shimmer",
+      "\"Be true to yourself, don't let others define you.\" - Rainbow Dash",
+      "\"Laughter makes things a little bit better!\" - Pinkie Pie",
+      "\"True beauty comes from within.\" - Rarity",
+      "\"Honesty is the most important principle of all.\" - Applejack",
+      "\"Kindness is stronger than any power.\" - Fluttershy",
+      "\"Friendship isn't always easy, but it's worth protecting.\" - Twilight Sparkle",
+      "\"A party is the best way to make friends!\" - Pinkie Pie"
+    ],
+    "quotesLoading": "Loading..."
+  }
+}
