@@ -1,12 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import HeroSection from './components/HeroSection.vue';
 import AboutSection from './components/AboutSection.vue';
 import SiteFooter from './components/SiteFooter.vue';
 import ProductGrid from './components/ProductGrid.vue';
-import { products } from './data/products';
+import { products, type Product } from './data/products';
 
-const productList = ref(products);
+const productList = ref<Product[]>(products);
 </script>
 
 <template>

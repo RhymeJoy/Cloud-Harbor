@@ -1,15 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import ProductCard from './ProductCard.vue';
 import { useI18n } from '../i18n';
+import type { Product } from '../data/products';
 
 const { t } = useI18n();
 
-defineProps({
-  products: {
-    type: Array,
-    required: true
-  }
-});
+defineProps<{
+  products: Product[];
+}>();
 </script>
 
 <template>

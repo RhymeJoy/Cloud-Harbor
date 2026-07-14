@@ -1,11 +1,16 @@
 import { fileURLToPath, URL } from 'node:url';
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
 const basePath = '/Cloud-Harbor/';
-const entryPath = fileURLToPath(new URL('./src/main.js', import.meta.url));
+const entryPath = fileURLToPath(new URL('./src/main.ts', import.meta.url));
 
-const renderDocument = ({ script = '/src/main.js', styles = [] } = {}) => {
+type RenderDocumentOptions = {
+  script?: string;
+  styles?: string[];
+};
+
+const renderDocument = ({ script = '/src/main.ts', styles = [] }: RenderDocumentOptions = {}) => {
   const styleTags = styles
     .map((href) => `    <link rel="stylesheet" crossorigin href="${href}">`)
     .join('\n');
@@ -24,9 +29,9 @@ ${styleTags ? `${styleTags}\n` : ''}  </head>
 `;
 };
 
-const withBase = (fileName) => `${basePath}${fileName}`;
+const withBase = (fileName: string) => `${basePath}${fileName}`;
 
-const vueOnlyEntry = () => ({
+const vueOnlyEntry = (): Plugin => ({
   name: 'vue-only-entry',
   configureServer(server) {
     server.middlewares.use(async (request, response, next) => {

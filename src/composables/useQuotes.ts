@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref, toValue, watch, type MaybeRefOrGetter } fr
 export const useQuotes = (quotesList: MaybeRefOrGetter<string[]>, intervalMs = 10000, initialValue = '') => {
   const currentQuote = ref(initialValue);
   const isQuoteFadingOut = ref(false);
-  let quoteInterval: ReturnType<typeof setInterval> | null = null;
+  let quoteInterval: number | null = null;
   let remainingQuotes: string[] = [];
 
   const getRandomQuote = () => {

@@ -1,10 +1,24 @@
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, type ComputedRef, type Ref } from 'vue';
 import zhTW from './zh_tw.json';
 import en from './en.json';
 
 export const fallbackLocale = 'zh-TW';
 
-export const locales = [
+export type LocaleCode = 'zh-TW' | 'en';
+
+type LocaleOption = {
+  code: LocaleCode;
+  label: string;
+  htmlLang: string;
+};
+
+type MessageTree = {
+  [key: string]: MessageValue;
+};
+
+type MessageValue = string | string[] | MessageTree;
+
+export const locales: LocaleOption[] = [
   {
     code: 'zh-TW',
     label: '繁體中文',
@@ -19,14 +33,14 @@ export const locales = [
 
 const storageKey = 'yun-gang-locale';
 
-const messages = {
+const messages: Record<LocaleCode, MessageTree> = {
   'zh-TW': zhTW,
   en
 };
 
 const supportedLocaleCodes = locales.map((item) => item.code);
 
-const normalizeLocale = (value) => {
+const normalizeLocale = (value?: string | null): LocaleCode => {
   if (!value) {
     return fallbackLocale;
   }
@@ -41,10 +55,10 @@ const normalizeLocale = (value) => {
     return 'zh-TW';
   }
 
-  return supportedLocaleCodes.includes(value) ? value : fallbackLocale;
+  return supportedLocaleCodes.includes(value as LocaleCode) ? (value as LocaleCode) : fallbackLocale;
 };
 
-const readInitialLocale = () => {
+const readInitialLocale = (): LocaleCode => {
   if (typeof window === 'undefined') {
     return fallbackLocale;
   }
@@ -69,21 +83,27 @@ const readInitialLocale = () => {
   return normalizeLocale(window.navigator?.language);
 };
 
-const locale = ref(readInitialLocale());
+const locale = ref<LocaleCode>(readInitialLocale());
 
-const readMessage = (localeCode, path) => {
+const readNestedMessage = (source: MessageTree, path: string) =>
+  path.split('.').reduce<MessageValue | undefined>(
+    (result, segment) => (typeof result === 'object' && !Array.isArray(result) ? result[segment] : undefined),
+    source
+  );
+
+const readMessage = (localeCode: LocaleCode, path: string): MessageValue => {
   const source = messages[localeCode] ?? messages[fallbackLocale];
   const fallback = messages[fallbackLocale];
-  const segments = path.split('.');
-  const value = segments.reduce((result, segment) => result?.[segment], source);
-  const fallbackValue = segments.reduce((result, segment) => result?.[segment], fallback);
+  const value = readNestedMessage(source, path);
+  const fallbackValue = readNestedMessage(fallback, path);
 
   return value ?? fallbackValue ?? path;
 };
 
-const formatMessage = (message, values = {}) => String(message).replace(/\{(\w+)\}/g, (_, key) => values[key] ?? '');
+const formatMessage = (message: MessageValue, values: Record<string, string | number> = {}) =>
+  String(message).replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
 
-export const setLocale = (nextLocale) => {
+export const setLocale = (nextLocale: string) => {
   locale.value = normalizeLocale(nextLocale);
 
   if (typeof window === 'undefined') {
@@ -97,12 +117,19 @@ export const setLocale = (nextLocale) => {
   }
 };
 
-export const t = (path, values) => formatMessage(readMessage(locale.value, path), values);
-export const tm = (path) => readMessage(locale.value, path);
+export const t = (path: string, values?: Record<string, string | number>) => formatMessage(readMessage(locale.value, path), values);
+export const tm = (path: string) => readMessage(locale.value, path);
 
-export const currentLocale = computed(() => locales.find((item) => item.code === locale.value) ?? locales[0]);
+export const currentLocale = computed(() => locales.find((item) => item.code === locale.value) ?? locales[0]) as ComputedRef<LocaleOption>;
 
-export const useI18n = () => ({
+export const useI18n = (): {
+  locale: Ref<LocaleCode>;
+  locales: LocaleOption[];
+  currentLocale: ComputedRef<LocaleOption>;
+  setLocale: (nextLocale: string) => void;
+  t: (path: string, values?: Record<string, string | number>) => string;
+  tm: (path: string) => MessageValue;
+} => ({
   locale,
   locales,
   currentLocale,
@@ -111,7 +138,7 @@ export const useI18n = () => ({
   tm
 });
 
-const setMeta = (name, content) => {
+const setMeta = (name: string, content: string) => {
   const selector = `meta[name="${name}"]`;
   const element = document.head.querySelector(selector) ?? document.createElement('meta');
 

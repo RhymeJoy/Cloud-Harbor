@@ -21,7 +21,7 @@ npm run build
 
 ## 雙語內容
 
-雙語文字集中在 `src/i18n/index.js`。元件透過 `useI18n()` 取得 `t()` 與 `setLocale()`，目前支援 `zh-TW` 與 `en`，也會同步更新 `<html lang>`、頁面標題與 meta description。
+雙語文字集中在 `src/i18n/index.ts` 與 `src/i18n/*.json`。元件透過 `useI18n()` 取得 `t()` 與 `setLocale()`，目前支援 `zh-TW` 與 `en`，也會同步更新 `<html lang>`、頁面標題與 meta description。
 
 ## GitHub Pages 部署
 

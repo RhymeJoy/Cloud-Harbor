@@ -1,14 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { useI18n } from '../i18n';
+import type { Product } from '../data/products';
 
 const { t } = useI18n();
 
-defineProps({
-  item: {
-    type: Object,
-    required: true
-  }
-});
+defineProps<{
+  item: Product;
+}>();
 </script>
 
 <template>
