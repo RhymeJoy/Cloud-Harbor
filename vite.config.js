@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
-const basePath = '/official-web/';
+const basePath = '/Cloud-Harbor/';
 const entryPath = fileURLToPath(new URL('./src/main.js', import.meta.url));
 
 const renderDocument = ({ script = '/src/main.js', styles = [] } = {}) => {
