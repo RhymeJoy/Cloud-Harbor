@@ -1,7 +1,7 @@
 import type { LocaleCode } from '../i18n';
 import { publicAsset, publicBasePath } from './usePublicAssets';
 
-export const siteOrigin = 'https://cloud-harbor.org';
+export const siteOrigin = 'https://www.cloud-harbor.org';
 export const defaultOgImage = 'avatar.avif';
 
 const localeMap: Record<LocaleCode, string> = {
