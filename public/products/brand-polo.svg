@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-label="品牌 Polo 衫">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101733"/>
+      <stop offset="0.55" stop-color="#27205c"/>
+      <stop offset="1" stop-color="#123f50"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="210" y1="104" x2="602" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#e8f2ff"/>
+      <stop offset="1" stop-color="#b9cdf4"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="260" y1="130" x2="520" y2="412" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff8bcf"/>
+      <stop offset="1" stop-color="#7f6cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <circle cx="666" cy="118" r="86" fill="#15d1c4" opacity="0.18"/>
+  <circle cx="116" cy="434" r="116" fill="#ff8bcf" opacity="0.14"/>
+  <path d="M236 126h95c12 25 32 38 69 38s57-13 69-38h95l104 99-72 90-54-42v172H258V273l-54 42-72-90 104-99Z" fill="url(#shirt)"/>
+  <path d="M331 126c16 34 38 52 69 52s53-18 69-52l-69 79-69-79Z" fill="#d9e8ff"/>
+  <path d="M378 204h44v206h-44V204Z" fill="#c7d9f7"/>
+  <path d="M258 286l-54 42-72-90 28-27 86 78 12-3Z" fill="#8fb0eb" opacity="0.58"/>
+  <path d="M542 286l54 42 72-90-28-27-86 78-12-3Z" fill="#8fb0eb" opacity="0.58"/>
+  <rect x="438" y="254" width="78" height="48" rx="8" fill="url(#accent)"/>
+  <path d="M454 289v-22h13c7 0 12 4.5 12 11s-5 11-12 11h-13Zm9-7h4c2.4 0 4-1.4 4-4s-1.6-4-4-4h-4v8Z" fill="#fff"/>
+  <path d="M236 438h328v34H236v-34Z" fill="#d8e6ff"/>
+  <path d="M296 438h208v34H296v-34Z" fill="#ff8bcf" opacity="0.32"/>
+</svg>

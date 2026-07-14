@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="雲港商行">
+  <defs>
+    <linearGradient id="mark-bg" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff8bcf"/>
+      <stop offset="0.52" stop-color="#7f6cff"/>
+      <stop offset="1" stop-color="#15d1c4"/>
+    </linearGradient>
+    <linearGradient id="mark-shine" x1="20" y1="16" x2="43" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dffcff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#070b1f"/>
+  <path d="M16 46V18h17c9 0 15 5.7 15 14s-6 14-15 14H16Z" fill="url(#mark-bg)"/>
+  <path d="M25 38V26h7.5c3.9 0 6.5 2.4 6.5 6s-2.6 6-6.5 6H25Z" fill="#070b1f"/>
+  <path d="M18 17h28l-5 7H18v-7Z" fill="url(#mark-shine)" opacity="0.88"/>
+  <path d="M17 47h31l-5 6H17v-6Z" fill="#15d1c4" opacity="0.78"/>
+</svg>

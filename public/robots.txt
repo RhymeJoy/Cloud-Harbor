@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /official-web/
+
+Sitemap: https://rhymejoy.github.io/official-web/sitemap.xml
