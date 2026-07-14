@@ -1,30 +1,23 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import HeroSection from './components/HeroSection.vue';
-import AboutSection from './components/AboutSection.vue';
 import SiteFooter from './components/SiteFooter.vue';
-import ProductGrid from './components/ProductGrid.vue';
-import ProductsPage from './pages/ProductsPage.vue';
-import { useAppRoute } from './composables/useAppRoute';
-import { getProductsByIds, products, showinmain } from './data/products';
+import { useI18n } from './i18n';
 
-const { isProductsPage } = useAppRoute();
-const mainProducts = computed(() => getProductsByIds(showinmain));
+const { currentLocale, locale, t } = useI18n();
+
+useHead(() => ({
+  htmlAttrs: {
+    lang: currentLocale.value.htmlLang,
+    'data-locale': locale.value
+  },
+  title: t('site.title'),
+  meta: [{ name: 'description', content: t('site.description') }]
+}));
 </script>
 
 <template>
   <div class="app-shell">
     <div class="page-shell">
-      <template v-if="isProductsPage">
-        <ProductsPage :products="products" />
-      </template>
-      <template v-else>
-        <HeroSection />
-        <main>
-          <AboutSection />
-          <ProductGrid :products="mainProducts" />
-        </main>
-      </template>
+      <NuxtPage />
     </div>
     <SiteFooter />
   </div>

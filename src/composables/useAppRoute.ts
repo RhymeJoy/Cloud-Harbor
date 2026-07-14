@@ -1,30 +1,14 @@
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed } from 'vue';
+import { useRoute } from '#app';
 import { publicAsset } from './usePublicAssets';
 
-const basePath = import.meta.env.BASE_URL;
-
-const normalizeRoutePath = () => {
-  const pathname = window.location.pathname;
-  const withoutBase = pathname.startsWith(basePath) ? pathname.slice(basePath.length) : pathname.replace(/^\/+/, '');
-
-  return withoutBase.replace(/\/+$/, '');
-};
+const normalizeRoutePath = (path: string) => path.replace(/^\/+/, '').replace(/\/+$/, '');
 
 export const routeHref = (path = '') => publicAsset(path);
 
 export const useAppRoute = () => {
-  const routePath = ref(normalizeRoutePath());
-  const syncRoute = () => {
-    routePath.value = normalizeRoutePath();
-  };
-
-  onMounted(() => {
-    window.addEventListener('popstate', syncRoute);
-  });
-
-  onUnmounted(() => {
-    window.removeEventListener('popstate', syncRoute);
-  });
+  const route = useRoute();
+  const routePath = computed(() => normalizeRoutePath(route.path));
 
   return {
     routePath,

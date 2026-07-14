@@ -1,9 +1,10 @@
 const normalizePublicPath = (path: string) => path.replace(/^\/+/, '');
+export const publicBasePath = '/Cloud-Harbor/';
 
-export const publicAsset = (path = '') => `${import.meta.env.BASE_URL}${normalizePublicPath(path)}`;
+export const publicAsset = (path = '') => `${publicBasePath}${normalizePublicPath(path)}`;
 
 export const usePublicAssets = () => ({
-  baseUrl: import.meta.env.BASE_URL,
+  baseUrl: publicBasePath,
   publicAsset,
   productAsset: (fileName: string) => publicAsset(`products/${normalizePublicPath(fileName)}`)
 });
