@@ -20,7 +20,7 @@ const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix)
     <img :src="item.image" :alt="productName" />
     <div class="product-body">
       <div class="product-meta">
-        <span class="tag">{{ productTag }}</span>
+        <span class="tag">#{{ item.id }} {{ productTag }}</span>
         <span class="price">{{ pricePrefix }} {{ item.price }}</span>
       </div>
       <h4>{{ productName }}</h4>
@@ -62,6 +62,7 @@ const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix)
   background: rgba(255, 183, 222, 0.2);
   color: #ffd8ee;
   font-size: 0.75rem;
+  font-weight: 700;
 }
 
 .price {

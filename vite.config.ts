@@ -20,7 +20,7 @@ const renderDocument = ({ script = '/src/main.ts', styles = [] }: RenderDocument
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="${basePath}favicon.svg">
+    <link rel="icon" type="image/x-icon" href="${basePath}favicon.ico">
 ${styleTags ? `${styleTags}\n` : ''}  </head>
   <body>
     <script type="module" crossorigin src="${script}"></script>
@@ -30,13 +30,22 @@ ${styleTags ? `${styleTags}\n` : ''}  </head>
 };
 
 const withBase = (fileName: string) => `${basePath}${fileName}`;
+const routePaths = ['', 'products/'];
 
 const vueOnlyEntry = (): Plugin => ({
   name: 'vue-only-entry',
   configureServer(server) {
     server.middlewares.use(async (request, response, next) => {
       const path = request.url?.split('?')[0] ?? '/';
-      const entryPaths = new Set(['/', '/index.html', basePath, `${basePath}index.html`]);
+      const entryPaths = new Set([
+        '/',
+        '/index.html',
+        basePath,
+        `${basePath}index.html`,
+        `${basePath}products`,
+        `${basePath}products/`,
+        `${basePath}products/index.html`
+      ]);
 
       if (request.method !== 'GET' || !entryPaths.has(path)) {
         next();
@@ -65,14 +74,18 @@ const vueOnlyEntry = (): Plugin => ({
       .filter((file) => file.type === 'asset' && file.fileName.endsWith('.css'))
       .map((file) => withBase(file.fileName));
 
-    this.emitFile({
-      type: 'asset',
-      fileName: 'index.html',
-      source: renderDocument({
-        script: withBase(entry.fileName),
-        styles
-      })
+    const source = renderDocument({
+      script: withBase(entry.fileName),
+      styles
     });
+
+    for (const routePath of routePaths) {
+      this.emitFile({
+        type: 'asset',
+        fileName: `${routePath}index.html`,
+        source
+      });
+    }
   }
 });
 
