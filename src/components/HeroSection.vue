@@ -1,7 +1,8 @@
 <script setup>
 import { useI18n } from '../i18n';
+import { publicAsset } from '../composables/usePublicAssets';
 
-const avatarSrc = `${import.meta.env.BASE_URL}avatar.svg`;
+const avatarSrc = publicAsset('avatar.svg');
 const { t } = useI18n();
 </script>
 
