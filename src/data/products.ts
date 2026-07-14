@@ -37,67 +37,67 @@ export const formatProductCopy = (text: string, values: Record<string, string | 
 export const products: Product[] = [
   {
     id: '01',
-    category: 'apparel',
-    price: 320,
-    originalPrice: 380,
-    stock: 24,
-    image: publicAsset('products/brand-polo.svg'),
+    category: 'merch',
+    price: 2000,
+    originalPrice: 2400,
+    stock: 1,
+    image: publicAsset('products/throw-pillow.svg'),
     location: {
-      'zh-TW': 'TWBC 現場',
-      en: 'TWBC Booth'
+      'zh-TW': 'TWBC 現場販售',
+      en: 'TWBC booth sales'
     },
     name: {
-      'zh-TW': '品牌 Polo 衫',
-      en: 'Brand Polo Shirt'
+      'zh-TW': 'Twilight 等身抱枕',
+      en: 'Cloud Harbor Throw Pillow'
     },
     tag: {
-      'zh-TW': '服飾',
-      en: 'Apparel'
+      'zh-TW': '周邊',
+      en: 'Merch'
     },
     description: {
-      'zh-TW': '適合日常識別、展場接待與團隊活動，版型俐落、穿著舒適。',
-      en: 'A clean and comfortable team shirt for booth staff, events, and everyday brand use.'
+      'zh-TW': '柔軟好抱的雲港周邊，適合放在房間、座位或活動後收藏。',
+      en: 'A soft Cloud Harbor pillow for room decor, desk chairs, and post-event collecting.'
     },
     details: {
-      'zh-TW': '以俐落的 Polo 衫版型呈現雲港商行識別，適合活動當天工作人員、攤位支援或日常穿搭。材質設定以舒適、好活動、容易照顧為主，讓長時間展場移動也能保持清爽。',
-      en: 'A clean polo shirt built around the Cloud Harbor identity, suitable for booth staff, event support, or casual daily use. The material direction focuses on comfort, easy movement, and simple care.'
+      'zh-TW': '抱枕以柔軟觸感與日常擺放為主，適合放在房間、沙發或工作座位旁。設計方向保留雲港商行的視覺識別，讓它既能當作活動紀念，也能成為平常會自然用上的小物。因枕心體積較大，建議在現場購買枕套時，再另外訂購。',
+      en: 'The Cloud Harbor throw pillow focuses on a soft hand feel and everyday placement. It works well on beds, sofas, or desk chairs while keeping the Cloud Harbor identity visible as both a keepsake and a practical item.'
     },
     shipping: {
-      'zh-TW': '預計以 TWBC 現場販售與取貨為主，實際數量與尺寸依現場公告為準。',
-      en: 'Planned mainly for TWBC booth sales and pickup. Final quantities and sizes depend on booth availability.'
+      'zh-TW': '以 TWBC 現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
+      en: 'Sales and pickup will primarily be available at the event. Due to the large size of the body pillow insert, only the pillowcase will be sold. The pillow insert is not included and can be purchased separately.'
     },
     badges: [
       {
-        'zh-TW': '現場限定',
-        en: 'Booth Pick'
+        'zh-TW': '柔軟周邊',
+        en: 'Soft Merch'
       },
       {
-        'zh-TW': '舒適穿搭',
-        en: 'Comfort Fit'
+        'zh-TW': '活動收藏',
+        en: 'Event Collectible'
       }
     ],
     highlights: [
       {
-        'zh-TW': '適合展場工作、社群活動與日常穿搭。',
-        en: 'Designed for booth work, community events, and daily wear.'
+        'zh-TW': '180 x 60 cm 等身尺寸，雙面不同姿勢設計，依角色個性打造，正反皆有不同魅力。',
+        en: "180 x 60 cm life-size design with unique artwork on both sides, featuring different poses that capture the character's personality."
       },
       {
-        'zh-TW': '版型簡潔，方便與外套、配件一起搭配。',
-        en: 'Simple silhouette that pairs easily with jackets and accessories.'
+        'zh-TW': '採用 New 2WAY 高彈性布料，觸感柔滑細緻，色彩鮮豔，完整呈現插畫細節',
+        en: 'Made with premium New 2WAY fabric, offering a soft, smooth feel with vibrant color reproduction and exceptional print detail.'
       },
       {
-        'zh-TW': '以雲港商行識別為主軸，保留乾淨俐落的視覺感。',
-        en: 'Cloud Harbor identity with a clean visual direction.'
+        'zh-TW': '側邊隱藏式拉鍊搭配高解析印刷，構圖預留安全邊與出血範圍，兼顧美觀、舒適與品質。',
+        en: 'Hidden side zipper and high-quality printing, with artwork designed to account for bleed and safe margins for a clean, professional finish.'
       }
     ],
     specs: [
       {
         label: { 'zh-TW': '類別', en: 'Category' },
-        value: { 'zh-TW': '服飾', en: 'Apparel' }
+        value: { 'zh-TW': '周邊', en: 'Merch' }
       },
       {
         label: { 'zh-TW': '尺寸', en: 'Size' },
-        value: { 'zh-TW': '預計 S / M / L', en: 'Expected S / M / L' }
+        value: { 'zh-TW': '長寬約 180 x 60 cm', en: 'Approx. 180 x 60 cm' }
       },
       {
         label: { 'zh-TW': '販售方式', en: 'Sales' },
@@ -106,10 +106,10 @@ export const products: Product[] = [
     ]
   },
   {
-    id: '02',
+    id: '04',
     category: 'print',
     price: 180,
-    originalPrice: 220,
+    // originalPrice: 220,
     stock: 60,
     image: publicAsset('products/event-brochure.svg'),
     location: {
@@ -179,7 +179,7 @@ export const products: Product[] = [
     id: '03',
     category: 'merch',
     price: 450,
-    originalPrice: 520,
+    // originalPrice: 520,
     stock: 16,
     image: publicAsset('products/canvas-bag.svg'),
     location: {
