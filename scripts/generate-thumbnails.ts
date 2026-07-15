@@ -57,11 +57,11 @@ const collectImages = async (directory: string): Promise<ImageJob[]> => {
   return jobs;
 };
 
-const shouldGenerate = async ({ source, target }: ImageJob) => {
+const shouldGenerate = async ({ target }: ImageJob) => {
   try {
-    const [sourceStats, targetStats] = await Promise.all([stat(source), stat(target)]);
+    await stat(target);
 
-    return targetStats.mtimeMs < sourceStats.mtimeMs;
+    return false;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
       return true;

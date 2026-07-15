@@ -51,10 +51,18 @@ const filteredProducts = computed(() => {
     const matchesMaxPrice = !hasMaxPrice.value || product.price <= maxPrice.value;
     const searchableText = [
       getProductRouteId(product),
-      localizeProductText(product.name, locale.value),
-      localizeProductText(product.tag, locale.value),
-      localizeProductText(product.description, locale.value),
-      localizeProductText(product.details, locale.value),
+      ...Object.values(product.name),
+      ...Object.values(product.tag),
+      ...Object.values(product.description),
+      ...Object.values(product.details),
+      ...Object.values(product.location),
+      ...Object.values(product.shipping),
+      ...product.badges.flatMap((badge) => Object.values(badge)),
+      ...product.highlights.flatMap((highlight) => Object.values(highlight)),
+      ...product.specs.flatMap((spec) => [
+        ...Object.values(spec.label),
+        ...Object.values(spec.value)
+      ]),
       String(product.price)
     ]
       .join(' ')
