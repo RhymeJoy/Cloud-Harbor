@@ -20,7 +20,13 @@ defineProps<{
       <h3>{{ sectionCopy.title }}</h3>
     </div>
     <div class="product-grid">
-      <ProductCard v-for="item in products" :key="item.id" :item="item" />
+      <ProductCard
+        v-for="(item, index) in products"
+        :key="item.id"
+        :item="item"
+        :image-loading="index === 0 ? 'eager' : 'lazy'"
+        :image-fetch-priority="index === 0 ? 'high' : 'low'"
+      />
     </div>
   </section>
 </template>

@@ -7,9 +7,17 @@ import { localizeProductText, type Product } from '../data/products';
 
 const { locale } = useI18n();
 
-const props = defineProps<{
+type ImageLoading = 'eager' | 'lazy';
+type ImageFetchPriority = 'high' | 'low' | 'auto';
+
+const props = withDefaults(defineProps<{
   item: Product;
-}>();
+  imageLoading?: ImageLoading;
+  imageFetchPriority?: ImageFetchPriority;
+}>(), {
+  imageLoading: 'lazy',
+  imageFetchPriority: 'low'
+});
 
 const productName = computed(() => localizeProductText(props.item.name, locale.value));
 const productTag = computed(() => localizeProductText(props.item.tag, locale.value));
@@ -22,7 +30,13 @@ const detailHref = computed(() => routeHref(`products/${props.item.id}/`));
 <template>
   <a class="product-card" :href="detailHref" :aria-label="productName">
     <div class="product-image-wrap">
-      <img :src="item.image" :alt="productName" />
+      <img
+        :src="item.image"
+        :alt="productName"
+        :loading="imageLoading"
+        :fetchpriority="imageFetchPriority"
+        decoding="async"
+      />
       <span class="shop-badge">Cloud Harbor</span>
     </div>
     <div class="product-body">

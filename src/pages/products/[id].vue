@@ -84,7 +84,13 @@ useHead(() => ({
     <section class="product-shell">
       <div class="product-gallery">
         <div class="product-main-image">
-          <img :src="selectedImage" :alt="productName" />
+          <img
+            :src="selectedImage"
+            :alt="productName"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
       </div>
 
@@ -128,7 +134,13 @@ useHead(() => ({
             :aria-pressed="selectedImage === image"
             @click="selectedImage = image"
           >
-            <img :src="image" :alt="`${productName} ${index + 1}`" />
+            <img
+              :src="image"
+              :alt="`${productName} ${index + 1}`"
+              loading="lazy"
+              fetchpriority="low"
+              decoding="async"
+            />
           </button>
           <span>#{{ product.id }}</span>
           <span>{{ productTag }}</span>
@@ -163,7 +175,13 @@ useHead(() => ({
     <section v-if="relatedProducts.length" class="related-section">
       <h2>{{ copy.relatedTitle }}</h2>
       <div class="related-grid">
-        <ProductCard v-for="item in relatedProducts" :key="item.id" :item="item" />
+        <ProductCard
+          v-for="item in relatedProducts"
+          :key="item.id"
+          :item="item"
+          image-loading="lazy"
+          image-fetch-priority="low"
+        />
       </div>
     </section>
   </main>
