@@ -23,7 +23,14 @@ const { t } = useI18n();
 
     <div class="profile-card">
       <div class="avatar-frame">
-        <img class="avatar" :src="avatarSrc" :alt="t('hero.avatarAlt')" />
+        <img
+          class="avatar"
+          :src="avatarSrc"
+          :alt="t('hero.avatarAlt')"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
       <p class="card-label">{{ t('hero.profileLabel') }}</p>
       <h2>{{ t('hero.profileTitle') }}</h2>

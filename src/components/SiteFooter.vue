@@ -36,7 +36,14 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
       <div class="footer-top">
         <div class="footer-brand">
           <a class="brand-link" :href="homeHref" :aria-label="t('footer.homeAria')">
-            <img class="footer-logo" :src="logoSrc" alt="" />
+            <img
+              class="footer-logo"
+              :src="logoSrc"
+              alt=""
+              loading="lazy"
+              fetchpriority="low"
+              decoding="async"
+            />
             <span>{{ t('site.title') }}</span>
           </a>
           <p class="footer-tagline">{{ t('footer.tagline') }}</p>
