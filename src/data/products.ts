@@ -19,6 +19,7 @@ export type Product = {
   originalPrice?: number;
   stock: number;
   image: string;
+  thumbnail?: string;
   images?: string[];
   location: LocalizedText;
   name: LocalizedText;
@@ -35,6 +36,19 @@ export const localizeProductText = (text: LocalizedText, locale: LocaleCode) => 
 export const formatProductCopy = (text: string, values: Record<string, string | number>) =>
   text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
 
+const generatedThumbnailExtensions = /\.(avif|webp|png|jpe?g)(?:[?#].*)?$/i;
+
+export const getProductImageThumbnail = (image: string) => {
+  if (!generatedThumbnailExtensions.test(image) || !image.includes('/products/')) {
+    return image;
+  }
+
+  return image.replace('/products/', '/products/_thumbnails/');
+};
+
+export const getProductThumbnail = (product: Pick<Product, 'image' | 'thumbnail'>) =>
+  product.thumbnail ?? getProductImageThumbnail(product.image);
+
 export const products: Product[] = [
   {//twilight pillow
     id: '01',
@@ -42,10 +56,10 @@ export const products: Product[] = [
     price: 2000,
     originalPrice: 2400,
     stock: 1,
-    image: publicAsset('products/BodyPillows/TS 1.avif'),
+    image: publicAsset('products/BodyPillows/TS-1.avif'),
     images: [
-      publicAsset('products/BodyPillows/TS 2.avif'),
-      publicAsset('products/BodyPillows/TS 3.avif')
+      publicAsset('products/BodyPillows/TS-2.avif'),
+      publicAsset('products/BodyPillows/TS-3.avif')
     ],
     location: {
       'zh-TW': '現場販售',
@@ -116,10 +130,10 @@ export const products: Product[] = [
     price: 2000,
     originalPrice: 2400,
     stock: 1,
-    image: publicAsset('products/BodyPillows/FS 1.avif'),
+    image: publicAsset('products/BodyPillows/FS-1.avif'),
     images: [
-      publicAsset('products/BodyPillows/FS 2.avif'),
-      publicAsset('products/BodyPillows/FS 3.avif')
+      publicAsset('products/BodyPillows/FS-2.avif'),
+      publicAsset('products/BodyPillows/FS-3.avif')
     ],
     location: {
       'zh-TW': '現場販售',
@@ -190,10 +204,10 @@ export const products: Product[] = [
     price: 2000,
     originalPrice: 2400,
     stock: 1,
-    image: publicAsset('products/BodyPillows/RD 1.avif'),
+    image: publicAsset('products/BodyPillows/RD-1.avif'),
     images: [
-      publicAsset('products/BodyPillows/RD 2.avif'),
-      publicAsset('products/BodyPillows/RD 3.avif')
+      publicAsset('products/BodyPillows/RD-2.avif'),
+      publicAsset('products/BodyPillows/RD-3.avif')
     ],
     location: {
       'zh-TW': '現場販售',
@@ -264,10 +278,10 @@ export const products: Product[] = [
     price: 2000,
     originalPrice: 2400,
     stock: 1,
-    image: publicAsset('products/BodyPillows/PP 1.avif'),
+    image: publicAsset('products/BodyPillows/PP-1.avif'),
     // images: [
-    //   publicAsset('products/BodyPillows/PP 2.avif'),
-    //   publicAsset('products/BodyPillows/PP 3.avif')
+    //   publicAsset('products/BodyPillows/PP-2.avif'),
+    //   publicAsset('products/BodyPillows/PP-3.avif')
     // ],
     location: {
       'zh-TW': '現場販售',
@@ -338,10 +352,10 @@ export const products: Product[] = [
     // price: 2000,
     // originalPrice: 2400,
     // stock: 1,
-    // image: publicAsset('products/BodyPillows/AJ 1.avif'),
+    // image: publicAsset('products/BodyPillows/AJ-1.avif'),
     // images: [
-    //   publicAsset('products/BodyPillows/AJ 2.avif'),
-    //   publicAsset('products/BodyPillows/AJ 3.avif')
+    //   publicAsset('products/BodyPillows/AJ-2.avif'),
+    //   publicAsset('products/BodyPillows/AJ-3.avif')
     // ],
   //   location: {
   //     'zh-TW': '現場販售',
@@ -412,10 +426,10 @@ export const products: Product[] = [
     // price: 2000,
     // originalPrice: 2400,
     // stock: 1,
-    // image: publicAsset('products/BodyPillows/RR 1.avif'),
+    // image: publicAsset('products/BodyPillows/RR-1.avif'),
     // images: [
-    //   publicAsset('products/BodyPillows/RR 2.avif'),
-    //   publicAsset('products/BodyPillows/RR 3.avif')
+    //   publicAsset('products/BodyPillows/RR-2.avif'),
+    //   publicAsset('products/BodyPillows/RR-3.avif')
     // ],
   //   location: {
   //     'zh-TW': '現場販售',

@@ -4,8 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "thumbnails": "node --experimental-strip-types scripts/generate-thumbnails.ts",
+    "predev": "npm run thumbnails",
+    "prebuild": "npm run thumbnails",
     "dev": "nuxt dev",
     "build": "nuxt build",
+    "pregenerate": "npm run thumbnails",
     "generate": "nuxt generate",
     "typecheck": "nuxt typecheck",
     "preview": "nuxt preview"
@@ -18,6 +22,7 @@
     "@nuxtjs/sitemap": "^8.2.2",
     "@types/node": "^26.1.1",
     "nuxt": "^4.4.8",
+    "sharp": "^0.35.3",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.3.7"
   }

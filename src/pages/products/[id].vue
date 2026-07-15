@@ -6,6 +6,8 @@ import { createSiteOgMeta } from '../../composables/useSiteSeo';
 import { useI18n } from '../../i18n';
 import { productDetailCopy, productSectionCopy } from '../../data/productContent';
 import {
+  getProductImageThumbnail,
+  getProductThumbnail,
   getProductById,
   localizeProductText,
   products
@@ -34,7 +36,10 @@ const productDescription = computed(() => localizeProductText(product.descriptio
 const productDetails = computed(() => localizeProductText(product.details, locale.value));
 const productShipping = computed(() => localizeProductText(product.shipping, locale.value));
 const productLocation = computed(() => localizeProductText(product.location, locale.value));
-const productImages = [product.image, ...(product.images ?? [])];
+const productImages = [product.image, ...(product.images ?? [])].map((image, index) => ({
+  full: image,
+  preview: index === 0 ? getProductThumbnail(product) : getProductImageThumbnail(image)
+}));
 const selectedImage = ref(product.image);
 const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix);
 const badgeTexts = computed(() => product.badges.map((badge) => localizeProductText(badge, locale.value)));
@@ -127,15 +132,15 @@ useHead(() => ({
         <div class="gallery-strip" aria-label="Product image preview">
           <button
             v-for="(image, index) in productImages"
-            :key="image"
+            :key="image.full"
             type="button"
-            :class="{ active: selectedImage === image }"
+            :class="{ active: selectedImage === image.full }"
             :aria-label="`${productName} ${index + 1}`"
-            :aria-pressed="selectedImage === image"
-            @click="selectedImage = image"
+            :aria-pressed="selectedImage === image.full"
+            @click="selectedImage = image.full"
           >
             <img
-              :src="image"
+              :src="image.preview"
               :alt="`${productName} ${index + 1}`"
               loading="lazy"
               fetchpriority="low"
