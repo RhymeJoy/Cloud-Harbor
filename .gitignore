@@ -7,4 +7,3 @@ node_modules
 *.bat
 nuxt-dev.log
 nuxt-dev.err.log
-public/products/_thumbnails/
