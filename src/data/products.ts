@@ -19,6 +19,7 @@ export type Product = {
   originalPrice?: number;
   stock: number;
   image: string;
+  images?: string[];
   location: LocalizedText;
   name: LocalizedText;
   tag: LocalizedText;
@@ -35,35 +36,39 @@ export const formatProductCopy = (text: string, values: Record<string, string | 
   text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
 
 export const products: Product[] = [
-  {
+  {//twilight pillow
     id: '01',
     category: 'merch',
     price: 2000,
     originalPrice: 2400,
     stock: 1,
-    image: publicAsset('products/throw-pillow.svg'),
+    image: publicAsset('products/BodyPillows/TS 1.avif'),
+    images: [
+      publicAsset('products/BodyPillows/TS 2.avif'),
+      publicAsset('products/BodyPillows/TS 3.avif')
+    ],
     location: {
-      'zh-TW': 'TWBC 現場販售',
-      en: 'TWBC booth sales'
+      'zh-TW': '現場販售',
+      en: 'booth sales'
     },
     name: {
       'zh-TW': 'Twilight 等身抱枕',
-      en: 'Cloud Harbor Throw Pillow'
+      en: 'Twilight Body Pillow'
     },
     tag: {
       'zh-TW': '周邊',
       en: 'Merch'
     },
     description: {
-      'zh-TW': '柔軟好抱的雲港周邊，適合放在房間、座位或活動後收藏。',
-      en: 'A soft Cloud Harbor pillow for room decor, desk chairs, and post-event collecting.'
+      'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
+      en: 'A soft Twilight pillow for room decor, beds, and post-event collecting.'
     },
     details: {
       'zh-TW': '抱枕以柔軟觸感與日常擺放為主，適合放在房間、沙發或工作座位旁。設計方向保留雲港商行的視覺識別，讓它既能當作活動紀念，也能成為平常會自然用上的小物。因枕心體積較大，建議在現場購買枕套時，再另外訂購。',
       en: 'The Cloud Harbor throw pillow focuses on a soft hand feel and everyday placement. It works well on beds, sofas, or desk chairs while keeping the Cloud Harbor identity visible as both a keepsake and a practical item.'
     },
     shipping: {
-      'zh-TW': '以 TWBC 現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
+      'zh-TW': '以現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
       en: 'Sales and pickup will primarily be available at the event. Due to the large size of the body pillow insert, only the pillowcase will be sold. The pillow insert is not included and can be purchased separately.'
     },
     badges: [
@@ -101,98 +106,473 @@ export const products: Product[] = [
       },
       {
         label: { 'zh-TW': '販售方式', en: 'Sales' },
-        value: { 'zh-TW': 'TWBC 現場販售', en: 'TWBC booth sales' }
+        value: { 'zh-TW': '現場販售', en: 'booth sales' }
       }
     ]
   },
-  {
-    id: '04',
-    category: 'print',
-    price: 180,
-    // originalPrice: 220,
-    stock: 60,
-    image: publicAsset('products/event-brochure.svg'),
+  {//fluttershy pillow
+    id: '02',
+    category: 'merch',
+    price: 2000,
+    originalPrice: 2400,
+    stock: 1,
+    image: publicAsset('products/BodyPillows/FS 1.avif'),
+    images: [
+      publicAsset('products/BodyPillows/FS 2.avif'),
+      publicAsset('products/BodyPillows/FS 3.avif')
+    ],
     location: {
-      'zh-TW': 'TWBC 現場',
-      en: 'TWBC Booth'
+      'zh-TW': '現場販售',
+      en: 'booth sales'
     },
     name: {
-      'zh-TW': '活動手冊',
-      en: 'Event Brochure'
+      'zh-TW': 'Fluttershy 等身抱枕',
+      en: 'Fluttershy Body Pillow'
     },
     tag: {
-      'zh-TW': '印刷',
-      en: 'Print'
+      'zh-TW': '周邊',
+      en: 'Merch'
     },
     description: {
-      'zh-TW': '整合品牌故事、流程與商品資訊，讓現場溝通更完整。',
-      en: 'A compact printed guide for brand story, schedules, and product information.'
+      'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
+      en: 'A soft Fluttershy pillow for room decor, beds, and post-event collecting.'
     },
     details: {
-      'zh-TW': '活動手冊收錄雲港商行的攤位介紹、商品資訊與活動當天可快速查閱的內容。適合想收藏紙本資訊、或希望在現場更快了解商品與攤位安排的訪客。',
-      en: 'The event brochure collects Cloud Harbor booth information, product notes, and quick references for event day. It is made for visitors who want a printed keepsake or a faster way to understand the booth.'
+      'zh-TW': '抱枕以柔軟觸感與日常擺放為主，適合放在房間、沙發或工作座位旁。設計方向保留雲港商行的視覺識別，讓它既能當作活動紀念，也能成為平常會自然用上的小物。因枕心體積較大，建議在現場購買枕套時，再另外訂購。',
+      en: 'The Cloud Harbor throw pillow focuses on a soft hand feel and everyday placement. It works well on beds, sofas, or desk chairs while keeping the Cloud Harbor identity visible as both a keepsake and a practical item.'
     },
     shipping: {
-      'zh-TW': '以現場販售為主，紙本數量有限，售完依後續公告決定是否再版。',
-      en: 'Primarily sold onsite. Printed quantities are limited, with reprints subject to later announcements.'
+      'zh-TW': '以現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
+      en: 'Sales and pickup will primarily be available at the event. Due to the large size of the body pillow insert, only the pillowcase will be sold. The pillow insert is not included and can be purchased separately.'
     },
     badges: [
       {
-        'zh-TW': '紙本收藏',
-        en: 'Print Collectible'
+        'zh-TW': '柔軟周邊',
+        en: 'Soft Merch'
       },
       {
-        'zh-TW': '快速導覽',
-        en: 'Quick Guide'
+        'zh-TW': '活動收藏',
+        en: 'Event Collectible'
       }
     ],
     highlights: [
       {
-        'zh-TW': '整理攤位故事、商品資訊與現場重點。',
-        en: 'Collects booth story, product information, and event highlights.'
+        'zh-TW': '180 x 60 cm 等身尺寸，雙面不同姿勢設計，依角色個性打造，正反皆有不同魅力。',
+        en: "180 x 60 cm life-size design with unique artwork on both sides, featuring different poses that capture the character's personality."
       },
       {
-        'zh-TW': '適合現場翻閱，也適合作為活動紀念。',
-        en: 'Useful at the booth and suitable as an event keepsake.'
+        'zh-TW': '採用 New 2WAY 高彈性布料，觸感柔滑細緻，色彩鮮豔，完整呈現插畫細節',
+        en: 'Made with premium New 2WAY fabric, offering a soft, smooth feel with vibrant color reproduction and exceptional print detail.'
       },
       {
-        'zh-TW': '版面以清楚閱讀與快速查找為主。',
-        en: 'Layout focuses on readability and quick lookup.'
+        'zh-TW': '側邊隱藏式拉鍊搭配高解析印刷，構圖預留安全邊與出血範圍，兼顧美觀、舒適與品質。',
+        en: 'Hidden side zipper and high-quality printing, with artwork designed to account for bleed and safe margins for a clean, professional finish.'
       }
     ],
     specs: [
       {
         label: { 'zh-TW': '類別', en: 'Category' },
-        value: { 'zh-TW': '印刷品', en: 'Print' }
+        value: { 'zh-TW': '周邊', en: 'Merch' }
       },
       {
-        label: { 'zh-TW': '形式', en: 'Format' },
-        value: { 'zh-TW': '騎馬釘或摺頁規劃中', en: 'Stapled booklet or folded guide in planning' }
+        label: { 'zh-TW': '尺寸', en: 'Size' },
+        value: { 'zh-TW': '長寬約 180 x 60 cm', en: 'Approx. 180 x 60 cm' }
       },
       {
         label: { 'zh-TW': '販售方式', en: 'Sales' },
-        value: { 'zh-TW': 'TWBC 現場販售', en: 'TWBC booth sales' }
+        value: { 'zh-TW': '現場販售', en: 'booth sales' }
       }
     ]
   },
-  {
+  {//rainbow pillow
     id: '03',
     category: 'merch',
-    price: 450,
-    // originalPrice: 520,
-    stock: 16,
-    image: publicAsset('products/canvas-bag.svg'),
+    price: 2000,
+    originalPrice: 2400,
+    stock: 1,
+    image: publicAsset('products/BodyPillows/RD 1.avif'),
+    images: [
+      publicAsset('products/BodyPillows/RD 2.avif'),
+      publicAsset('products/BodyPillows/RD 3.avif')
+    ],
     location: {
-      'zh-TW': 'TWBC 現場',
-      en: 'TWBC Booth'
+      'zh-TW': '現場販售',
+      en: 'booth sales'
     },
     name: {
-      'zh-TW': '訂製帆布袋',
-      en: 'Custom Canvas Bag'
+      'zh-TW': 'Rainbow Dash 等身抱枕',
+      en: 'Rainbow Dash Body Pillow'
     },
     tag: {
       'zh-TW': '周邊',
       en: 'Merch'
+    },
+    description: {
+      'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
+      en: 'A soft Rainbow pillow for room decor, beds, and post-event collecting.'
+    },
+    details: {
+      'zh-TW': '抱枕以柔軟觸感與日常擺放為主，適合放在房間、沙發或工作座位旁。設計方向保留雲港商行的視覺識別，讓它既能當作活動紀念，也能成為平常會自然用上的小物。因枕心體積較大，建議在現場購買枕套時，再另外訂購。',
+      en: 'The Cloud Harbor throw pillow focuses on a soft hand feel and everyday placement. It works well on beds, sofas, or desk chairs while keeping the Cloud Harbor identity visible as both a keepsake and a practical item.'
+    },
+    shipping: {
+      'zh-TW': '以現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
+      en: 'Sales and pickup will primarily be available at the event. Due to the large size of the body pillow insert, only the pillowcase will be sold. The pillow insert is not included and can be purchased separately.'
+    },
+    badges: [
+      {
+        'zh-TW': '柔軟周邊',
+        en: 'Soft Merch'
+      },
+      {
+        'zh-TW': '活動收藏',
+        en: 'Event Collectible'
+      }
+    ],
+    highlights: [
+      {
+        'zh-TW': '180 x 60 cm 等身尺寸，雙面不同姿勢設計，依角色個性打造，正反皆有不同魅力。',
+        en: "180 x 60 cm life-size design with unique artwork on both sides, featuring different poses that capture the character's personality."
+      },
+      {
+        'zh-TW': '採用 New 2WAY 高彈性布料，觸感柔滑細緻，色彩鮮豔，完整呈現插畫細節',
+        en: 'Made with premium New 2WAY fabric, offering a soft, smooth feel with vibrant color reproduction and exceptional print detail.'
+      },
+      {
+        'zh-TW': '側邊隱藏式拉鍊搭配高解析印刷，構圖預留安全邊與出血範圍，兼顧美觀、舒適與品質。',
+        en: 'Hidden side zipper and high-quality printing, with artwork designed to account for bleed and safe margins for a clean, professional finish.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '周邊', en: 'Merch' }
+      },
+      {
+        label: { 'zh-TW': '尺寸', en: 'Size' },
+        value: { 'zh-TW': '長寬約 180 x 60 cm', en: 'Approx. 180 x 60 cm' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'booth sales' }
+      }
+    ]
+  },
+  {//pinkie pillow
+    id: '04',
+    category: 'merch',
+    price: 2000,
+    originalPrice: 2400,
+    stock: 1,
+    image: publicAsset('products/BodyPillows/PP 1.avif'),
+    // images: [
+    //   publicAsset('products/BodyPillows/PP 2.avif'),
+    //   publicAsset('products/BodyPillows/PP 3.avif')
+    // ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'booth sales'
+    },
+    name: {
+      'zh-TW': 'Pinkie Pie 等身抱枕',
+      en: 'Pinkie Pie Body Pillow'
+    },
+    tag: {
+      'zh-TW': '周邊',
+      en: 'Merch'
+    },
+    description: {
+      'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
+      en: 'A soft Pinkie Pie pillow for room decor, beds, and post-event collecting.'
+    },
+    details: {
+      'zh-TW': '抱枕以柔軟觸感與日常擺放為主，適合放在房間、沙發或工作座位旁。設計方向保留雲港商行的視覺識別，讓它既能當作活動紀念，也能成為平常會自然用上的小物。因枕心體積較大，建議在現場購買枕套時，再另外訂購。',
+      en: 'The Cloud Harbor throw pillow focuses on a soft hand feel and everyday placement. It works well on beds, sofas, or desk chairs while keeping the Cloud Harbor identity visible as both a keepsake and a practical item.'
+    },
+    shipping: {
+      'zh-TW': '以現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
+      en: 'Sales and pickup will primarily be available at the event. Due to the large size of the body pillow insert, only the pillowcase will be sold. The pillow insert is not included and can be purchased separately.'
+    },
+    badges: [
+      {
+        'zh-TW': '柔軟周邊',
+        en: 'Soft Merch'
+      },
+      {
+        'zh-TW': '活動收藏',
+        en: 'Event Collectible'
+      }
+    ],
+    highlights: [
+      {
+        'zh-TW': '180 x 60 cm 等身尺寸，雙面不同姿勢設計，依角色個性打造，正反皆有不同魅力。',
+        en: "180 x 60 cm life-size design with unique artwork on both sides, featuring different poses that capture the character's personality."
+      },
+      {
+        'zh-TW': '採用 New 2WAY 高彈性布料，觸感柔滑細緻，色彩鮮豔，完整呈現插畫細節',
+        en: 'Made with premium New 2WAY fabric, offering a soft, smooth feel with vibrant color reproduction and exceptional print detail.'
+      },
+      {
+        'zh-TW': '側邊隱藏式拉鍊搭配高解析印刷，構圖預留安全邊與出血範圍，兼顧美觀、舒適與品質。',
+        en: 'Hidden side zipper and high-quality printing, with artwork designed to account for bleed and safe margins for a clean, professional finish.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '周邊', en: 'Merch' }
+      },
+      {
+        label: { 'zh-TW': '尺寸', en: 'Size' },
+        value: { 'zh-TW': '長寬約 180 x 60 cm', en: 'Approx. 180 x 60 cm' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'booth sales' }
+      }
+    ]
+  },
+  // {//applejack pillow
+    // id: '05',
+    // category: 'merch',
+    // price: 2000,
+    // originalPrice: 2400,
+    // stock: 1,
+    // image: publicAsset('products/BodyPillows/AJ 1.avif'),
+    // images: [
+    //   publicAsset('products/BodyPillows/AJ 2.avif'),
+    //   publicAsset('products/BodyPillows/AJ 3.avif')
+    // ],
+  //   location: {
+  //     'zh-TW': '現場販售',
+  //     en: 'booth sales'
+  //   },
+  //   name: {
+  //     'zh-TW': 'Applejack 等身抱枕',
+  //     en: 'Applejack Body Pillow'
+  //   },
+  //   tag: {
+  //     'zh-TW': '周邊',
+  //     en: 'Merch'
+  //   },
+  //   description: {
+  //     'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
+  //     en: 'A soft Applejack pillow for room decor, beds, and post-event collecting.'
+  //   },
+  //   details: {
+  //     'zh-TW': '抱枕以柔軟觸感與日常擺放為主，適合放在房間、沙發或工作座位旁。設計方向保留雲港商行的視覺識別，讓它既能當作活動紀念，也能成為平常會自然用上的小物。因枕心體積較大，建議在現場購買枕套時，再另外訂購。',
+  //     en: 'The Cloud Harbor throw pillow focuses on a soft hand feel and everyday placement. It works well on beds, sofas, or desk chairs while keeping the Cloud Harbor identity visible as both a keepsake and a practical item.'
+  //   },
+  //   shipping: {
+  //     'zh-TW': '以現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
+  //     en: 'Sales and pickup will primarily be available at the event. Due to the large size of the body pillow insert, only the pillowcase will be sold. The pillow insert is not included and can be purchased separately.'
+  //   },
+  //   badges: [
+  //     {
+  //       'zh-TW': '柔軟周邊',
+  //       en: 'Soft Merch'
+  //     },
+  //     {
+  //       'zh-TW': '活動收藏',
+  //       en: 'Event Collectible'
+  //     }
+  //   ],
+  //   highlights: [
+  //     {
+  //       'zh-TW': '180 x 60 cm 等身尺寸，雙面不同姿勢設計，依角色個性打造，正反皆有不同魅力。',
+  //       en: "180 x 60 cm life-size design with unique artwork on both sides, featuring different poses that capture the character's personality."
+  //     },
+  //     {
+  //       'zh-TW': '採用 New 2WAY 高彈性布料，觸感柔滑細緻，色彩鮮豔，完整呈現插畫細節',
+  //       en: 'Made with premium New 2WAY fabric, offering a soft, smooth feel with vibrant color reproduction and exceptional print detail.'
+  //     },
+  //     {
+  //       'zh-TW': '側邊隱藏式拉鍊搭配高解析印刷，構圖預留安全邊與出血範圍，兼顧美觀、舒適與品質。',
+  //       en: 'Hidden side zipper and high-quality printing, with artwork designed to account for bleed and safe margins for a clean, professional finish.'
+  //     }
+  //   ],
+  //   specs: [
+  //     {
+  //       label: { 'zh-TW': '類別', en: 'Category' },
+  //       value: { 'zh-TW': '周邊', en: 'Merch' }
+  //     },
+  //     {
+  //       label: { 'zh-TW': '尺寸', en: 'Size' },
+  //       value: { 'zh-TW': '長寬約 180 x 60 cm', en: 'Approx. 180 x 60 cm' }
+  //     },
+  //     {
+  //       label: { 'zh-TW': '販售方式', en: 'Sales' },
+  //       value: { 'zh-TW': '現場販售', en: 'booth sales' }
+  //     }
+  //   ]
+  // },
+   // {//rarity pillow
+    // id: '06',
+    // category: 'merch',
+    // price: 2000,
+    // originalPrice: 2400,
+    // stock: 1,
+    // image: publicAsset('products/BodyPillows/RR 1.avif'),
+    // images: [
+    //   publicAsset('products/BodyPillows/RR 2.avif'),
+    //   publicAsset('products/BodyPillows/RR 3.avif')
+    // ],
+  //   location: {
+  //     'zh-TW': '現場販售',
+  //     en: 'booth sales'
+  //   },
+  //   name: {
+  //     'zh-TW': 'Rarity 等身抱枕',
+  //     en: 'Rarity Body Pillow'
+  //   },
+  //   tag: {
+  //     'zh-TW': '周邊',
+  //     en: 'Merch'
+  //   },
+  //   description: {
+  //     'zh-TW': '柔軟好抱的雲港周邊，適合放在房間、座位或活動後收藏。',
+  //     en: 'A soft Rarity pillow for room decor, desk chairs, and post-event collecting.'
+  //   },
+  //   details: {
+  //     'zh-TW': '抱枕以柔軟觸感與日常擺放為主，適合放在房間、沙發或工作座位旁。設計方向保留雲港商行的視覺識別，讓它既能當作活動紀念，也能成為平常會自然用上的小物。因枕心體積較大，建議在現場購買枕套時，再另外訂購。',
+  //     en: 'The Cloud Harbor throw pillow focuses on a soft hand feel and everyday placement. It works well on beds, sofas, or desk chairs while keeping the Cloud Harbor identity visible as both a keepsake and a practical item.'
+  //   },
+  //   shipping: {
+  //     'zh-TW': '以現場販售與取貨為主，因體枕芯體積較大，所以將不會販售，只會有枕套的部分，枕芯可另外訂購。',
+  //     en: 'Sales and pickup will primarily be available at the event. Due to the large size of the body pillow insert, only the pillowcase will be sold. The pillow insert is not included and can be purchased separately.'
+  //   },
+  //   badges: [
+  //     {
+  //       'zh-TW': '柔軟周邊',
+  //       en: 'Soft Merch'
+  //     },
+  //     {
+  //       'zh-TW': '活動收藏',
+  //       en: 'Event Collectible'
+  //     }
+  //   ],
+  //   highlights: [
+  //     {
+  //       'zh-TW': '180 x 60 cm 等身尺寸，雙面不同姿勢設計，依角色個性打造，正反皆有不同魅力。',
+  //       en: "180 x 60 cm life-size design with unique artwork on both sides, featuring different poses that capture the character's personality."
+  //     },
+  //     {
+  //       'zh-TW': '採用 New 2WAY 高彈性布料，觸感柔滑細緻，色彩鮮豔，完整呈現插畫細節',
+  //       en: 'Made with premium New 2WAY fabric, offering a soft, smooth feel with vibrant color reproduction and exceptional print detail.'
+  //     },
+  //     {
+  //       'zh-TW': '側邊隱藏式拉鍊搭配高解析印刷，構圖預留安全邊與出血範圍，兼顧美觀、舒適與品質。',
+  //       en: 'Hidden side zipper and high-quality printing, with artwork designed to account for bleed and safe margins for a clean, professional finish.'
+  //     }
+  //   ],
+  //   specs: [
+  //     {
+  //       label: { 'zh-TW': '類別', en: 'Category' },
+  //       value: { 'zh-TW': '周邊', en: 'Merch' }
+  //     },
+  //     {
+  //       label: { 'zh-TW': '尺寸', en: 'Size' },
+  //       value: { 'zh-TW': '長寬約 180 x 60 cm', en: 'Approx. 180 x 60 cm' }
+  //     },
+  //     {
+  //       label: { 'zh-TW': '販售方式', en: 'Sales' },
+  //       value: { 'zh-TW': '現場販售', en: 'booth sales' }
+  //     }
+  //   ]
+  // },
+  {
+  id: '07',
+  category: 'merch',
+  price: 180,
+  originalPrice: 200,
+  stock: 2,
+  image: publicAsset('products/YearlyDecorations/1.avif'),
+  location: {
+    'zh-TW': 'TWBC 現場',
+    en: 'booth'
+  },
+  name: {
+    'zh-TW': '年節吊飾',
+    en: 'Lunar New Year Hanging Decoration'
+  },
+  tag: {
+    'zh-TW': '年飾',
+    en: 'New Year Decoration'
+  },
+  description: {
+    'zh-TW': '結合《彩虹小馬》角色與新春祝福元素，為年節空間增添喜氣。',
+    en: 'Combines My Little Pony characters with festive Lunar New Year elements to bring extra cheer to your space.'
+  },
+  details: {
+    'zh-TW': '以六位主角搭配新春圖案與吉祥祝福文字，採用直式吊掛設計，適合懸掛於門板、牆面或攤位空間。鮮明的紅金配色與立體裝飾效果，兼具節慶布置與角色收藏價值。',
+    en: 'Features the Mane 6 alongside festive patterns and auspicious New Year greetings. Its vertical hanging design is suitable for doors, walls, or booth displays. The vivid red-and-gold palette and layered decorative details make it both a festive decoration and a collectible character item.'
+  },
+  shipping: {
+    'zh-TW': '以現場販售與取貨為主，商品數量有限，售完為止。',
+    en: 'Primarily available for purchase and pickup at the booth. Quantities are limited and available while supplies last.'
+  },
+  badges: [
+    {
+      'zh-TW': '六主角',
+      en: 'Mane 6'
+    },
+    {
+      'zh-TW': '馬年限定',
+      en: 'Horse Year Edition'
+    }
+  ],
+  highlights: [
+    {
+      'zh-TW': '六位主角結合新春吉祥元素。',
+      en: 'Features the Mane 6 with auspicious New Year elements.'
+    },
+    {
+      'zh-TW': '直式吊掛設計，適合門板與牆面布置。',
+      en: 'Vertical hanging design for decorating doors and walls.'
+    },
+    {
+      'zh-TW': '紅金配色與立體層次，增添喜氣氛圍。',
+      en: 'Red-and-gold colors with layered details create a festive atmosphere.'
+    }
+  ],
+  specs: [
+    {
+      label: { 'zh-TW': '類別', en: 'Category' },
+      value: { 'zh-TW': '年節裝飾品', en: 'Lunar New Year Decoration' }
+    },
+    {
+      label: { 'zh-TW': '形式', en: 'Format' },
+      value: { 'zh-TW': '直式吊掛飾品', en: 'Vertical Hanging Decoration' }
+    },
+    {
+      label: { 'zh-TW': '販售方式', en: 'Sales' },
+      value: { 'zh-TW': '現場販售', en: 'Available at the booth' }
+    }
+  ]
+},
+  {
+    id: '08',
+    category: 'merch',
+    price: 180,
+    originalPrice: 200,//150
+    stock: 3,
+    image: publicAsset('products/YearlyDecorations/2.avif'),
+    images: [
+      publicAsset('products/YearlyDecorations/3.avif'),
+      publicAsset('products/YearlyDecorations/4.avif'),
+      publicAsset('products/YearlyDecorations/5.avif')
+    ],
+    location: {
+      'zh-TW': 'TWBC 現場',
+      en: 'booth'
+    },
+    name: {
+      'zh-TW': '立體春聯掛飾',
+      en: 'Vertical Hanging Banner'
+    },
+    tag: {
+      'zh-TW': '年飾',
+      en: 'Yearly Decoration'
     },
     description: {
       'zh-TW': '可承載文件、樣品與贈品，兼具實用性與品牌曝光。',
@@ -203,8 +583,8 @@ export const products: Product[] = [
       en: 'The custom canvas bag focuses on practical storage for brochures, purchases, and small items during the event. Its design keeps Cloud Harbor visible while staying easy to use in daily life.'
     },
     shipping: {
-      'zh-TW': '以 TWBC 現場販售與取貨為主，因體積較大，建議活動早段購買或預留。',
-      en: 'Primarily sold and picked up at the TWBC booth. Because it is bulkier, early purchase or reservation is recommended.'
+      'zh-TW': '以現場販售與取貨為主，因體積較大，建議活動早段購買或預留。',
+      en: 'Primarily sold and picked up at the booth. Because it is bulkier, early purchase or reservation is recommended.'
     },
     badges: [
       {
@@ -241,7 +621,7 @@ export const products: Product[] = [
       },
       {
         label: { 'zh-TW': '販售方式', en: 'Sales' },
-        value: { 'zh-TW': 'TWBC 現場販售', en: 'TWBC booth sales' }
+        value: { 'zh-TW': '現場販售', en: 'booth sales' }
       }
     ]
   }

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import ProductCard from '../../components/ProductCard.vue';
 import { routeHref } from '../../composables/useAppRoute';
 import { createSiteOgMeta } from '../../composables/useSiteSeo';
 import { useI18n } from '../../i18n';
 import { productDetailCopy, productSectionCopy } from '../../data/productContent';
 import {
-  formatProductCopy,
   getProductById,
   localizeProductText,
   products
@@ -35,6 +34,8 @@ const productDescription = computed(() => localizeProductText(product.descriptio
 const productDetails = computed(() => localizeProductText(product.details, locale.value));
 const productShipping = computed(() => localizeProductText(product.shipping, locale.value));
 const productLocation = computed(() => localizeProductText(product.location, locale.value));
+const productImages = [product.image, ...(product.images ?? [])];
+const selectedImage = ref(product.image);
 const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix);
 const badgeTexts = computed(() => product.badges.map((badge) => localizeProductText(badge, locale.value)));
 const highlightTexts = computed(() => product.highlights.map((highlight) => localizeProductText(highlight, locale.value)));
@@ -44,7 +45,9 @@ const specRows = computed(() =>
     value: localizeProductText(spec.value, locale.value)
   }))
 );
-const stockText = computed(() => formatProductCopy(copy.value.stockLabel, { count: product.stock }));
+const stockText = computed(() =>
+  locale.value === 'zh-TW' ? `${product.stock} 件` : `${product.stock} items`
+);
 const relatedProducts = computed(() => products.filter((item) => item.id !== product.id).slice(0, 3));
 
 useHead(() => ({
@@ -81,14 +84,7 @@ useHead(() => ({
     <section class="product-shell">
       <div class="product-gallery">
         <div class="product-main-image">
-          <img :src="product.image" :alt="productName" />
-        </div>
-        <div class="gallery-strip" aria-label="Product image preview">
-          <button type="button" class="active">
-            <img :src="product.image" :alt="productName" />
-          </button>
-          <span>#{{ product.id }}</span>
-          <span>{{ productTag }}</span>
+          <img :src="selectedImage" :alt="productName" />
         </div>
       </div>
 
@@ -122,6 +118,21 @@ useHead(() => ({
           </div>
         </dl>
 
+        <div class="gallery-strip" aria-label="Product image preview">
+          <button
+            v-for="(image, index) in productImages"
+            :key="image"
+            type="button"
+            :class="{ active: selectedImage === image }"
+            :aria-label="`${productName} ${index + 1}`"
+            :aria-pressed="selectedImage === image"
+            @click="selectedImage = image"
+          >
+            <img :src="image" :alt="`${productName} ${index + 1}`" />
+          </button>
+          <span>#{{ product.id }}</span>
+          <span>{{ productTag }}</span>
+        </div>
       </section>
     </section>
 
@@ -193,12 +204,12 @@ useHead(() => ({
 }
 
 .product-gallery {
-  display: grid;
-  align-content: start;
-  gap: 12px;
+  display: flex;
+  min-height: 0;
 }
 
 .product-main-image {
+  width: 100%;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 20px;
@@ -208,8 +219,7 @@ useHead(() => ({
 .product-main-image img {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -218,6 +228,11 @@ useHead(() => ({
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  margin-top: auto;
+}
+
+.gallery-strip span:first-of-type {
+  margin-left: auto;
 }
 
 .gallery-strip button {
@@ -225,9 +240,23 @@ useHead(() => ({
   height: 58px;
   padding: 0;
   overflow: hidden;
-  border: 2px solid rgba(255, 184, 222, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.16);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  opacity: 0.68;
+  transition: border-color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.gallery-strip button:hover,
+.gallery-strip button:focus-visible,
+.gallery-strip button.active {
+  border-color: rgba(255, 184, 222, 0.9);
+  opacity: 1;
+}
+
+.gallery-strip button:hover {
+  transform: translateY(-2px);
 }
 
 .gallery-strip img {
@@ -251,8 +280,8 @@ useHead(() => ({
 }
 
 .product-summary {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
@@ -337,18 +366,20 @@ h1 {
 
 .purchase-meta div {
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
+  grid-template-columns: 100px minmax(0, 1fr);
   gap: 12px;
-  align-items: center;
+  align-items: start;
 }
 
 .purchase-meta dt {
+  padding-top: 0.2em;
   color: #ffd8ee;
   font-size: 0.86rem;
 }
 
 .purchase-meta dd {
   line-height: 1.65;
+  text-align: justify;
 }
 
 .detail-grid {
@@ -426,6 +457,11 @@ h1 {
   .product-shell,
   .detail-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-main-image img {
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
 }
 
