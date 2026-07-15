@@ -22,7 +22,7 @@ defineProps<{
     <div class="product-grid">
       <ProductCard
         v-for="(item, index) in products"
-        :key="item.id"
+        :key="`${item.category}/${item.id}`"
         :item="item"
         :image-loading="index === 0 ? 'eager' : 'lazy'"
         :image-fetch-priority="index === 0 ? 'high' : 'low'"

@@ -3,7 +3,13 @@ import { computed } from 'vue';
 import { routeHref } from '../composables/useAppRoute';
 import { useI18n } from '../i18n';
 import { productSectionCopy } from '../data/productContent';
-import { getProductThumbnail, localizeProductText, type Product } from '../data/products';
+import {
+  getProductPath,
+  getProductRouteId,
+  getProductThumbnail,
+  localizeProductText,
+  type Product
+} from '../data/products';
 
 const { locale } = useI18n();
 
@@ -24,7 +30,8 @@ const productTag = computed(() => localizeProductText(props.item.tag, locale.val
 const productDescription = computed(() => localizeProductText(props.item.description, locale.value));
 const productLocation = computed(() => localizeProductText(props.item.location, locale.value));
 const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix);
-const detailHref = computed(() => routeHref(`products/${props.item.id}/`));
+const detailHref = computed(() => routeHref(`${getProductPath(props.item).slice(1)}/`));
+const productRouteId = computed(() => getProductRouteId(props.item));
 const productImage = computed(() => getProductThumbnail(props.item));
 </script>
 
@@ -48,7 +55,7 @@ const productImage = computed(() => getProductThumbnail(props.item));
         <span v-if="item.originalPrice" class="original-price">{{ pricePrefix }} {{ item.originalPrice }}</span>
       </div>
       <div class="product-meta">
-        <span class="tag">#{{ item.id }} {{ productTag }}</span>
+        <span class="tag">#{{ productRouteId }} {{ productTag }}</span>
         <span>{{ productLocation }}</span>
       </div>
     </div>

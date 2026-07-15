@@ -7,7 +7,9 @@ import { useI18n } from '../../i18n';
 import { productPageCopy } from '../../data/productContent';
 import {
   formatProductCopy,
+  getProductRouteId,
   localizeProductText,
+  productCategoryLabels,
   products,
   type ProductCategory,
   type ProductSort
@@ -27,15 +29,13 @@ const maxPrice = computed(() => Number.parseInt(maxPriceInput.value, 10));
 const hasMinPrice = computed(() => Number.isFinite(minPrice.value));
 const hasMaxPrice = computed(() => Number.isFinite(maxPrice.value));
 const categoryOptions = computed(() => {
-  const categories = Array.from(new Set(products.map((product) => product.category)));
+  const categories = Object.keys(productCategoryLabels) as ProductCategory[];
 
   return categories.map((category) => {
-    const matchingProduct = products.find((product) => product.category === category);
-
     return {
       category,
       count: products.filter((product) => product.category === category).length,
-      label: matchingProduct ? localizeProductText(matchingProduct.tag, locale.value) : category
+      label: localizeProductText(productCategoryLabels[category], locale.value)
     };
   });
 });
@@ -50,7 +50,7 @@ const filteredProducts = computed(() => {
     const matchesMinPrice = !hasMinPrice.value || product.price >= minPrice.value;
     const matchesMaxPrice = !hasMaxPrice.value || product.price <= maxPrice.value;
     const searchableText = [
-      product.id,
+      getProductRouteId(product),
       localizeProductText(product.name, locale.value),
       localizeProductText(product.tag, locale.value),
       localizeProductText(product.description, locale.value),
@@ -199,7 +199,7 @@ useHead(() => {
         </div>
 
         <div v-if="filteredProducts.length" class="products-grid">
-          <ProductCard v-for="item in filteredProducts" :key="item.id" :item="item" />
+          <ProductCard v-for="item in filteredProducts" :key="`${item.category}/${item.id}`" :item="item" />
         </div>
         <div v-else class="empty-state">
           <h2>{{ pageCopy.emptyTitle }}</h2>

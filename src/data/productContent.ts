@@ -1,5 +1,5 @@
 import type { LocaleCode } from '../i18n';
-import type { ProductId } from './products';
+import type { ProductRouteId } from './products';
 
 export type ProductSectionCopy = {
   eyebrow: string;
@@ -148,4 +148,4 @@ export const productDetailCopy: Record<LocaleCode, ProductDetailCopy> = {
   }
 };
 
-export const showinmain: ProductId[] = ['01', '02', '03'];
+export const showinmain: ProductRouteId[] = ['bp/02', 'bp/03', 'bp/04'];
