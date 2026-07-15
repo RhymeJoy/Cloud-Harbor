@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { routeHref } from '../composables/useAppRoute';
 import { useI18n } from '../i18n';
 import { productSectionCopy } from '../data/productContent';
-import { localizeProductText, type Product } from '../data/products';
+import { getProductThumbnail, localizeProductText, type Product } from '../data/products';
 
 const { locale } = useI18n();
 
@@ -25,13 +25,14 @@ const productDescription = computed(() => localizeProductText(props.item.descrip
 const productLocation = computed(() => localizeProductText(props.item.location, locale.value));
 const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix);
 const detailHref = computed(() => routeHref(`products/${props.item.id}/`));
+const productImage = computed(() => getProductThumbnail(props.item));
 </script>
 
 <template>
   <a class="product-card" :href="detailHref" :aria-label="productName">
     <div class="product-image-wrap">
       <img
-        :src="item.image"
+        :src="productImage"
         :alt="productName"
         :loading="imageLoading"
         :fetchpriority="imageFetchPriority"
