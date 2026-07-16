@@ -500,8 +500,8 @@ export const yearlyDecorations: Product[] = [
     en: 'Available at the Booth'
   },
   name: {
-    'zh-TW': '六主角福字斗方春聯',
-    en: 'Mane 6 Fu Character Decoration'
+    'zh-TW': '六主角福字斗方春聯 (小)',
+    en: 'Mane 6 Fu Character Decoration (Small)'
   },
   tag: {
     'zh-TW': '年飾',

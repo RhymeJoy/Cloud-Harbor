@@ -3,10 +3,9 @@ import { computed } from 'vue';
 import HeroSection from '../components/HeroSection.vue';
 import AboutSection from '../components/AboutSection.vue';
 import ProductGrid from '../components/ProductGrid.vue';
-import { showinmain } from '../data/productContent';
-import { getProductsByIds } from '../data/products';
+import { featuredProductIds, getProductsByIds } from '../data/products';
 
-const mainProducts = computed(() => getProductsByIds(showinmain));
+const mainProducts = computed(() => getProductsByIds(featuredProductIds));
 </script>
 
 <template>

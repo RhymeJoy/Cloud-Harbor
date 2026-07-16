@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="title desc">
+  <title id="title">Fluttershy 9-inch Lying Plush</title>
+  <desc id="desc">Stylized product placeholder for a Fluttershy 9-inch lying plush.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8b8"/>
+      <stop offset="1" stop-color="#f3c5dc"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6a6"/>
+      <stop offset="1" stop-color="#f2df58"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" rx="88" fill="url(#bg)"/>
+  <ellipse cx="400" cy="620" rx="270" ry="46" fill="#5b3a48" opacity=".17"/>
+  <ellipse cx="430" cy="450" rx="245" ry="128" fill="url(#body)"/>
+  <circle cx="240" cy="400" r="126" fill="#fff08a"/>
+  <path d="M168 306 210 210 270 315Z" fill="#fff08a"/>
+  <path d="M238 300 306 218 320 342Z" fill="#fff08a"/>
+  <path d="M150 470c-44 24-70 62-57 88 16 33 87 22 142-19Z" fill="#e8d65e"/>
+  <path d="M515 340c73 15 138 55 177 113-51 14-123 3-189-31Z" fill="#f19ac0"/>
+  <path d="M514 365c55 12 105 37 139 73-39 9-93 2-141-21Z" fill="#ffc1d7"/>
+  <path d="M506 394c40 9 76 27 103 52-34 6-75 1-107-17Z" fill="#dd75a6"/>
+  <circle cx="205" cy="382" r="17" fill="#3b2a1d"/>
+  <circle cx="210" cy="376" r="6" fill="#fff"/>
+  <path d="M130 426q54 38 120 0" fill="none" stroke="#d9c44a" stroke-width="12" stroke-linecap="round"/>
+  <path d="M175 298c40-59 108-73 153-30-47 8-78 30-96 68 50-14 94 2 122 40-68 10-132-10-179-78Z" fill="#f19ac0"/>
+  <text x="400" y="704" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="800" text-anchor="middle">Fluttershy</text>
+  <text x="400" y="748" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700" text-anchor="middle">9-inch Lying Plush</text>
+</svg>

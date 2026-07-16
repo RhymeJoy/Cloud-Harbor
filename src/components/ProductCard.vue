@@ -2,16 +2,16 @@
 import { computed } from 'vue';
 import { routeHref } from '../composables/useAppRoute';
 import { useI18n } from '../i18n';
-import { productSectionCopy } from '../data/productContent';
 import {
   getProductPath,
   getProductRouteId,
   getProductThumbnail,
+  localizeProductTagText,
   localizeProductText,
   type Product
 } from '../data/products';
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 type ImageLoading = 'eager' | 'lazy';
 type ImageFetchPriority = 'high' | 'low' | 'auto';
@@ -26,10 +26,10 @@ const props = withDefaults(defineProps<{
 });
 
 const productName = computed(() => localizeProductText(props.item.name, locale.value));
-const productTag = computed(() => localizeProductText(props.item.tag, locale.value));
+const productTag = computed(() => localizeProductTagText(props.item.tag, locale.value));
 const productDescription = computed(() => localizeProductText(props.item.description, locale.value));
 const productLocation = computed(() => localizeProductText(props.item.location, locale.value));
-const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix);
+const pricePrefix = computed(() => t('productSection.pricePrefix'));
 const detailHref = computed(() => routeHref(`${getProductPath(props.item).slice(1)}/`));
 const productRouteId = computed(() => getProductRouteId(props.item));
 const productImage = computed(() => getProductThumbnail(props.item));
@@ -118,8 +118,9 @@ const productImage = computed(() => getProductThumbnail(props.item));
 
 .product-meta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   color: #d8d6f7;
   font-size: 0.76rem;
@@ -133,12 +134,17 @@ const productImage = computed(() => getProductThumbnail(props.item));
 
 .tag {
   display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   padding: 4px 8px;
   border-radius: 999px;
   background: rgba(255, 184, 222, 0.18);
   color: #ffd8ee;
   font-size: 0.75rem;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .price {

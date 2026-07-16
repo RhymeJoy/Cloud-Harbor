@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import ProductCard from './ProductCard.vue';
 import { useI18n } from '../i18n';
-import { productSectionCopy } from '../data/productContent';
 import type { Product } from '../data/products';
 
-const { locale } = useI18n();
-const sectionCopy = computed(() => productSectionCopy[locale.value]);
+const { t } = useI18n();
 
 defineProps<{
   products: Product[];
@@ -16,8 +13,8 @@ defineProps<{
 <template>
   <section id="products" class="product-section">
     <div class="section-title">
-      <p class="eyebrow">{{ sectionCopy.eyebrow }}</p>
-      <h3>{{ sectionCopy.title }}</h3>
+      <p class="eyebrow">{{ t('productSection.eyebrow') }}</p>
+      <h3>{{ t('productSection.title') }}</h3>
     </div>
     <div class="product-grid">
       <ProductCard

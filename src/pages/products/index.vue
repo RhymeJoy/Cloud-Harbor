@@ -4,9 +4,7 @@ import ProductCard from '../../components/ProductCard.vue';
 import { routeHref } from '../../composables/useAppRoute';
 import { createSiteOgMeta } from '../../composables/useSiteSeo';
 import { useI18n } from '../../i18n';
-import { productPageCopy } from '../../data/productContent';
 import {
-  formatProductCopy,
   getProductRouteId,
   localizeProductText,
   productCategoryLabels,
@@ -17,7 +15,32 @@ import {
 
 const { locale, t } = useI18n();
 const homeHref = routeHref();
-const pageCopy = computed(() => productPageCopy[locale.value]);
+const pageCopy = computed(() => ({
+  eyebrow: t('products.eyebrow'),
+  title: t('products.title'),
+  description: t('products.description'),
+  backHome: t('products.backHome'),
+  shopName: t('products.shopName'),
+  shopSubtitle: t('products.shopSubtitle'),
+  shopBadge: t('products.shopBadge'),
+  searchLabel: t('products.searchLabel'),
+  searchPlaceholder: t('products.searchPlaceholder'),
+  searchButton: t('products.searchButton'),
+  filterLabel: t('products.filterLabel'),
+  sidebarTitle: t('products.sidebarTitle'),
+  allCategories: t('products.allCategories'),
+  priceRangeLabel: t('products.priceRangeLabel'),
+  minPricePlaceholder: t('products.minPricePlaceholder'),
+  maxPricePlaceholder: t('products.maxPricePlaceholder'),
+  sortLabel: t('products.sortLabel'),
+  sortDefault: t('products.sortDefault'),
+  sortPriceAsc: t('products.sortPriceAsc'),
+  sortPriceDesc: t('products.sortPriceDesc'),
+  clearFilters: t('products.clearFilters'),
+  detailButton: t('products.detailButton'),
+  emptyTitle: t('products.emptyTitle'),
+  emptyText: t('products.emptyText')
+}));
 const searchQuery = ref('');
 const selectedCategory = ref<ProductCategory | 'all'>('all');
 const sortMode = ref<ProductSort>('default');
@@ -84,7 +107,7 @@ const filteredProducts = computed(() => {
     return products.indexOf(current) - products.indexOf(next);
   });
 });
-const resultText = computed(() => formatProductCopy(pageCopy.value.resultCount, { count: filteredProducts.value.length }));
+const resultText = computed(() => t('products.resultCount', { count: filteredProducts.value.length }));
 const hasActiveFilters = computed(
   () =>
     normalizedSearch.value.length > 0 ||
