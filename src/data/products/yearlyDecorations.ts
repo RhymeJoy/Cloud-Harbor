@@ -5,7 +5,12 @@ const yearlyDecorationDefaults = {
   category: 'yearly-decorations'
 } satisfies Pick<Product, 'category'>;
 
-export const yearlyDecorations: Product[] = [
+const getYearlyDecorationStockText = (stock: number) => ({
+  'zh-TW': `${stock} 個`,
+  en: `${stock} ${stock === 1 ? 'item' : 'items'}`
+});
+
+const yearlyDecorationProducts: Product[] = [
   {
   id: '01',
   ...yearlyDecorationDefaults,
@@ -568,3 +573,8 @@ export const yearlyDecorations: Product[] = [
   ]
 }
 ];
+
+export const yearlyDecorations: Product[] = yearlyDecorationProducts.map((product) => ({
+  ...product,
+  stockText: getYearlyDecorationStockText(product.stock)
+}));

@@ -19,6 +19,7 @@ export type Product = {
   price: number;
   originalPrice?: number;
   stock: number;
+  stockText?: LocalizedText;
   thumbnail?: string;
   images: [string, ...string[]];
   location: LocalizedText;

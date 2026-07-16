@@ -104,14 +104,6 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
     'zh-TW': '抱枕',
     en: 'Body Pillows'
   },
-  'yearly-decorations': {
-    'zh-TW': '年飾',
-    en: 'Yearly Decorations'
-  },
-  'red-envelopes': {
-    'zh-TW': '紅包',
-    en: 'Red Envelopes'
-  },
   food: {
     'zh-TW': '食物',
     en: 'Food'
@@ -127,6 +119,14 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
   books: {
     'zh-TW': '書籍',
     en: 'Books'
+  },
+  'red-envelopes': {
+    'zh-TW': '紅包',
+    en: 'Red Envelopes'
+  },
+  'yearly-decorations': {
+    'zh-TW': '年飾',
+    en: 'Yearly Decorations'
   }
 };
 
@@ -148,12 +148,12 @@ export const getProductPath = (product: Pick<Product, 'category' | 'id'>) =>
 
 export const products: Product[] = [
   ...bodyPillows,
-  ...yearlyDecorations,
-  ...redEnvelopes,
   ...foodProducts,
   ...plushProducts,
   ...badgeProducts,
-  ...bookProducts
+  ...bookProducts,
+  ...redEnvelopes,
+  ...yearlyDecorations
 ];
 
 export const featuredProductIds: ProductRouteId[] = ['bp/02', 'bp/03', 'bp/04'];
@@ -170,3 +170,49 @@ export const getProductsByIds = (ids: readonly ProductRouteId[]) => {
 
   return products.filter((product) => idSet.has(getProductRouteId(product)));
 };
+
+const shuffleProducts = (sourceProducts: readonly Product[]) => {
+  const shuffledProducts = [...sourceProducts];
+
+  for (let index = shuffledProducts.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    const currentProduct = shuffledProducts[index]!;
+    const randomProduct = shuffledProducts[randomIndex]!;
+
+    shuffledProducts[index] = randomProduct;
+    shuffledProducts[randomIndex] = currentProduct;
+  }
+
+  return shuffledProducts;
+};
+
+export const getProductsByUniqueCategories = (
+  count = featuredProductIds.length,
+  sourceProducts: readonly Product[] = products
+) => {
+  const selectedCategories = new Set<ProductCategory>();
+  const selectedProducts: Product[] = [];
+
+  for (const product of sourceProducts) {
+    if (selectedCategories.has(product.category)) {
+      continue;
+    }
+
+    selectedProducts.push(product);
+    selectedCategories.add(product.category);
+
+    if (selectedProducts.length >= count) {
+      break;
+    }
+  }
+
+  return selectedProducts;
+};
+
+export const getRandomProductsByUniqueCategories = (
+  count = featuredProductIds.length,
+  sourceProducts: readonly Product[] = products
+) => getProductsByUniqueCategories(count, shuffleProducts(sourceProducts));
+
+export const getRandomFeaturedProducts = (count = featuredProductIds.length) =>
+  getRandomProductsByUniqueCategories(count);

@@ -66,6 +66,7 @@ const localize = (text: LocalizedText, locale: keyof LocalizedText) => text[loca
 const createLyingPlushProduct = (item: LyingPlushItem): Product => {
   const characterZh = localize(item.character, 'zh-TW');
   const characterEn = localize(item.character, 'en');
+  const imageCode = item.imageCode.toLowerCase();
 
   return {
     id: item.id,
@@ -73,7 +74,15 @@ const createLyingPlushProduct = (item: LyingPlushItem): Product => {
     price: item.price,
     originalPrice: item.originalPrice,
     stock: item.stock,
-    images: [publicAsset(`products/Plush/${item.imageCode}-Lying-Plush-9in.svg`)],
+    stockText: {
+      'zh-TW': `${item.stock} 隻`,
+      en: `${item.stock} ${item.stock === 1 ? 'plush toy' : 'plush toys'}`
+    },
+    images: [
+      publicAsset(`products/Plush/prone-${imageCode}.avif`),
+      publicAsset('products/Plush/prone-mane6-1.avif'),
+      publicAsset('products/Plush/prone-mane6-2.avif')
+    ],
     location: {
       'zh-TW': '現場販售',
       en: 'Available at the Booth'

@@ -58,23 +58,27 @@ const createColaCanProduct = (item: ColaCanItem): Product => {
     category: 'food',
     price: 50,
     stock: item.stock,
+    stockText: {
+      'zh-TW': `${item.stock} 罐`,
+      en: `${item.stock} cans`
+    },
     images: [publicAsset(`products/Food/${item.imageCode}-Cola-330ml.svg`)],
     location: {
       'zh-TW': '現場販售',
       en: 'Available at the Booth'
     },
     name: {
-      'zh-TW': `${characterZh}  330ml 刻痕可樂罐`,
-      en: `${characterEn} Character Etched 330ml Cola Can`
+      'zh-TW': `${characterZh}  330ml 可口可樂`,
+      en: `${characterEn} 330ml Coca Cola`
     },
     tag: item.character,
     description: {
-      'zh-TW': `${characterZh} 角色刻痕款 330ml 可樂罐，適合現場收藏或飲用。`,
-      en: `${characterEn} character etched 330ml cola can for booth collecting or drinking.`
+      'zh-TW': `${characterZh} 角色刻痕款 330ml 可口可樂罐，適合現場收藏或飲用。`,
+      en: `${characterEn} character etched 330ml Coca Cola can for booth collecting or drinking.`
     },
     details: {
-      'zh-TW': `330ml 可樂罐，罐身以 ${characterZh} 角色刻痕風格設計。實際成分、保存期限與飲用資訊以罐身標示為準。`,
-      en: `A 330ml cola can with ${characterEn} character etched-style artwork. Ingredients, expiry date, and drinking information follow the label on the can.`
+      'zh-TW': `330ml 可口可樂罐，罐身以 ${characterZh} 角色刻痕風格設計。實際成分、保存期限與飲用資訊以罐身標示為準。`,
+      en: `A 330ml Coca Cola can with ${characterEn} character etched-style artwork. Ingredients, expiry date, and drinking information follow the label on the can.`
     },
     shipping: {
       'zh-TW': '主要於活動現場販售與取貨。飲品類商品數量有限，售完為止。',
@@ -91,8 +95,8 @@ const createColaCanProduct = (item: ColaCanItem): Product => {
         en: `Character: ${characterEn}.`
       },
       {
-        'zh-TW': '330ml 可樂罐，適合活動現場購入。',
-        en: '330ml cola can suitable for booth purchase.'
+        'zh-TW': '330ml 可口可樂罐，適合活動現場購入。',
+        en: '330ml Coca Cola can suitable for booth purchase.'
       },
       {
         'zh-TW': '角色刻痕風格罐身設計，可作為飲品與收藏品。',
@@ -106,7 +110,7 @@ const createColaCanProduct = (item: ColaCanItem): Product => {
       },
       {
         label: { 'zh-TW': '形式', en: 'Format' },
-        value: { 'zh-TW': '330ml 可樂罐', en: '330ml Cola Can' }
+        value: { 'zh-TW': '330ml 可口可樂罐', en: '330ml Coca Cola Can' }
       },
       {
         label: { 'zh-TW': '角色', en: 'Character' },
