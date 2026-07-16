@@ -26,6 +26,13 @@ const props = withDefaults(defineProps<{
 });
 
 const productName = computed(() => localizeProductText(props.item.name, locale.value));
+const productNameParts = computed(() => {
+  const match = productName.value.match(
+    /^(.*?)(紅包袋\s*[（(]\d+(?:入|卡)[）)]|Red Envelope\s*[（(]\d+(?:-Pack|-card)[）)])$/i
+  );
+
+  return match ? { prefix: match[1], suffix: match[2] } : { prefix: productName.value, suffix: '' };
+});
 const productTag = computed(() => localizeProductTagText(props.item.tag, locale.value));
 const productDescription = computed(() => localizeProductText(props.item.description, locale.value));
 const productLocation = computed(() => localizeProductText(props.item.location, locale.value));
@@ -48,7 +55,9 @@ const productImage = computed(() => getProductThumbnail(props.item));
       <span class="shop-badge">Cloud Harbor</span>
     </div>
     <div class="product-body">
-      <h4>{{ productName }}</h4>
+      <h4>
+        {{ productNameParts.prefix }}<span v-if="productNameParts.suffix" class="product-name-suffix">{{ productNameParts.suffix }}</span>
+      </h4>
       <p>{{ productDescription }}</p>
       <div class="product-price-row">
         <span class="price">{{ pricePrefix }} {{ item.price }}</span>
@@ -173,6 +182,10 @@ h4 {
   line-height: 1.4;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.product-name-suffix {
+  white-space: nowrap;
 }
 
 p {

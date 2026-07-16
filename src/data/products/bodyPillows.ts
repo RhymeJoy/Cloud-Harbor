@@ -101,8 +101,8 @@ export const bodyPillows: Product[] = [
       en: 'Fluttershy Body Pillow Case'
     },
     tag: {
-      'zh-TW': '周邊',
-      en: 'Merch'
+      'zh-TW': '柔柔',
+      en: 'Fluttershy'
     },
     description: {
       'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
@@ -175,8 +175,8 @@ export const bodyPillows: Product[] = [
       en: 'Rainbow Dash Body Pillow Case'
     },
     tag: {
-      'zh-TW': '周邊',
-      en: 'Merch'
+      'zh-TW': '雲寶',
+      en: 'Rainbow Dash'
     },
     description: {
       'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
@@ -248,8 +248,8 @@ export const bodyPillows: Product[] = [
       en: 'Pinkie Pie Body Pillow Case'
     },
     tag: {
-      'zh-TW': '周邊',
-      en: 'Merch'
+      'zh-TW': '碧琪',
+      en: 'Pinkie Pie'
     },
     description: {
       'zh-TW': '柔軟好抱的等身周邊，適合放在房間、床上或收藏用。',
