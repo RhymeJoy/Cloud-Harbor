@@ -249,8 +249,8 @@ export const yearlyDecorations: Product[] = [
   originalPrice: 180,//120
   stock: 3,
   images: [
-    publicAsset('products/YearlyDecorations/9.avif'),
     publicAsset('products/YearlyDecorations/8.avif'),
+    publicAsset('products/YearlyDecorations/9.avif'),
     publicAsset('products/YearlyDecorations/10.avif'),
     publicAsset('products/YearlyDecorations/11.avif')
   ],
