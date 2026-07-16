@@ -17,10 +17,10 @@ const { t } = useI18n();
         {{ t('hero.intro') }}
       </p>
       <div class="hero-actions">
-        <a :href="productsHref" class="primary-btn">
+        <NuxtLink :to="productsHref" class="primary-btn">
           <span>{{ t('hero.productsCta') }}</span>
           <span class="btn-arrow" aria-hidden="true">></span>
-        </a>
+        </NuxtLink>
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 import { publicAsset } from '../../composables/usePublicAssets';
 import type { Product } from './types';
 
-export const bookProducts: Product[] = [
+const existingBookProducts: Product[] = [
   {
     id: '1',
     category: 'books',
@@ -306,4 +306,93 @@ export const bookProducts: Product[] = [
       }
     ]
   }
+];
+
+type CharacterNoteItem = {
+  id: string;
+  imageCode: string;
+  character: {
+    'zh-TW': string;
+    en: string;
+  };
+};
+
+const characterNoteItems: CharacterNoteItem[] = [
+  { id: '5', imageCode: 'derpy', character: { 'zh-TW': '小呆', en: 'Derpy' } },
+  { id: '6', imageCode: 'ts', character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' } },
+  { id: '7', imageCode: 'luna', character: { 'zh-TW': '月亮公主', en: 'Princess Luna' } },
+  { id: '8', imageCode: 'pp', character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' } },
+  { id: '9', imageCode: 'ss', character: { 'zh-TW': '晴晴', en: 'Sunny Starscout' } }
+];
+
+const createCharacterNoteProduct = (item: CharacterNoteItem): Product => ({
+  id: item.id,
+  category: 'books',
+  price: 80,
+  originalPrice: 90,
+  stock: 1,
+  stockText: {
+    'zh-TW': '1 本',
+    en: '1 notepad'
+  },
+  images: [publicAsset(`products/Books/${item.imageCode}-note.avif`)],
+  location: {
+    'zh-TW': '現場販售',
+    en: 'Available at the Booth'
+  },
+  name: {
+    'zh-TW': `${item.character['zh-TW']}橫線便條本`,
+    en: `${item.character.en} Lined Notepad`
+  },
+  tag: item.character,
+  description: {
+    'zh-TW': `${item.character['zh-TW']}角色款橫線便條本，尺寸約 16 × 11 cm，適合書寫待辦事項與日常筆記。`,
+    en: `A ${item.character.en} lined notepad measuring approximately 16 × 11 cm, suitable for to-do lists and everyday notes.`
+  },
+  details: {
+    'zh-TW': `以${item.character['zh-TW']}與角色主題小圖案設計的橫線便條本，版面方便書寫短箋、清單及備忘內容。每款現貨 1 本。`,
+    en: `A lined notepad featuring ${item.character.en} and themed decorative artwork. The layout is suitable for short messages, lists, and reminders. One is available.`
+  },
+  shipping: {
+    'zh-TW': '以現場販售與取貨為主，數量有限，售完為止。',
+    en: 'Primarily available for onsite purchase and pickup. Quantity is limited and available while supplies last.'
+  },
+  badges: [
+    item.character,
+    { 'zh-TW': '橫線便條本', en: 'Lined Notepad' },
+    { 'zh-TW': '限量 1 本', en: 'Only 1 Available' }
+  ],
+  highlights: [
+    {
+      'zh-TW': `${item.character['zh-TW']}角色主題設計。`,
+      en: `Character design featuring ${item.character.en}.`
+    },
+    {
+      'zh-TW': '橫線書寫版面，適合短箋、待辦清單與備忘。',
+      en: 'Lined writing area for messages, to-do lists, and reminders.'
+    },
+    {
+      'zh-TW': '尺寸約 16 × 11 cm，方便攜帶與使用。',
+      en: 'Measures approximately 16 × 11 cm for convenient everyday use.'
+    }
+  ],
+  specs: [
+    {
+      label: { 'zh-TW': '類別', en: 'Category' },
+      value: { 'zh-TW': '便條本', en: 'Notepad' }
+    },
+    {
+      label: { 'zh-TW': '尺寸', en: 'Size' },
+      value: { 'zh-TW': '16 × 11 cm', en: '16 × 11 cm' }
+    },
+    {
+      label: { 'zh-TW': '角色', en: 'Character' },
+      value: item.character
+    }
+  ]
+});
+
+export const bookProducts: Product[] = [
+  ...existingBookProducts,
+  ...characterNoteItems.map(createCharacterNoteProduct)
 ];

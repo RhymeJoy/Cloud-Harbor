@@ -4,7 +4,7 @@ import { publicAsset } from './usePublicAssets';
 
 const normalizeRoutePath = (path: string) => path.replace(/^\/+/, '').replace(/\/+$/, '');
 
-export const routeHref = (path = '') => publicAsset(path);
+export const routeHref = (path = '') => publicAsset(normalizeRoutePath(path));
 
 export const useAppRoute = () => {
   const route = useRoute();

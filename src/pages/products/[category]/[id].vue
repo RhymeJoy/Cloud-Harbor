@@ -228,7 +228,7 @@ useHead(() => ({
       title: `${productName.value} | ${t('site.title')}`,
       description: productDescription.value,
       locale: locale.value,
-      path: `${getProductPath(product).slice(1)}/`,
+      path: getProductPath(product),
       image: defaultImage,
       imageAlt: productName.value,
       type: 'product'
