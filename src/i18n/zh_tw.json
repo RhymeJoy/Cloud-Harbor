@@ -1,32 +1,76 @@
 {
   "site": {
     "title": "雲港商行",
-    "description": "雲港商行是準備在 TWBC 上販售商品的攤販，這裡整理攤位介紹、商品資訊與後續上架內容。"
+    "description": "雲港商行是準備在 TWBC / TPC 上販售商品的攤販，這裡整理攤位介紹、商品資訊與後續上架內容。"
   },
   "hero": {
     "eyebrow": "雲港商行",
-    "title": "雲港商行，準備在 TWBC 上販售的攤販",
+    "title": "雲港商行，準備在 TWBC / TPC 上販售的攤販",
     "intro": "我們正在整理攤位介紹、預計販售商品與上架資訊，讓訪客能快速了解雲港商行的商品方向與後續動態。",
     "productsCta": "查看商品",
     "profileLabel": "ABOUT VENDOR",
     "avatarAlt": "雲港商行攤主頭像",
     "profileTitle": "你好，我們是雲港商行",
-    "profileRole": "TWBC 攤販 / 商品準備 / 現場販售",
-    "profileText": "雲港商行將在 TWBC 上販售商品，目前正逐步整理商品資訊、攤位介紹與上架內容。這裡會作為訪客認識我們與查看商品的入口。"
+    "profileRole": "TWBC 攤販 / TPC 攤販 / 現場販售",
+    "profileText": "雲港商行將在 TWBC / TPC 上販售商品，目前正逐步整理商品資訊、攤位介紹與上架內容。這裡會作為訪客認識我們與查看商品的入口。"
   },
   "about": {
     "eyebrow": "ABOUT",
-    "title": "雲港商行把喜歡的創作與實用小物整理成攤位，準備在 TWBC 與大家見面。",
+    "title": "雲港商行把喜歡的創作與實用小物整理成攤位，準備在 TWBC/ TPC 與大家見面。",
     "body": "我們會在這裡更新預計販售的商品、攤位資訊與後續消息。無論是活動當天想先查看品項、確認價格，或之後回來追蹤上架內容，都能從這個網站快速找到雲港商行的最新整理。"
+  },
+  "productSection": {
+    "eyebrow": "PRODUCTS",
+    "title": "先挑三款準備中的商品放在這裡，讓你快速掌握雲港商行的攤位風格。",
+    "pricePrefix": "NT$"
+  },
+  "products": {
+    "eyebrow": "PRODUCTS",
+    "title": "雲港商品館",
+    "description": "用商城式版面整理雲港商行準備販售的商品，快速搜尋、篩選與查看詳細資訊。",
+    "backHome": "回首頁",
+    "shopName": "Cloud Harbor 雲港商行",
+    "shopSubtitle": "TWBC 現場販售準備中｜商品資訊會持續更新",
+    "shopBadge": "官方攤位",
+    "searchLabel": "搜尋",
+    "searchPlaceholder": "搜尋商品名稱、分類或編號",
+    "searchButton": "搜尋",
+    "filterLabel": "分類",
+    "sidebarTitle": "篩選商品",
+    "allCategories": "全部",
+    "priceRangeLabel": "價格區間",
+    "minPricePlaceholder": "最低",
+    "maxPricePlaceholder": "最高",
+    "sortLabel": "排序",
+    "sortDefault": "綜合",
+    "sortPriceAsc": "價格低到高",
+    "sortPriceDesc": "價格高到低",
+    "resultCount": "顯示 {count} 件商品",
+    "clearFilters": "清除條件",
+    "detailButton": "查看詳情",
+    "emptyTitle": "沒有符合的商品",
+    "emptyText": "換個關鍵字或分類再試一次。"
+  },
+  "productDetail": {
+    "backToProducts": "回商品館",
+    "storeBadge": "Cloud Harbor 官方攤位",
+    "stockTitle": "庫存",
+    "stockLabel": "庫存 {count} 件",
+    "productDetailsTitle": "商品詳情",
+    "specsTitle": "商品規格",
+    "shippingTitle": "取貨與販售方式",
+    "highlightsTitle": "商品特色",
+    "relatedTitle": "你可能也會喜歡",
+    "notFoundTitle": "找不到商品",
+    "notFoundText": "這個商品可能尚未上架，請回商品館查看目前品項。"
   },
   "footer": {
     "homeAria": "回到雲港商行首頁",
-    "tagline": "TWBC 販售攤位準備中",
     "navAria": "頁尾連結",
-    "twbc": "TWBC",
+    "twbc": "TWBC / TPC",
     "home": "首頁",
     "products": "商品",
-    "vendorLine": "TWBC 攤販準備中",
+    "vendorLine": "TWBC / TPC 攤販準備中",
     "quote": "「把喜歡的東西，好好帶到攤位上。」",
     "quotes": [
       "「不要因為害怕受傷，就把歡笑給丟掉。」- Autumn Blaze",

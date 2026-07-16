@@ -1,32 +1,76 @@
 {
   "site": {
     "title": "Cloud Harbor",
-    "description": "Cloud Harbor is a vendor preparing to sell at TWBC. This site collects booth details, product information, and upcoming updates."
+    "description": "Cloud Harbor is a vendor preparing to sell at TWBC / TPC. This site collects booth details, product information, and upcoming updates."
   },
   "hero": {
     "eyebrow": "Cloud Harbor",
-    "title": "Cloud Harbor, a vendor preparing for TWBC",
+    "title": "Cloud Harbor, a vendor preparing for TWBC / TPC",
     "intro": "We are organizing booth details, planned products, and launch updates so visitors can quickly understand what Cloud Harbor is preparing.",
     "productsCta": "View Products",
     "profileLabel": "ABOUT VENDOR",
     "avatarAlt": "Cloud Harbor vendor avatar",
     "profileTitle": "Hello, we are Cloud Harbor",
-    "profileRole": "TWBC Vendor / Product Prep / Booth Sales",
-    "profileText": "Cloud Harbor is preparing to sell at TWBC. Product details, booth information, and updates will be collected here as the event gets closer."
+    "profileRole": "TWBC Vendor / TPC Vendor / Booth Sales",
+    "profileText": "Cloud Harbor is preparing to sell at TWBC / TPC. Product details, booth information, and updates will be collected here as the event gets closer."
   },
   "about": {
     "eyebrow": "ABOUT",
-    "title": "Cloud Harbor gathers the things we love into a booth of creative and practical goods, ready to meet everyone at TWBC.",
+    "title": "Cloud Harbor gathers the things we love into a booth of creative and practical goods, ready to meet everyone at TWBC / TPC.",
     "body": "This site will keep planned products, booth details, and future updates in one place. Whether visitors want to preview items before the event, check prices, or return later for new listings, they can quickly find Cloud Harbor's latest information here."
+  },
+  "productSection": {
+    "eyebrow": "PRODUCTS",
+    "title": "A quick preview of three planned items, giving you a feel for Cloud Harbor before the booth opens.",
+    "pricePrefix": "NT$"
+  },
+  "products": {
+    "eyebrow": "PRODUCTS",
+    "title": "Cloud Harbor Shop",
+    "description": "A marketplace-style product page for Cloud Harbor items, with search, filters, sorting, and detail pages.",
+    "backHome": "Back Home",
+    "shopName": "Cloud Harbor",
+    "shopSubtitle": "Preparing for TWBC booth sales. Product details will keep updating.",
+    "shopBadge": "Official Booth",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Search by name, tag, or ID",
+    "searchButton": "Search",
+    "filterLabel": "Category",
+    "sidebarTitle": "Filters",
+    "allCategories": "All",
+    "priceRangeLabel": "Price Range",
+    "minPricePlaceholder": "Min",
+    "maxPricePlaceholder": "Max",
+    "sortLabel": "Sort",
+    "sortDefault": "Relevant",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "resultCount": "Showing {count} products",
+    "clearFilters": "Clear",
+    "detailButton": "View Details",
+    "emptyTitle": "No matching products",
+    "emptyText": "Try another keyword or category."
+  },
+  "productDetail": {
+    "backToProducts": "Back to Shop",
+    "storeBadge": "Cloud Harbor Official Booth",
+    "stockTitle": "Stock",
+    "stockLabel": "{count} in stock",
+    "productDetailsTitle": "Product Details",
+    "specsTitle": "Specifications",
+    "shippingTitle": "Pickup and Sales",
+    "highlightsTitle": "Highlights",
+    "relatedTitle": "You May Also Like",
+    "notFoundTitle": "Product not found",
+    "notFoundText": "This product may not be listed yet. Please return to the shop."
   },
   "footer": {
     "homeAria": "Back to Cloud Harbor home",
-    "tagline": "Preparing a vendor booth for TWBC",
     "navAria": "Footer links",
-    "twbc": "TWBC",
+    "twbc": "TWBC / TPC",
     "home": "Home",
     "products": "Products",
-    "vendorLine": "Vendor preparing for TWBC",
+    "vendorLine": "Vendor preparing for TWBC/TPC",
     "quote": "\"Bring what we love to the booth, carefully.\"",
     "quotes": [
       "\"No, you can't give up your laughter 'Cause you're scared of a little pain.\" - Autumn Blaze",

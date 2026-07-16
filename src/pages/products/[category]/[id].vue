@@ -5,16 +5,21 @@ import ProductCard from '../../../components/ProductCard.vue';
 import { routeHref } from '../../../composables/useAppRoute';
 import { createSiteOgMeta } from '../../../composables/useSiteSeo';
 import { useI18n } from '../../../i18n';
-import { productDetailCopy, productSectionCopy } from '../../../data/productContent';
 import {
   getProductPath,
   getProductImageThumbnail,
   getProductThumbnail,
   getProductById,
   getProductRouteId,
+  localizeProductSpecValue,
+  localizeProductTagText,
   localizeProductText,
+  productCategoryLabels,
   products,
-  type ProductCategoryCode
+  type LocalizedText,
+  type ProductCategory,
+  type ProductCategoryCode,
+  type ProductSpec
 } from '../../../data/products';
 
 const route = useRoute();
@@ -24,19 +29,27 @@ const productId = String(route.params.id ?? '');
 const product = getProductById(productCategory, productId);
 
 if (!product) {
-  const fallbackCopy = productDetailCopy[locale.value];
-
   throw createError({
     statusCode: 404,
-    statusMessage: fallbackCopy.notFoundTitle,
-    message: fallbackCopy.notFoundText
+    statusMessage: t('productDetail.notFoundTitle'),
+    message: t('productDetail.notFoundText')
   });
 }
 
 const productsHref = routeHref('products/');
-const copy = computed(() => productDetailCopy[locale.value]);
+const copy = computed(() => ({
+  backToProducts: t('productDetail.backToProducts'),
+  storeBadge: t('productDetail.storeBadge'),
+  stockTitle: t('productDetail.stockTitle'),
+  stockLabel: t('productDetail.stockLabel', { count: product.stock }),
+  productDetailsTitle: t('productDetail.productDetailsTitle'),
+  specsTitle: t('productDetail.specsTitle'),
+  shippingTitle: t('productDetail.shippingTitle'),
+  highlightsTitle: t('productDetail.highlightsTitle'),
+  relatedTitle: t('productDetail.relatedTitle')
+}));
 const productName = computed(() => localizeProductText(product.name, locale.value));
-const productTag = computed(() => localizeProductText(product.tag, locale.value));
+const productTag = computed(() => localizeProductTagText(product.tag, locale.value));
 const productDescription = computed(() => localizeProductText(product.description, locale.value));
 const productDetails = computed(() => localizeProductText(product.details, locale.value));
 const productShipping = computed(() => localizeProductText(product.shipping, locale.value));
@@ -48,18 +61,121 @@ const productImages = product.images.map((image, index) => ({
   preview: index === 0 ? getProductThumbnail(product) : getProductImageThumbnail(image)
 }));
 const selectedImage = ref(defaultImage);
-const pricePrefix = computed(() => productSectionCopy[locale.value].pricePrefix);
-const badgeTexts = computed(() => product.badges.map((badge) => localizeProductText(badge, locale.value)));
+const pricePrefix = computed(() => t('productSection.pricePrefix'));
+const badgeTexts = computed(() => product.badges.map((badge) => localizeProductTagText(badge, locale.value)));
 const highlightTexts = computed(() => product.highlights.map((highlight) => localizeProductText(highlight, locale.value)));
-const specRows = computed(() =>
-  product.specs.map((spec) => ({
-    label: localizeProductText(spec.label, locale.value),
-    value: localizeProductText(spec.value, locale.value)
-  }))
-);
 const stockText = computed(() =>
   locale.value === 'zh-TW' ? `${product.stock} 件` : `${product.stock} items`
 );
+type SpecRow = {
+  key: string;
+  label: string;
+  value: string;
+};
+
+const minimumSpecRows = 3;
+const hiddenSpecLabels = new Set(['販售方式', 'Sales']);
+const specLabel = (text: LocalizedText) => localizeProductText(text, locale.value);
+const isHiddenSpec = (spec: ProductSpec) =>
+  hiddenSpecLabels.has(spec.label['zh-TW']) || hiddenSpecLabels.has(spec.label.en);
+const specKey = (spec: ProductSpec) => spec.label.en.toLowerCase();
+const createFallbackSpec = (key: string, label: LocalizedText, value: string): SpecRow => ({
+  key,
+  label: specLabel(label),
+  value
+});
+const fallbackFormats: Record<ProductCategory, LocalizedText> = {
+  'body-pillows': { 'zh-TW': '等身抱枕套', en: 'Body Pillow Cover' },
+  'yearly-decorations': { 'zh-TW': '年節裝飾', en: 'Lunar New Year Decoration' },
+  'red-envelopes': { 'zh-TW': '正反雙面圖樣', en: 'Front and Back Artwork' },
+  food: { 'zh-TW': '食品商品', en: 'Food Item' },
+  plush: { 'zh-TW': '絨毛布偶', en: 'Plush' },
+  badges: { 'zh-TW': '徽章', en: 'Badge' },
+  books: { 'zh-TW': '書籍', en: 'Book' }
+};
+const characterMatchers: Array<{ value: LocalizedText; aliases: string[] }> = [
+  { value: { 'zh-TW': '六主角', en: 'Mane 6' }, aliases: ['六主角', 'Mane 6'] },
+  { value: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }, aliases: ['暮光閃閃', 'Twilight Sparkle', 'Twilight'] },
+  { value: { 'zh-TW': '雲寶', en: 'Rainbow Dash' }, aliases: ['雲寶', 'Rainbow Dash'] },
+  { value: { 'zh-TW': '珍奇', en: 'Rarity' }, aliases: ['珍奇', 'Rarity'] },
+  { value: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' }, aliases: ['蘋果嘉兒', 'Applejack'] },
+  { value: { 'zh-TW': '柔柔', en: 'Fluttershy' }, aliases: ['柔柔', 'Fluttershy'] },
+  { value: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }, aliases: ['碧琪', 'Pinkie Pie', 'Pinkie'] },
+  { value: { 'zh-TW': '穗龍', en: 'Spike' }, aliases: ['穗龍', 'Spike'] }
+];
+const productSearchText = computed(() =>
+  [
+    product.name,
+    product.description,
+    product.details,
+    ...product.badges,
+    ...product.highlights
+  ]
+    .flatMap((text) => [text['zh-TW'], text.en])
+    .join(' ')
+    .toLowerCase()
+);
+const productCharacters = computed(() => {
+  const matchedCharacters = characterMatchers.filter((matcher) =>
+    matcher.aliases.some((alias) => productSearchText.value.includes(alias.toLowerCase()))
+  );
+
+  if (matchedCharacters.length === 0) {
+    if (productSearchText.value.includes('彩虹小馬') || productSearchText.value.includes('my little pony')) {
+      return 'My Little Pony Characters';
+    }
+
+    return null;
+  }
+
+  return matchedCharacters.map((matcher) => matcher.value.en).join(', ');
+});
+const specDisplayOrder = ['category', 'format', 'character'];
+const orderedSpecRows = (rows: SpecRow[]) =>
+  [...rows].sort((left, right) => {
+    const leftOrder = specDisplayOrder.indexOf(left.key);
+    const rightOrder = specDisplayOrder.indexOf(right.key);
+    const normalizedLeftOrder = leftOrder === -1 ? specDisplayOrder.length : leftOrder;
+    const normalizedRightOrder = rightOrder === -1 ? specDisplayOrder.length : rightOrder;
+
+    return normalizedLeftOrder - normalizedRightOrder;
+  });
+const specRows = computed(() => {
+  const rows = product.specs
+    .filter((spec) => !isHiddenSpec(spec))
+    .map((spec) => ({
+      key: specKey(spec),
+      label: specLabel(spec.label),
+      value: localizeProductSpecValue(spec, locale.value)
+    }));
+  const fallbackRows: SpecRow[] = [
+    createFallbackSpec(
+      'category',
+      { 'zh-TW': '類別', en: 'Category' },
+      localizeProductText(productCategoryLabels[product.category], locale.value)
+    ),
+    createFallbackSpec('format', { 'zh-TW': '形式', en: 'Format' }, specLabel(fallbackFormats[product.category])),
+    ...(productCharacters.value
+      ? [createFallbackSpec('character', { 'zh-TW': '角色', en: 'Character' }, productCharacters.value)]
+      : []),
+    createFallbackSpec('id', { 'zh-TW': '編號', en: 'ID' }, productRouteId),
+    createFallbackSpec('stock', { 'zh-TW': '庫存', en: 'Stock' }, stockText.value)
+  ];
+
+  for (const row of fallbackRows) {
+    const isCoreSpec = specDisplayOrder.includes(row.key);
+
+    if (!isCoreSpec && rows.length >= minimumSpecRows) {
+      break;
+    }
+
+    if (!rows.some((existingRow) => existingRow.key === row.key)) {
+      rows.push(row);
+    }
+  }
+
+  return orderedSpecRows(rows);
+});
 const relatedProducts = computed(() =>
   products.filter((item) => getProductRouteId(item) !== productRouteId).slice(0, 3)
 );
@@ -193,7 +309,7 @@ useHead(() => ({
       <section class="info-block">
         <h2>{{ copy.specsTitle }}</h2>
         <dl class="spec-list">
-          <div v-for="spec in specRows" :key="spec.label">
+          <div v-for="spec in specRows" :key="spec.key">
             <dt>{{ spec.label }}</dt>
             <dd>{{ spec.value }}</dd>
           </div>
@@ -279,7 +395,7 @@ useHead(() => ({
 .gallery-strip {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
   gap: 8px;
   margin-top: auto;
 }
@@ -292,9 +408,15 @@ useHead(() => ({
   margin-left: auto;
 }
 
+.gallery-strip span {
+  align-self: flex-end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
 .gallery-strip button {
-  width: 58px;
-  height: 58px;
+  width: 100px;
+  height: 100px;
   padding: 0;
   overflow: hidden;
   border: 2px solid rgba(255, 255, 255, 0.16);

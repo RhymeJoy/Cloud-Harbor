@@ -46,7 +46,6 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
             />
             <span>{{ t('site.title') }}</span>
           </a>
-          <p class="footer-tagline">{{ t('footer.tagline') }}</p>
           <div class="footer-lang">
             <button
               v-for="option in locales"
@@ -89,8 +88,8 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 .site-footer {
   position: relative;
   z-index: 1;
-  margin-top: 28px;
-  padding: 48px 0 24px;
+  margin-top: 10px;
+  padding: 30px 0 25px;
   color: #fff;
   background: linear-gradient(0deg, #100717 0%, rgba(40, 20, 60, 0.74) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -106,7 +105,7 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 .footer-bottom {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 18px;
 }
 
 .footer-top {
@@ -120,38 +119,35 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: #fff;
   font-size: 1.35rem;
   font-weight: 800;
 }
 
 .footer-logo {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   display: block;
 }
 
-.footer-tagline,
 .footer-copyright p,
 .quote-text {
   margin: 0;
 }
 
-.footer-tagline,
 .footer-copyright,
 .quote-text,
 .lang-link {
   color: #ffb8de;
 }
 
-.footer-tagline,
 .footer-copyright {
   opacity: 0.78;
 }
@@ -159,7 +155,7 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 .footer-lang {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 10px;
 }
 
 .lang-link {
@@ -189,8 +185,8 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 0 16px;
+  min-height: 38px;
+  padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.07);
@@ -207,7 +203,7 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 
 .footer-divider {
   height: 1px;
-  margin: 28px 0 20px;
+  margin: 18px 0 14px;
   background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.24) 50%, transparent 100%);
 }
 
@@ -239,7 +235,8 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 
 @media (max-width: 760px) {
   .site-footer {
-    padding: 34px 0 20px;
+    margin-top: 0;
+    padding: 25px 0 20px;
   }
 
   .footer-container {
@@ -250,6 +247,7 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
   .footer-bottom {
     flex-direction: column;
     align-items: center;
+    gap: 14px;
     text-align: center;
   }
 

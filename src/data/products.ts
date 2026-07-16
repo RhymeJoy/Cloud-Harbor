@@ -1,5 +1,9 @@
 import type { LocaleCode } from '../i18n';
+import { badgeProducts } from './products/badges';
+import { bookProducts } from './products/books';
 import { bodyPillows } from './products/bodyPillows';
+import { foodProducts } from './products/food';
+import { plushProducts } from './products/plush';
 import { redEnvelopes } from './products/redEnvelopes';
 import { yearlyDecorations } from './products/yearlyDecorations';
 import type {
@@ -8,6 +12,7 @@ import type {
   ProductCategory,
   ProductCategoryCode,
   ProductId,
+  ProductSpec,
   ProductRouteId
 } from './products/types';
 
@@ -22,8 +27,61 @@ export type {
   ProductSpec
 } from './products/types';
 
+const characterNameReplacements: Array<[string, string]> = [
+  ['暮光閃閃', 'Twilight Sparkle'],
+  ['雲寶', 'Rainbow Dash'],
+  ['珍奇', 'Rarity'],
+  ['蘋果嘉兒', 'Applejack'],
+  ['柔柔', 'Fluttershy'],
+  ['碧琪', 'Pinkie Pie'],
+  ['穗龍', 'Spike'],
+  ['六位主角', 'Mane 6'],
+  ['六主角', 'Mane 6']
+];
+
+const normalizeProductCharacterNames = (value: string, locale: LocaleCode) => {
+  if (locale !== 'zh-TW') {
+    return value;
+  }
+
+  return characterNameReplacements.reduce(
+    (currentValue, [zhName, enName]) => currentValue.replaceAll(zhName, enName),
+    value
+  );
+};
+
 export const localizeProductText = (text: LocalizedText, locale: LocaleCode) =>
-  text[locale] ?? text['zh-TW'];
+  normalizeProductCharacterNames(text[locale] ?? text['zh-TW'], locale);
+
+const productCharacterNames = new Set([
+  'Mane 6',
+  'My Little Pony Characters',
+  'Twilight Sparkle',
+  'Rainbow Dash',
+  'Rarity',
+  'Applejack',
+  'Fluttershy',
+  'Pinkie Pie',
+  'Spike'
+]);
+
+const splitCharacterNames = (value: string) =>
+  value
+    .split(',')
+    .map((name) => name.trim())
+    .filter(Boolean);
+
+export const isProductCharacterText = (text: LocalizedText) => {
+  const names = splitCharacterNames(text.en);
+
+  return names.length > 0 && names.every((name) => productCharacterNames.has(name));
+};
+
+export const localizeProductTagText = (text: LocalizedText, locale: LocaleCode) =>
+  isProductCharacterText(text) ? text.en : localizeProductText(text, locale);
+
+export const localizeProductSpecValue = (spec: ProductSpec, locale: LocaleCode) =>
+  spec.label.en.toLowerCase() === 'character' ? spec.value.en : localizeProductText(spec.value, locale);
 
 export const formatProductCopy = (text: string, values: Record<string, string | number>) =>
   text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
@@ -53,13 +111,33 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
   'red-envelopes': {
     'zh-TW': '紅包',
     en: 'Red Envelopes'
+  },
+  food: {
+    'zh-TW': '食物',
+    en: 'Food'
+  },
+  plush: {
+    'zh-TW': '布偶',
+    en: 'Plush'
+  },
+  badges: {
+    'zh-TW': '徽章',
+    en: 'Badges'
+  },
+  books: {
+    'zh-TW': '書籍',
+    en: 'Books'
   }
 };
 
 export const productCategoryCodes: Record<ProductCategory, ProductCategoryCode> = {
   'body-pillows': 'bp',
   'yearly-decorations': 'yd',
-  'red-envelopes': 're'
+  'red-envelopes': 're',
+  food: 'fd',
+  plush: 'pl',
+  badges: 'bd',
+  books: 'bk'
 };
 
 export const getProductRouteId = (product: Pick<Product, 'category' | 'id'>): ProductRouteId =>
@@ -71,8 +149,14 @@ export const getProductPath = (product: Pick<Product, 'category' | 'id'>) =>
 export const products: Product[] = [
   ...bodyPillows,
   ...yearlyDecorations,
-  ...redEnvelopes
+  ...redEnvelopes,
+  ...foodProducts,
+  ...plushProducts,
+  ...badgeProducts,
+  ...bookProducts
 ];
+
+export const featuredProductIds: ProductRouteId[] = ['bp/02', 'bp/03', 'bp/04'];
 
 export const productDetailRoutes = products.map(getProductPath);
 
