@@ -36,7 +36,7 @@ const productImage = computed(() => getProductThumbnail(props.item));
 </script>
 
 <template>
-  <a class="product-card" :href="detailHref" :aria-label="productName">
+  <NuxtLink class="product-card" :to="detailHref" :aria-label="productName">
     <div class="product-image-wrap">
       <img
         :src="productImage"
@@ -59,7 +59,7 @@ const productImage = computed(() => getProductThumbnail(props.item));
         <span>{{ productLocation }}</span>
       </div>
     </div>
-  </a>
+  </NuxtLink>
 </template>
 
 <style scoped>

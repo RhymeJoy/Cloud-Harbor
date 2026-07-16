@@ -219,7 +219,7 @@ useHead(() => ({
 <template>
   <main class="product-detail-page">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a :href="productsHref">{{ copy.backToProducts }}</a>
+      <NuxtLink :to="productsHref">{{ copy.backToProducts }}</NuxtLink>
       <span>/</span>
       <span>{{ productName }}</span>
     </nav>
