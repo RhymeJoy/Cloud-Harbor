@@ -5,7 +5,7 @@ const yearlyDecorationDefaults = {
   category: 'yearly-decorations'
 } satisfies Pick<Product, 'category'>;
 
-const getYearlyDecorationStockText = (stock: number) => ({
+export const getYearlyDecorationStockText = (stock: number) => ({
   'zh-TW': `${stock} 個`,
   en: `${stock} ${stock === 1 ? 'item' : 'items'}`
 });
@@ -28,7 +28,7 @@ const yearlyDecorationProducts: Product[] = [
   },
   tag: {
     'zh-TW': '年飾',
-    en: 'New Year Decoration'
+    en: 'Year Decoration'
   },
   description: {
     'zh-TW': '結合《彩虹小馬》角色與新春祝福元素，為年節空間增添喜氣。',
@@ -103,7 +103,7 @@ const yearlyDecorationProducts: Product[] = [
   },
   tag: {
     'zh-TW': '年飾',
-    en: 'New Year Decoration'
+    en: 'Year Decoration'
   },
   description: {
     'zh-TW': '結合《彩虹小馬》角色與吉祥賀詞，打造充滿喜氣的立體春聯掛飾。',
@@ -185,7 +185,7 @@ const yearlyDecorationProducts: Product[] = [
   },
   tag: {
     'zh-TW': '年飾',
-    en: 'New Year Decoration'
+    en: 'Year Decoration'
   },
   description: {
     'zh-TW': '正反兩面分別呈現暮光閃閃與柔柔，搭配喜氣的新春造型與吉祥元素。',
@@ -269,7 +269,7 @@ const yearlyDecorationProducts: Product[] = [
   },
   tag: {
     'zh-TW': '年飾',
-    en: 'New Year Decoration'
+    en: 'Year Decoration'
   },
   description: {
     'zh-TW': '以六位主角搭配「馬年大吉」賀詞，打造充滿喜氣的新春橫式門飾。',
@@ -348,7 +348,7 @@ const yearlyDecorationProducts: Product[] = [
   },
   tag: {
     'zh-TW': '年飾',
-    en: 'New Year Decoration'
+    en: 'Year Decoration'
   },
   description: {
     'zh-TW': '以暮光閃閃與碧琪搭配吉祥賀詞，呈現喜氣十足的立體新春掛軸。',
@@ -430,7 +430,7 @@ const yearlyDecorationProducts: Product[] = [
   },
   tag: {
     'zh-TW': '年飾',
-    en: 'New Year Decoration'
+    en: 'Year Decoration'
   },
   description: {
     'zh-TW': '正反兩面分別呈現暮光閃閃與柔柔，搭配喜氣的新春造型與吉祥元素。',
@@ -510,7 +510,7 @@ const yearlyDecorationProducts: Product[] = [
   },
   tag: {
     'zh-TW': '年飾',
-    en: 'New Year Decoration'
+    en: 'Year Decoration'
   },
   description: {
     'zh-TW': '以六位主角圍繞金色「福」字，呈現喜氣鮮明的方形新春裝飾。',

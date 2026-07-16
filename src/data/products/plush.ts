@@ -16,7 +16,7 @@ const lyingPlushItems: LyingPlushItem[] = [
     imageCode: 'TS',
     price: 800,
     originalPrice: 900,
-    stock: 1,
+    stock: 2 ,
     character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
   },
   {
@@ -32,7 +32,7 @@ const lyingPlushItems: LyingPlushItem[] = [
     imageCode: 'RR',
     price: 800,
     originalPrice: 900,
-    stock: 1,
+    stock: 2,
     character: { 'zh-TW': '珍奇', en: 'Rarity' }
   },
   {
@@ -145,4 +145,77 @@ const createLyingPlushProduct = (item: LyingPlushItem): Product => {
   };
 };
 
-export const plushProducts: Product[] = lyingPlushItems.map(createLyingPlushProduct);
+const pinkiePieShoulderBag: Product = {
+  id: '07',
+  category: 'plush',
+  price: 700,
+  originalPrice: 850,
+  stock: 1,
+  stockText: {
+    'zh-TW': '1 個',
+    en: '1 shoulder bag'
+  },
+  images: [publicAsset('products/Plush/shoulder-bag-pp.avif')],
+  location: {
+    'zh-TW': '現場販售',
+    en: 'Available at the Booth'
+  },
+  name: {
+    'zh-TW': '碧琪造型肩包',
+    en: 'Pinkie Pie Character Shoulder Bag'
+  },
+  tag: {
+    'zh-TW': '碧琪',
+    en: 'Pinkie Pie'
+  },
+  description: {
+    'zh-TW': '正版彩虹小馬碧琪造型肩包，振光玩具出品，採用柔軟聚酯纖維材質。',
+    en: 'An official My Little Pony Pinkie Pie character shoulder bag by Zhen Guang Toys, made with soft polyester material.'
+  },
+  details: {
+    'zh-TW': '以碧琪角色打造的柔軟造型肩背包，可收納日常小物。商品單入包裝約 32 × 10 × 35 cm，建議 8 歲以上使用。',
+    en: 'A soft Pinkie Pie character shoulder bag for carrying everyday essentials. The single-item package measures approximately 32 × 10 × 35 cm and is recommended for ages 8 and up.'
+  },
+  shipping: {
+    'zh-TW': '主要於活動現場販售與取貨，數量有限，售完為止。',
+    en: 'Primarily available for onsite purchase and pickup. Quantity is limited and available while supplies last.'
+  },
+  badges: [
+    { 'zh-TW': '碧琪', en: 'Pinkie Pie' },
+    { 'zh-TW': '造型肩包', en: 'Character Shoulder Bag' },
+    { 'zh-TW': '振光玩具', en: 'Zhen Guang Toys' }
+  ],
+  highlights: [
+    {
+      'zh-TW': '正版彩虹小馬碧琪角色商品。',
+      en: 'Official My Little Pony merchandise featuring Pinkie Pie.'
+    },
+    {
+      'zh-TW': '超柔聚酯纖維材質，兼具造型與日常收納功能。',
+      en: 'Soft polyester material combines character styling with everyday storage.'
+    },
+    {
+      'zh-TW': '振光玩具出品，現貨僅 1 個。',
+      en: 'Produced by Zhen Guang Toys, with only one available.'
+    }
+  ],
+  specs: [
+    {
+      label: { 'zh-TW': '類別', en: 'Category' },
+      value: { 'zh-TW': '造型肩包', en: 'Character Shoulder Bag' }
+    },
+    {
+      label: { 'zh-TW': '形式', en: 'Format' },
+      value: { 'zh-TW': '肩背包', en: 'Shoulder Bag' }
+    },
+    {
+      label: { 'zh-TW': '角色', en: 'Character' },
+      value: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
+    }
+  ]
+};
+
+export const plushProducts: Product[] = [
+  ...lyingPlushItems.map(createLyingPlushProduct),
+  pinkiePieShoulderBag
+];

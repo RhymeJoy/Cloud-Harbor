@@ -139,7 +139,7 @@ const productCharacters = computed(() => {
 
   return matchedCharacters.map((matcher) => matcher.value.en).join(', ');
 });
-const specDisplayOrder = ['category', 'format', 'character'];
+const specDisplayOrder = ['category', 'format', 'character', 'series'];
 const orderedSpecRows = (rows: SpecRow[]) =>
   [...rows].sort((left, right) => {
     const leftOrder = specDisplayOrder.indexOf(left.key);
@@ -157,13 +157,16 @@ const specRows = computed(() => {
       label: specLabel(spec.label),
       value: localizeProductSpecValue(spec, locale.value)
     }));
+  const hasSeriesSpec = rows.some((row) => row.key === 'series');
   const fallbackRows: SpecRow[] = [
     createFallbackSpec(
       'category',
       { 'zh-TW': '類別', en: 'Category' },
       localizeProductText(productCategoryLabels[product.category], locale.value)
     ),
-    createFallbackSpec('format', { 'zh-TW': '形式', en: 'Format' }, specLabel(fallbackFormats[product.category])),
+    ...(!hasSeriesSpec
+      ? [createFallbackSpec('format', { 'zh-TW': '形式', en: 'Format' }, specLabel(fallbackFormats[product.category]))]
+      : []),
     ...(productCharacters.value
       ? [createFallbackSpec('character', { 'zh-TW': '角色', en: 'Character' }, productCharacters.value)]
       : []),
@@ -187,10 +190,30 @@ const specRows = computed(() => {
 });
 const getAvailableRelatedProducts = () =>
   products.filter((item) => getProductRouteId(item) !== productRouteId);
-const relatedProducts = ref(getProductsByUniqueCategories(3, getAvailableRelatedProducts()));
+const getRelatedProducts = (randomize = false) => {
+  const availableProducts = getAvailableRelatedProducts();
+  const sameCategoryProducts = availableProducts.filter((item) => item.category === product.category);
+  const sameCategoryProduct = randomize
+    ? sameCategoryProducts[Math.floor(Math.random() * sameCategoryProducts.length)]
+    : sameCategoryProducts[0];
+
+  if (!sameCategoryProduct) {
+    return randomize
+      ? getRandomProductsByUniqueCategories(3, availableProducts)
+      : getProductsByUniqueCategories(3, availableProducts);
+  }
+
+  const otherCategoryProducts = availableProducts.filter((item) => item.category !== product.category);
+  const remainingProducts = randomize
+    ? getRandomProductsByUniqueCategories(2, otherCategoryProducts)
+    : getProductsByUniqueCategories(2, otherCategoryProducts);
+
+  return [sameCategoryProduct, ...remainingProducts];
+};
+const relatedProducts = ref(getRelatedProducts());
 
 onMounted(() => {
-  relatedProducts.value = getRandomProductsByUniqueCategories(3, getAvailableRelatedProducts());
+  relatedProducts.value = getRelatedProducts(true);
 });
 
 useHead(() => ({
