@@ -15,26 +15,26 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
   {
     id: '01',
     fileBases: ['1'],
-    price: 100,
-    originalPrice: 120,
+    price: 50,
+    originalPrice: 60,
     stock: 3,
-    name: { 'zh-TW': '暮光閃閃紅包袋', en: 'Twilight Sparkle Red Envelope' },
-    characters: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
+    name: { 'zh-TW': '暮光閃閃與珍奇紅包袋', en: 'Twilight Sparkle and Rarity Red Envelope' },
+    characters: { 'zh-TW': '暮光閃閃、珍奇', en: 'Twilight Sparkle, Rarity' }
   },
   {
     id: '02',
     fileBases: ['2'],
-    price: 110,
-    originalPrice: 130,
+    price: 70,
+    originalPrice: 90,
     stock: 3,
-    name: { 'zh-TW': '雲寶與珍奇紅包袋', en: 'Rainbow Dash and Rarity Red Envelope' },
+    name: { 'zh-TW': '雲寶與珍奇紅包袋  (6入)', en: 'Rainbow Dash and Rarity Red Envelope (6-Pack)' },
     characters: { 'zh-TW': '雲寶、珍奇', en: 'Rainbow Dash, Rarity' }
   },
   {
     id: '03',
     fileBases: ['3'],
-    price: 120,
-    originalPrice: 140,
+    price: 100,
+    originalPrice: 120,
     stock: 3,
     name: { 'zh-TW': '蘋果嘉兒與柔柔紅包袋', en: 'Applejack and Fluttershy Red Envelope' },
     characters: { 'zh-TW': '蘋果嘉兒、柔柔', en: 'Applejack, Fluttershy' }
@@ -42,17 +42,17 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
   {
     id: '04',
     fileBases: ['4'],
-    price: 130,
-    originalPrice: 150,
+    price: 120,
+    originalPrice: 140,
     stock: 3,
-    name: { 'zh-TW': '碧琪紅包袋', en: 'Pinkie Pie Red Envelope' },
+    name: { 'zh-TW': '碧琪紅包袋 (6入)', en: 'Pinkie Pie Red Envelope (6-Pack)' },
     characters: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
   },
   {
     id: '05',
     fileBases: ['5'],
-    price: 140,
-    originalPrice: 160,
+    price: 100,
+    originalPrice: 120,
     stock: 3,
     name: { 'zh-TW': '六主角新年快樂紅包袋', en: 'Mane 6 Happy New Year Red Envelope' },
     characters: { 'zh-TW': '六主角', en: 'Mane 6' }
@@ -60,8 +60,8 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
   {
     id: '06',
     fileBases: ['6'],
-    price: 150,
-    originalPrice: 170,
+    price: 100,
+    originalPrice: 120,
     stock: 3,
     name: { 'zh-TW': '六主角聰明伶俐紅包袋', en: 'Mane 6 Clever and Bright Red Envelope' },
     characters: { 'zh-TW': '六主角', en: 'Mane 6' }
@@ -69,8 +69,8 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
   {
     id: '07',
     fileBases: ['7'],
-    price: 160,
-    originalPrice: 180,
+    price: 70,
+    originalPrice: 80,
     stock: 3,
     name: { 'zh-TW': '碧琪發財紅包袋', en: 'Pinkie Pie Prosperity Red Envelope' },
     characters: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
@@ -78,74 +78,56 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
   {
     id: '08',
     fileBases: ['8'],
-    price: 170,
-    originalPrice: 190,
-    stock: 3,
+    price: 80,
+    originalPrice: 90,
+    stock: 8,
     name: { 'zh-TW': '六主角輪盤紅包袋', en: 'Mane 6 Wheel Red Envelope' },
     characters: { 'zh-TW': '六主角', en: 'Mane 6' }
   },
   {
     id: '09',
     fileBases: ['9', '10'],
-    price: 370,
-    originalPrice: 410,
+    price: 120,
+    originalPrice: 140,
     stock: 3,
-    name: { 'zh-TW': '六主角與穗龍平安喜樂紅包袋組', en: 'Mane 6 and Spike Peace and Joy Red Envelope Set' },
+    name: { 'zh-TW': '六主角與穗龍平安喜樂紅包袋組 (6入)', en: 'Mane 6 and Spike Peace and Joy Red Envelope (6-Pack)' },
     characters: { 'zh-TW': '六主角、穗龍', en: 'Mane 6, Spike' }
   },
   {
     id: '10',
-    fileBases: ['11'],
-    price: 200,
-    originalPrice: 220,
-    stock: 3,
-    name: { 'zh-TW': '碧琪歡笑紅包袋', en: 'Pinkie Pie Laughter Red Envelope' },
-    characters: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
+    fileBases: ['11', '12', '16'],
+    price: 60,
+    originalPrice: 70,
+    stock: 9,
+    name: { 'zh-TW': '珍奇、碧琪與蘋果嘉兒紅包袋 (3入)', en: 'Rarity, Pinkie Pie and Applejack Red Envelope (3-Pack)' },
+    characters: { 'zh-TW': '珍奇、碧琪、蘋果嘉兒', en: 'Rarity, Pinkie Pie, Applejack' }
   },
   {
     id: '11',
-    fileBases: ['12'],
-    price: 210,
-    originalPrice: 230,
-    stock: 3,
-    name: { 'zh-TW': '蘋果嘉兒誠實紅包袋', en: 'Applejack Honesty Red Envelope' },
-    characters: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' }
-  },
-  {
-    id: '12',
     fileBases: ['13'],
-    price: 220,
-    originalPrice: 240,
+    price: 60,
+    originalPrice: 70,
     stock: 3,
-    name: { 'zh-TW': '碧琪平安紅包袋', en: 'Pinkie Pie Peaceful Red Envelope' },
+    name: { 'zh-TW': '碧琪平安紅包袋 (3入)', en: 'Pinkie Pie Peaceful Red Envelope (3-Pack)' },
     characters: { 'zh-TW': '碧琪、珍奇', en: 'Pinkie Pie, Rarity' }
   },
   {
-    id: '13',
+    id: '12',
     fileBases: ['14'],
-    price: 230,
-    originalPrice: 250,
-    stock: 3,
-    name: { 'zh-TW': '柔柔與蘋果嘉兒紅包袋', en: 'Fluttershy and Applejack Red Envelope' },
+    price: 60,
+    originalPrice: 70,
+    stock: 2,
+    name: { 'zh-TW': '柔柔與蘋果嘉兒紅包袋 (3入)', en: 'Fluttershy and Applejack Red Envelope (3-Pack)' },
     characters: { 'zh-TW': '柔柔、蘋果嘉兒', en: 'Fluttershy, Applejack' }
   },
   {
-    id: '14',
+    id: '13',
     fileBases: ['15'],
-    price: 240,
-    originalPrice: 260,
+    price: 60,
+    originalPrice: 70,
     stock: 3,
-    name: { 'zh-TW': '雲寶與碧琪紅包袋', en: 'Rainbow Dash and Pinkie Pie Red Envelope' },
+    name: { 'zh-TW': '雲寶與碧琪紅包袋 (3入)', en: 'Rainbow Dash and Pinkie Pie Red Envelope (3-Pack)' },
     characters: { 'zh-TW': '雲寶、碧琪', en: 'Rainbow Dash, Pinkie Pie' }
-  },
-  {
-    id: '15',
-    fileBases: ['16'],
-    price: 250,
-    originalPrice: 270,
-    stock: 3,
-    name: { 'zh-TW': '珍奇慷慨紅包袋', en: 'Rarity Generosity Red Envelope' },
-    characters: { 'zh-TW': '珍奇', en: 'Rarity' }
   }
 ];
 

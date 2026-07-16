@@ -23,7 +23,7 @@ export const bodyPillows: Product[] = [
   //     en: 'booth sales'
   //   },
   //   name: {
-  //     'zh-TW': 'Twilight 等身抱枕套',
+  //     'zh-TW': '暮光閃閃等身抱枕套',
   //     en: 'Twilight Body Pillow Case'
   //   },
   //   tag: {
@@ -97,7 +97,7 @@ export const bodyPillows: Product[] = [
       en: 'booth sales'
     },
     name: {
-      'zh-TW': 'Fluttershy 等身抱枕套',
+      'zh-TW': '柔柔等身抱枕套',
       en: 'Fluttershy Body Pillow Case'
     },
     tag: {
@@ -171,7 +171,7 @@ export const bodyPillows: Product[] = [
       en: 'booth sales'
     },
     name: {
-      'zh-TW': 'Rainbow Dash 等身抱枕套',
+      'zh-TW': '雲寶等身抱枕套',
       en: 'Rainbow Dash Body Pillow Case'
     },
     tag: {
@@ -244,7 +244,7 @@ export const bodyPillows: Product[] = [
       en: 'booth sales'
     },
     name: {
-      'zh-TW': 'Pinkie Pie 等身抱枕套',
+      'zh-TW': '碧琪等身抱枕套',
       en: 'Pinkie Pie Body Pillow Case'
     },
     tag: {
@@ -318,7 +318,7 @@ export const bodyPillows: Product[] = [
   //     en: 'booth sales'
   //   },
   //   name: {
-  //     'zh-TW': 'Applejack 等身抱枕套',
+  //     'zh-TW': '蘋果嘉兒等身抱枕套',
   //     en: 'Applejack Body Pillow Case'
   //   },
   //   tag: {
@@ -392,7 +392,7 @@ export const bodyPillows: Product[] = [
   //     en: 'booth sales'
   //   },
   //   name: {
-  //     'zh-TW': 'Rarity 等身抱枕套',
+  //     'zh-TW': '珍奇等身抱枕套',
   //     en: 'Rarity Body Pillow Case'
   //   },
   //   tag: {

@@ -8,6 +8,13 @@ type ColaCanItem = {
   character: LocalizedText;
 };
 
+type GummySurpriseEggItem = {
+  id: string;
+  imageCode: string;
+  stock: number;
+  character: LocalizedText;
+};
+
 const colaCanItems: ColaCanItem[] = [
   {
     id: '01',
@@ -44,6 +51,27 @@ const colaCanItems: ColaCanItem[] = [
     imageCode: 'PP',
     stock: 6,
     character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
+  }
+];
+
+const gummySurpriseEggItems: GummySurpriseEggItem[] = [
+  {
+    id: '07',
+    imageCode: 'fs',
+    stock: 6,
+    character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
+  },
+  {
+    id: '08',
+    imageCode: 'rd',
+    stock: 6,
+    character: { 'zh-TW': '雲寶', en: 'Rainbow Dash' }
+  },
+  {
+    id: '09',
+    imageCode: 'rr',
+    stock: 6,
+    character: { 'zh-TW': '珍奇', en: 'Rarity' }
   }
 ];
 
@@ -124,4 +152,82 @@ const createColaCanProduct = (item: ColaCanItem): Product => {
   };
 };
 
-export const foodProducts: Product[] = colaCanItems.map(createColaCanProduct);
+const createGummySurpriseEggProduct = (item: GummySurpriseEggItem): Product => {
+  const characterZh = localize(item.character, 'zh-TW');
+  const characterEn = localize(item.character, 'en');
+
+  return {
+    id: item.id,
+    category: 'food',
+    price: 90,
+    originalPrice: 100,
+    stock: item.stock,
+    stockText: {
+      'zh-TW': `${item.stock} 顆`,
+      en: `${item.stock} eggs`
+    },
+    images: [
+      publicAsset(`products/Food/${item.imageCode}-egg-1.avif`),
+      publicAsset(`products/Food/${item.imageCode}-egg-2.avif`)
+    ],
+    location: {
+      'zh-TW': '攤位販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': `${characterZh} 果汁軟糖奇趣蛋`,
+      en: `${characterEn} Juice Gummy Surprise Egg`
+    },
+    tag: item.character,
+    description: {
+      'zh-TW': `${characterZh}主題果汁軟糖奇趣蛋，內含果汁軟糖與一款小馬小公仔。`,
+      en: `${characterEn}-themed juice gummy surprise egg with fruit gummies and a mini pony figure inside.`
+    },
+    details: {
+      'zh-TW': `奇趣蛋內含果汁軟糖及一款小馬小公仔，兼具零食與收藏樂趣。實際公仔款式以包裝內容為準。`,
+      en: `Includes juice gummies and one mini pony figure for a sweet snack and collectible surprise. The enclosed figure may vary.`
+    },
+    shipping: {
+      'zh-TW': '主要於攤位現場販售與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      item.character,
+      { 'zh-TW': '內附小公仔', en: 'Mini Figure Included' },
+      { 'zh-TW': '果汁軟糖', en: 'Juice Gummies' }
+    ],
+    highlights: [
+      {
+        'zh-TW': `包裝主題角色：${characterZh}。`,
+        en: `Featured character: ${characterEn}.`
+      },
+      {
+        'zh-TW': '內含果汁軟糖與一款小馬小公仔。',
+        en: 'Includes juice gummies and one mini pony figure.'
+      },
+      {
+        'zh-TW': '可以享用軟糖，也能收藏驚喜公仔。',
+        en: 'Enjoy the gummies and collect the surprise pony figure.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '食品', en: 'Food' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '果汁軟糖奇趣蛋', en: 'Juice Gummy Surprise Egg' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '攤位販售', en: 'Available at the Booth' }
+      }
+    ]
+  };
+};
+
+export const foodProducts: Product[] = [
+  ...colaCanItems.map(createColaCanProduct),
+  ...gummySurpriseEggItems.map(createGummySurpriseEggProduct)
+];
