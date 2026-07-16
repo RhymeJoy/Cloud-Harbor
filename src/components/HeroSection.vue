@@ -17,7 +17,10 @@ const { t } = useI18n();
         {{ t('hero.intro') }}
       </p>
       <div class="hero-actions">
-        <a :href="productsHref" class="primary-btn">{{ t('hero.productsCta') }}</a>
+        <a :href="productsHref" class="primary-btn">
+          <span>{{ t('hero.productsCta') }}</span>
+          <span class="btn-arrow" aria-hidden="true">></span>
+        </a>
       </div>
     </div>
 
@@ -87,24 +90,59 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin-top: 28px;
 }
 
 .primary-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 18px;
+  min-height: 60px;
+  padding: 10px 45px 10px 50px;
+  border: 2px solid rgba(255, 255, 255, 0.86);
   border-radius: 999px;
+  background: linear-gradient(135deg, #ad458e, #38289c);
+  box-shadow:
+    0 0 0 7px rgba(255, 184, 222, 0.13),
+    0 20px 38px rgba(127, 108, 255, 0.32);
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.primary-btn:hover,
+.primary-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 9px rgba(255, 184, 222, 0.16),
+    0 24px 44px rgba(127, 108, 255, 0.42);
+  filter: saturate(1.08);
+}
+
+.primary-btn:focus-visible {
+  outline: 3px solid #ffe0f1;
+  outline-offset: 5px;
+}
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 1rem;
+  line-height: 1;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.primary-btn:hover {
-  transform: translateY(-1px);
-}
-
-.primary-btn {
-  background: linear-gradient(135deg, #ff7fd8, #7f6cff);
-  color: #fff;
+.primary-btn:hover .btn-arrow,
+.primary-btn:focus-visible .btn-arrow {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.24);
 }
 
 .profile-card {
@@ -164,6 +202,11 @@ h1 {
 @media (max-width: 640px) {
   .hero {
     padding: 18px;
+  }
+
+  .primary-btn {
+    width: 100%;
+    padding-inline: 22px;
   }
 }
 </style>

@@ -9,8 +9,9 @@ const { t } = useI18n();
     <div>
       <p class="eyebrow">{{ t('about.eyebrow') }}</p>
       <h3>{{ t('about.title') }}</h3>
+      <h3>{{ t('about.title2') }}</h3>
     </div>
-    <p>
+    <p class="about-body">
       {{ t('about.body') }}
     </p>
   </section>
@@ -19,11 +20,11 @@ const { t } = useI18n();
 <style scoped>
 .info-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 24px;
-  padding: 24px;
-  border-radius: 24px;
+  grid-template-columns: .75fr 1.25fr;
+  gap: 20px;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 25px;
   background: rgba(255, 255, 255, 0.05);
 }
 
@@ -39,6 +40,10 @@ const { t } = useI18n();
 h3,
 p {
   margin: 0;
+}
+
+.about-body {
+  align-self: center;
 }
 
 @media (max-width: 900px) {
