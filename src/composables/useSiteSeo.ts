@@ -2,7 +2,7 @@ import type { LocaleCode } from '../i18n';
 import { publicAsset, publicBasePath } from './usePublicAssets';
 
 export const siteOrigin = 'https://cloud-harbor.org';
-export const defaultOgImage = 'avatar.avif';
+export const defaultOgImage = 'OG.avif';
 
 const localeMap: Record<LocaleCode, string> = {
   'zh-TW': 'zh_TW',
