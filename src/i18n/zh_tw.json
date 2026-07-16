@@ -32,7 +32,7 @@
     "backHome": "回首頁",
     "shopName": "Cloud Harbor 雲港商行",
     "shopSubtitle": "TWBC 現場販售準備中｜商品資訊會持續更新",
-    "shopBadge": "官方攤位",
+    "shopBadge": "周邊攤位",
     "searchLabel": "搜尋",
     "searchPlaceholder": "搜尋商品名稱、分類或編號",
     "searchButton": "搜尋",
@@ -54,7 +54,7 @@
   },
   "productDetail": {
     "backToProducts": "回商品館",
-    "storeBadge": "Cloud Harbor 官方攤位",
+    "storeBadge": "Cloud Harbor 周邊攤位",
     "stockTitle": "庫存",
     "stockLabel": "庫存 {count} 件",
     "productDetailsTitle": "商品詳情",

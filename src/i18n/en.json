@@ -32,7 +32,7 @@
     "backHome": "Back Home",
     "shopName": "Cloud Harbor",
     "shopSubtitle": "Preparing for TWBC booth sales. Product details will keep updating.",
-    "shopBadge": "Official Booth",
+    "shopBadge": "Merchandise Booth",
     "searchLabel": "Search",
     "searchPlaceholder": "Search by name, tag, or ID",
     "searchButton": "Search",
@@ -54,7 +54,7 @@
   },
   "productDetail": {
     "backToProducts": "Back to Shop",
-    "storeBadge": "Cloud Harbor Official Booth",
+    "storeBadge": "Cloud Harbor Merchandise Booth",
     "stockTitle": "Stock",
     "stockLabel": "{count} in stock",
     "productDetailsTitle": "Product Details",
