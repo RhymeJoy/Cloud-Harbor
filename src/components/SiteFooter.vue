@@ -63,6 +63,13 @@ const { currentQuote, isQuoteFadingOut } = useQuotes(quotes, 10000, t('footer.qu
 
         <nav class="footer-links" :aria-label="t('footer.navAria')">
           <a href="https://twbronycon.org/" target="_blank" rel="noopener noreferrer">{{ t('footer.twbc') }}</a>
+          <a
+            href="https://tpc2026-summersuncelebration.notion.site/2026-07-18-MLP-ef37c53d9c3f45caa0b6781dcececb41"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ t('footer.tpc') }}
+          </a>
           <a v-for="link in footerNavLinks" :key="link.href" :href="link.href">{{ link.label }}</a>
         </nav>
       </div>
