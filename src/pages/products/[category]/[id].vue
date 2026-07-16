@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { createError, useHead, useRoute } from '#imports';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import ProductCard from '../../../components/ProductCard.vue';
 import { routeHref } from '../../../composables/useAppRoute';
 import { createSiteOgMeta } from '../../../composables/useSiteSeo';
@@ -11,6 +11,8 @@ import {
   getProductThumbnail,
   getProductById,
   getProductRouteId,
+  getProductsByUniqueCategories,
+  getRandomProductsByUniqueCategories,
   localizeProductSpecValue,
   localizeProductTagText,
   localizeProductText,
@@ -64,9 +66,13 @@ const selectedImage = ref(defaultImage);
 const pricePrefix = computed(() => t('productSection.pricePrefix'));
 const badgeTexts = computed(() => product.badges.map((badge) => localizeProductTagText(badge, locale.value)));
 const highlightTexts = computed(() => product.highlights.map((highlight) => localizeProductText(highlight, locale.value)));
-const stockText = computed(() =>
-  locale.value === 'zh-TW' ? `${product.stock} 件` : `${product.stock} items`
-);
+const stockText = computed(() => {
+  if (product.stockText) {
+    return localizeProductText(product.stockText, locale.value);
+  }
+
+  return locale.value === 'zh-TW' ? `${product.stock} 件` : `${product.stock} items`;
+});
 type SpecRow = {
   key: string;
   label: string;
@@ -176,9 +182,13 @@ const specRows = computed(() => {
 
   return orderedSpecRows(rows);
 });
-const relatedProducts = computed(() =>
-  products.filter((item) => getProductRouteId(item) !== productRouteId).slice(0, 3)
-);
+const getAvailableRelatedProducts = () =>
+  products.filter((item) => getProductRouteId(item) !== productRouteId);
+const relatedProducts = ref(getProductsByUniqueCategories(3, getAvailableRelatedProducts()));
+
+onMounted(() => {
+  relatedProducts.value = getRandomProductsByUniqueCategories(3, getAvailableRelatedProducts());
+});
 
 useHead(() => ({
   title: `${productName.value} | ${t('site.title')}`,

@@ -177,6 +177,10 @@ const createRedEnvelopeProduct = (item: RedEnvelopeItem): Product => {
     price: item.price,
     originalPrice: item.originalPrice,
     stock: item.stock,
+    stockText: {
+      'zh-TW': `${item.stock} 個`,
+      en: `${item.stock} ${item.stock === 1 ? 'item' : 'items'}`
+    },
     images,
     location: {
       'zh-TW': '現場販售',

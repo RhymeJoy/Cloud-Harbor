@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { onMounted, ref } from 'vue';
 import HeroSection from '../components/HeroSection.vue';
 import AboutSection from '../components/AboutSection.vue';
 import ProductGrid from '../components/ProductGrid.vue';
-import { featuredProductIds, getProductsByIds } from '../data/products';
+import { getProductsByUniqueCategories, getRandomFeaturedProducts, type Product } from '../data/products';
 
-const mainProducts = computed(() => getProductsByIds(featuredProductIds));
+const mainProducts = ref<Product[]>(getProductsByUniqueCategories());
+
+onMounted(() => {
+  mainProducts.value = getRandomFeaturedProducts();
+});
 </script>
 
 <template>
