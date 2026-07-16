@@ -30,61 +30,14 @@ export type {
   ProductSpec
 } from './products/types';
 
-const characterNameReplacements: Array<[string, string]> = [
-  ['暮光閃閃', 'Twilight Sparkle'],
-  ['雲寶', 'Rainbow Dash'],
-  ['珍奇', 'Rarity'],
-  ['蘋果嘉兒', 'Applejack'],
-  ['柔柔', 'Fluttershy'],
-  ['碧琪', 'Pinkie Pie'],
-  ['穗龍', 'Spike'],
-  ['六位主角', 'Mane 6'],
-  ['六主角', 'Mane 6']
-];
-
-const normalizeProductCharacterNames = (value: string, locale: LocaleCode) => {
-  if (locale !== 'zh-TW') {
-    return value;
-  }
-
-  return characterNameReplacements.reduce(
-    (currentValue, [zhName, enName]) => currentValue.replaceAll(zhName, enName),
-    value
-  );
-};
-
 export const localizeProductText = (text: LocalizedText, locale: LocaleCode) =>
-  normalizeProductCharacterNames(text[locale] ?? text['zh-TW'], locale);
-
-const productCharacterNames = new Set([
-  'Mane 6',
-  'My Little Pony Characters',
-  'Twilight Sparkle',
-  'Rainbow Dash',
-  'Rarity',
-  'Applejack',
-  'Fluttershy',
-  'Pinkie Pie',
-  'Spike'
-]);
-
-const splitCharacterNames = (value: string) =>
-  value
-    .split(',')
-    .map((name) => name.trim())
-    .filter(Boolean);
-
-export const isProductCharacterText = (text: LocalizedText) => {
-  const names = splitCharacterNames(text.en);
-
-  return names.length > 0 && names.every((name) => productCharacterNames.has(name));
-};
+  text[locale] ?? text['zh-TW'];
 
 export const localizeProductTagText = (text: LocalizedText, locale: LocaleCode) =>
-  isProductCharacterText(text) ? text.en : localizeProductText(text, locale);
+  localizeProductText(text, locale);
 
 export const localizeProductSpecValue = (spec: ProductSpec, locale: LocaleCode) =>
-  spec.label.en.toLowerCase() === 'character' ? spec.value.en : localizeProductText(spec.value, locale);
+  localizeProductText(spec.value, locale);
 
 export const formatProductCopy = (text: string, values: Record<string, string | number>) =>
   text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
