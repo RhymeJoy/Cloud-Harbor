@@ -3,8 +3,18 @@ import type { LocaleCode } from '../../i18n';
 export type LocalizedText = Record<LocaleCode, string>;
 
 export type ProductId = string;
-export type ProductCategory = 'body-pillows' | 'yearly-decorations' | 'red-envelopes' | 'food' | 'plush' | 'badges' | 'books';
-export type ProductCategoryCode = 'bp' | 'yd' | 're' | 'fd' | 'pl' | 'bd' | 'bk';
+export type ProductCategory =
+  | 'body-pillows'
+  | 'food'
+  | 'plush'
+  | 'badges'
+  | 'books'
+  | 'hair-accessories'
+  | 'puzzles'
+  | 'bookmarks'
+  | 'red-envelopes'
+  | 'yearly-decorations';
+export type ProductCategoryCode = 'bp' | 'fd' | 'pl' | 'bd' | 'bk' | 'ha' | 'pz' | 'bm' | 're' | 'yd';
 export type ProductRouteId = `${ProductCategoryCode}/${ProductId}`;
 export type ProductSort = 'default' | 'price-asc' | 'price-desc';
 

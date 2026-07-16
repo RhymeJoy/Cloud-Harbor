@@ -1,9 +1,12 @@
 import type { LocaleCode } from '../i18n';
 import { badgeProducts } from './products/badges';
+import { bookmarkProducts } from './products/bookmarks';
 import { bookProducts } from './products/books';
 import { bodyPillows } from './products/bodyPillows';
 import { foodProducts } from './products/food';
+import { hairAccessoryProducts } from './products/hairAccessories';
 import { plushProducts } from './products/plush';
+import { puzzleProducts } from './products/puzzles';
 import { redEnvelopes } from './products/redEnvelopes';
 import { yearlyDecorations } from './products/yearlyDecorations';
 import type {
@@ -120,6 +123,18 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
     'zh-TW': '書籍',
     en: 'Books'
   },
+  'hair-accessories': {
+    'zh-TW': '髮飾',
+    en: 'Hair Accessories'
+  },
+  puzzles: {
+    'zh-TW': '拼圖',
+    en: 'Puzzles'
+  },
+  bookmarks: {
+    'zh-TW': '書籤',
+    en: 'Bookmarks'
+  },
   'red-envelopes': {
     'zh-TW': '紅包',
     en: 'Red Envelopes'
@@ -132,12 +147,15 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
 
 export const productCategoryCodes: Record<ProductCategory, ProductCategoryCode> = {
   'body-pillows': 'bp',
-  'yearly-decorations': 'yd',
-  'red-envelopes': 're',
   food: 'fd',
   plush: 'pl',
   badges: 'bd',
-  books: 'bk'
+  books: 'bk',
+  'hair-accessories': 'ha',
+  puzzles: 'pz',
+  bookmarks: 'bm',
+  'red-envelopes': 're',
+  'yearly-decorations': 'yd'
 };
 
 export const getProductRouteId = (product: Pick<Product, 'category' | 'id'>): ProductRouteId =>
@@ -152,6 +170,9 @@ export const products: Product[] = [
   ...plushProducts,
   ...badgeProducts,
   ...bookProducts,
+  ...hairAccessoryProducts,
+  ...puzzleProducts,
+  ...bookmarkProducts,
   ...redEnvelopes,
   ...yearlyDecorations
 ];
