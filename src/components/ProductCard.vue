@@ -37,7 +37,7 @@ const productTag = computed(() => localizeProductTagText(props.item.tag, locale.
 const productDescription = computed(() => localizeProductText(props.item.description, locale.value));
 const productLocation = computed(() => localizeProductText(props.item.location, locale.value));
 const pricePrefix = computed(() => t('productSection.pricePrefix'));
-const detailHref = computed(() => routeHref(`${getProductPath(props.item).slice(1)}/`));
+const detailHref = computed(() => routeHref(getProductPath(props.item)));
 const productRouteId = computed(() => getProductRouteId(props.item));
 const productImage = computed(() => getProductThumbnail(props.item));
 </script>

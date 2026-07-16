@@ -155,7 +155,10 @@ const pinkiePieShoulderBag: Product = {
     'zh-TW': '1 個',
     en: '1 shoulder bag'
   },
-  images: [publicAsset('products/Plush/shoulder-bag-pp.avif')],
+  images: [
+    publicAsset('products/Plush/shoulder-bag-pp.avif'),
+    publicAsset('products/Plush/shoulder-bag.avif'),
+  ],
   location: {
     'zh-TW': '現場販售',
     en: 'Available at the Booth'
@@ -215,7 +218,103 @@ const pinkiePieShoulderBag: Product = {
   ]
 };
 
+const standingPlushItems: LyingPlushItem[] = [
+  {
+    id: '08',
+    imageCode: 'TS',
+    price: 800,
+    originalPrice: 900,
+    stock: 1,
+    character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
+  },
+  {
+    id: '09',
+    imageCode: 'FS',
+    price: 800,
+    originalPrice: 900,
+    stock: 1,
+    character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
+  }
+];
+
+const createStandingPlushProduct = (item: LyingPlushItem): Product => {
+  const characterZh = localize(item.character, 'zh-TW');
+  const characterEn = localize(item.character, 'en');
+
+  return {
+    id: item.id,
+    category: 'plush',
+    price: item.price,
+    originalPrice: item.originalPrice,
+    stock: item.stock,
+    stockText: {
+      'zh-TW': '1 隻',
+      en: '1 plush toy'
+    },
+    images: [
+      publicAsset(`products/Plush/stand-${item.imageCode.toLowerCase()}.avif`),
+      publicAsset('products/Plush/stand-mane3.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': `${characterZh} 12吋站姿布偶`,
+      en: `${characterEn} 12-inch Standing Plush`
+    },
+    tag: item.character,
+    description: {
+      'zh-TW': `${characterZh} 12吋站姿布偶，振光玩具出品，適合擺放、拍照與收藏。`,
+      en: `${characterEn} 12-inch standing plush by Zhen Guang Toys for display, photos, and collecting.`
+    },
+    details: {
+      'zh-TW': `12吋站姿布偶，角色為${characterZh}，由振光玩具製作。站立造型適合放在展示櫃、桌面或收藏空間。`,
+      en: `A 12-inch standing plush featuring ${characterEn}, made by Zhen Guang Toys. Its upright design is suitable for shelves, desks, and collectible displays.`
+    },
+    shipping: {
+      'zh-TW': '主要於活動現場販售與取貨，布偶數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Plush quantities are limited and available while supplies last.'
+    },
+    badges: [
+      item.character,
+      { 'zh-TW': '12吋', en: '12-inch' },
+      { 'zh-TW': '站姿布偶', en: 'Standing Plush' },
+      { 'zh-TW': '振光玩具', en: 'Zhen Guang Toys' }
+    ],
+    highlights: [
+      {
+        'zh-TW': `角色：${characterZh}。`,
+        en: `Character: ${characterEn}.`
+      },
+      {
+        'zh-TW': '振光玩具製作，12吋站姿造型適合收藏展示。',
+        en: 'Made by Zhen Guang Toys in a 12-inch standing design for collectible display.'
+      },
+      {
+        'zh-TW': '此角色現貨僅 1 隻，數量有限。',
+        en: 'Only one of this character is available.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '布偶', en: 'Plush' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '12吋站姿布偶', en: '12-inch Standing Plush' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: item.character
+      }
+    ]
+  };
+};
+
 export const plushProducts: Product[] = [
   ...lyingPlushItems.map(createLyingPlushProduct),
-  pinkiePieShoulderBag
+  pinkiePieShoulderBag,
+  ...standingPlushItems.map(createStandingPlushProduct)
 ];

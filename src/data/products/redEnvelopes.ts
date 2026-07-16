@@ -191,6 +191,15 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     stock: 3,
     name: { 'zh-TW': '蘋果嘉兒、柔柔與雲寶新年快樂造型紅包袋', en: 'Applejack, Fluttershy and Rainbow Dash Happy New Year Shaped Red Envelope' },
     characters: { 'zh-TW': 'AJ、FS、RD', en: 'AJ, FS, RD' }
+  },
+  {
+    id: '21',
+    fileBases: ['24', '25'],
+    price: 60,
+    originalPrice: 70,
+    stock: 2,
+    name: { 'zh-TW': '六主角福氣平安喜樂紅包袋組', en: 'Mane 6 Fortune, Peace and Joy Red Envelope Set' },
+    characters: { 'zh-TW': 'MANE6', en: 'MANE6' }
   }
 ];
 
