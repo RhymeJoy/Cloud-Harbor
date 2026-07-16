@@ -26,9 +26,9 @@
     "pricePrefix": "NT$"
   },
   "products": {
-    "eyebrow": "PRODUCTS",
-    "title": "雲港商品館",
-    "description": "用商城式版面整理雲港商行準備販售的商品，快速搜尋、篩選與查看詳細資訊。",
+    "eyebrow": "商品目錄",
+    "title": "看看雲港這次準備了什麼",
+    "description": "可用搜尋、分類與排序快速找到想看的品項。",
     "backHome": "回首頁",
     "shopName": "Cloud Harbor 雲港商行",
     "shopSubtitle": "TWBC 現場販售準備中｜商品資訊會持續更新",

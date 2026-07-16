@@ -2,6 +2,8 @@
 import { computed, ref } from 'vue';
 import ProductCard from '../../components/ProductCard.vue';
 import { routeHref } from '../../composables/useAppRoute';
+import { useProductFilters } from '../../composables/useProductFilters';
+import { publicAsset } from '../../composables/usePublicAssets';
 import { createSiteOgMeta } from '../../composables/useSiteSeo';
 import { useI18n } from '../../i18n';
 import {
@@ -9,12 +11,12 @@ import {
   localizeProductText,
   productCategoryLabels,
   products,
-  type ProductCategory,
-  type ProductSort
+  type ProductCategory
 } from '../../data/products';
 
 const { locale, t } = useI18n();
 const homeHref = routeHref();
+const shopLogoSrc = publicAsset('favicon.ico');
 const pageCopy = computed(() => ({
   eyebrow: t('products.eyebrow'),
   title: t('products.title'),
@@ -41,11 +43,14 @@ const pageCopy = computed(() => ({
   emptyTitle: t('products.emptyTitle'),
   emptyText: t('products.emptyText')
 }));
-const searchQuery = ref('');
-const selectedCategory = ref<ProductCategory | 'all'>('all');
-const sortMode = ref<ProductSort>('default');
-const minPriceInput = ref('');
-const maxPriceInput = ref('');
+const {
+  searchQuery,
+  selectedCategory,
+  sortMode,
+  minPriceInput,
+  maxPriceInput,
+  clearProductFilters
+} = useProductFilters();
 const normalizedSearch = computed(() => searchQuery.value.trim().toLowerCase());
 const minPrice = computed(() => Number.parseInt(minPriceInput.value, 10));
 const maxPrice = computed(() => Number.parseInt(maxPriceInput.value, 10));
@@ -108,6 +113,7 @@ const filteredProducts = computed(() => {
   });
 });
 const resultText = computed(() => t('products.resultCount', { count: filteredProducts.value.length }));
+const areMobileFiltersOpen = ref(false);
 const hasActiveFilters = computed(
   () =>
     normalizedSearch.value.length > 0 ||
@@ -116,13 +122,7 @@ const hasActiveFilters = computed(
     minPriceInput.value.trim().length > 0 ||
     maxPriceInput.value.trim().length > 0
 );
-const clearFilters = () => {
-  searchQuery.value = '';
-  selectedCategory.value = 'all';
-  sortMode.value = 'default';
-  minPriceInput.value = '';
-  maxPriceInput.value = '';
-};
+const clearFilters = clearProductFilters;
 
 useHead(() => {
   const title = `${pageCopy.value.title} | ${t('site.title')}`;
@@ -154,7 +154,9 @@ useHead(() => {
 
     <section class="shop-header">
       <div class="shop-identity">
-        <div class="shop-logo">CH</div>
+        <div class="shop-logo">
+          <img :src="shopLogoSrc" alt="" decoding="async" fetchpriority="low" />
+        </div>
         <div>
           <p class="shop-badge">{{ pageCopy.shopBadge }}</p>
           <h1>{{ pageCopy.shopName }}</h1>
@@ -162,58 +164,72 @@ useHead(() => {
         </div>
       </div>
 
-      <label class="market-search" for="product-search">
-        <span>{{ pageCopy.searchLabel }}</span>
-        <input id="product-search" v-model="searchQuery" type="search" :placeholder="pageCopy.searchPlaceholder" />
-        <button type="button">{{ pageCopy.searchButton }}</button>
-      </label>
-    </section>
-
-    <section class="shop-intro">
-      <p class="eyebrow">{{ pageCopy.eyebrow }}</p>
-      <h2>{{ pageCopy.title }}</h2>
-      <p>{{ pageCopy.description }}</p>
+      <section class="shop-intro">
+        <p class="eyebrow">{{ pageCopy.eyebrow }}</p>
+        <h2>{{ pageCopy.title }}</h2>
+        <p>{{ pageCopy.description }}</p>
+      </section>
     </section>
 
     <div class="market-layout">
       <aside class="market-sidebar" :aria-label="pageCopy.sidebarTitle">
-        <div class="sidebar-section">
-          <h3>{{ pageCopy.sidebarTitle }}</h3>
-          <div class="category-list" role="group" :aria-label="pageCopy.filterLabel">
-            <button type="button" :class="{ active: selectedCategory === 'all' }" @click="selectedCategory = 'all'">
-              <span>{{ pageCopy.allCategories }}</span>
-              <span>{{ products.length }}</span>
-            </button>
-            <button
-              v-for="option in categoryOptions"
-              :key="option.category"
-              type="button"
-              :class="{ active: selectedCategory === option.category }"
-              @click="selectedCategory = option.category"
-            >
-              <span>{{ option.label }}</span>
-              <span>{{ option.count }}</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="sidebar-section">
-          <h3>{{ pageCopy.priceRangeLabel }}</h3>
-          <div class="price-range">
-            <input v-model="minPriceInput" type="number" min="0" inputmode="numeric" :placeholder="pageCopy.minPricePlaceholder" />
-            <span>-</span>
-            <input v-model="maxPriceInput" type="number" min="0" inputmode="numeric" :placeholder="pageCopy.maxPricePlaceholder" />
-          </div>
-        </div>
-
-        <button v-if="hasActiveFilters" class="reset-button" type="button" @click="clearFilters">
-          {{ pageCopy.clearFilters }}
+        <button
+          class="filter-toggle"
+          type="button"
+          :class="{ active: hasActiveFilters }"
+          :aria-expanded="areMobileFiltersOpen"
+          aria-controls="product-filter-panel"
+          @click="areMobileFiltersOpen = !areMobileFiltersOpen"
+        >
+          <span>{{ pageCopy.sidebarTitle }}</span>
+          <span class="filter-toggle-icon" aria-hidden="true"></span>
         </button>
+
+        <div id="product-filter-panel" class="filter-panel" :class="{ open: areMobileFiltersOpen }">
+          <div class="filter-panel-inner">
+            <div class="sidebar-section">
+              <div class="category-list" role="group" :aria-label="pageCopy.filterLabel">
+                <button type="button" :class="{ active: selectedCategory === 'all' }" @click="selectedCategory = 'all'">
+                  <span>{{ pageCopy.allCategories }}</span>
+                  <span>{{ products.length }}</span>
+                </button>
+                <button
+                  v-for="option in categoryOptions"
+                  :key="option.category"
+                  type="button"
+                  :class="{ active: selectedCategory === option.category }"
+                  @click="selectedCategory = option.category"
+                >
+                  <span>{{ option.label }}</span>
+                  <span>{{ option.count }}</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <h3>{{ pageCopy.priceRangeLabel }}</h3>
+              <div class="price-range">
+                <input v-model="minPriceInput" type="number" min="0" inputmode="numeric" :placeholder="pageCopy.minPricePlaceholder" />
+                <span>-</span>
+                <input v-model="maxPriceInput" type="number" min="0" inputmode="numeric" :placeholder="pageCopy.maxPricePlaceholder" />
+              </div>
+            </div>
+
+            <button v-if="hasActiveFilters" class="reset-button" type="button" @click="clearFilters">
+              {{ pageCopy.clearFilters }}
+            </button>
+          </div>
+        </div>
       </aside>
 
       <section class="market-main" :aria-label="pageCopy.title">
         <div class="market-toolbar">
-          <div>
+          <label class="market-search" for="product-search">
+            <span>{{ pageCopy.searchLabel }}</span>
+            <input id="product-search" v-model="searchQuery" type="search" :placeholder="pageCopy.searchPlaceholder" />
+            <button type="button">{{ pageCopy.searchButton }}</button>
+          </label>
+          <div class="toolbar-status">
             <p>{{ resultText }}</p>
           </div>
           <div class="sort-tabs" role="group" :aria-label="pageCopy.sortLabel">
@@ -294,8 +310,13 @@ useHead(() => {
   border: 2px solid rgba(255, 255, 255, 0.72);
   border-radius: 50%;
   background: linear-gradient(135deg, #ff7fd8, #7f6cff);
-  color: #ffffff;
-  font-weight: 900;
+}
+
+.shop-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .shop-badge,
@@ -331,9 +352,12 @@ h1 {
 .market-search {
   display: grid;
   grid-template-columns: 1fr auto;
+  flex: 1 1 360px;
   gap: 8px;
   align-items: center;
-  padding: 8px;
+  min-width: 240px;
+  max-width: none;
+  padding: 2px 8px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
@@ -365,17 +389,23 @@ h1 {
 .market-search button,
 .reset-button,
 .empty-state button {
-  min-height: 42px;
+  min-height: 35px;
   border: 0;
   border-radius: 999px;
   background: linear-gradient(135deg, #ff7fd8, #7f6cff);
   color: #ffffff;
-  padding: 0 18px;
+  padding: 0 20px;
   font-weight: 800;
 }
 
 .shop-intro {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  justify-self: center;
+  width: min(100%, 620px);
   padding: 4px 2px;
+  text-align: center;
 }
 
 .eyebrow {
@@ -414,9 +444,16 @@ h1 {
 }
 
 .market-sidebar {
+  padding: 16px;
+}
+
+.filter-toggle {
+  display: none;
+}
+
+.filter-panel-inner {
   display: grid;
   gap: 18px;
-  padding: 16px;
 }
 
 .sidebar-section {
@@ -486,12 +523,16 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 18px;
   background: rgba(8, 12, 35, 0.42);
+}
+
+.toolbar-status {
+  flex: 0 0 auto;
 }
 
 .market-toolbar p {
@@ -501,7 +542,9 @@ h1 {
 
 .sort-tabs {
   display: flex;
+  flex: 0 0 auto;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 8px;
 }
 
@@ -549,8 +592,64 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .shop-intro {
+    width: min(100%, 620px);
+  }
+
   .market-sidebar {
     position: static;
+  }
+
+  .filter-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    background: rgba(8, 12, 35, 0.42);
+    color: #ffffff;
+    padding: 0 14px;
+    font-weight: 900;
+  }
+
+  .filter-toggle.active {
+    border-color: rgba(255, 184, 222, 0.3);
+    background: rgba(255, 184, 222, 0.14);
+  }
+
+  .filter-toggle-icon {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 0.18s ease;
+  }
+
+  .filter-toggle[aria-expanded='true'] .filter-toggle-icon {
+    transform: rotate(225deg) translateY(-2px);
+  }
+
+  .filter-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden;
+    transition: grid-template-rows 0.22s ease, opacity 0.18s ease, visibility 0.22s ease;
+  }
+
+  .filter-panel.open {
+    grid-template-rows: 1fr;
+    margin-top: 14px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .filter-panel-inner {
+    min-height: 0;
+    overflow: hidden;
   }
 }
 
@@ -573,6 +672,8 @@ h1 {
 
   .market-search {
     grid-template-columns: 1fr;
+    min-width: 0;
+    max-width: none;
     border-radius: 18px;
   }
 

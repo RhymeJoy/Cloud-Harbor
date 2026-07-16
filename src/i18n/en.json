@@ -26,9 +26,9 @@
     "pricePrefix": "NT$"
   },
   "products": {
-    "eyebrow": "PRODUCTS",
-    "title": "Cloud Harbor Shop",
-    "description": "A marketplace-style product page for Cloud Harbor items, with search, filters, sorting, and detail pages.",
+    "eyebrow": "CATALOG",
+    "title": "See what Cloud Harbor is bringing",
+    "description": "Use search, categories, and sorting to find what you want to preview.",
     "backHome": "Back Home",
     "shopName": "Cloud Harbor",
     "shopSubtitle": "Preparing for TWBC booth sales. Product details will keep updating.",
