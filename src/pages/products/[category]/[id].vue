@@ -92,12 +92,15 @@ const createFallbackSpec = (key: string, label: LocalizedText, value: string): S
 });
 const fallbackFormats: Record<ProductCategory, LocalizedText> = {
   'body-pillows': { 'zh-TW': '等身抱枕套', en: 'Body Pillow Cover' },
-  'yearly-decorations': { 'zh-TW': '年節裝飾', en: 'Lunar New Year Decoration' },
-  'red-envelopes': { 'zh-TW': '正反雙面圖樣', en: 'Front and Back Artwork' },
   food: { 'zh-TW': '食品商品', en: 'Food Item' },
   plush: { 'zh-TW': '絨毛布偶', en: 'Plush' },
   badges: { 'zh-TW': '徽章', en: 'Badge' },
-  books: { 'zh-TW': '書籍', en: 'Book' }
+  books: { 'zh-TW': '書籍', en: 'Book' },
+  'hair-accessories': { 'zh-TW': '髮飾', en: 'Hair Accessory' },
+  puzzles: { 'zh-TW': '拼圖', en: 'Puzzle' },
+  bookmarks: { 'zh-TW': '書籤', en: 'Bookmark' },
+  'red-envelopes': { 'zh-TW': '正反雙面圖樣', en: 'Front and Back Artwork' },
+  'yearly-decorations': { 'zh-TW': '年節裝飾', en: 'Lunar New Year Decoration' }
 };
 const characterMatchers: Array<{ value: LocalizedText; aliases: string[] }> = [
   { value: { 'zh-TW': '六主角', en: 'Mane 6' }, aliases: ['六主角', 'Mane 6'] },
