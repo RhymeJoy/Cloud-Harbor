@@ -187,6 +187,91 @@ const createIndividualBadgeProduct = (item: IndividualBadgeItem): Product => ({
   ]
 });
 
+type NewSmallGoodItem = {
+  id: string;
+  category: 'keychains' | 'card-skins';
+  image: string;
+  price: number;
+  originalPrice: number;
+  character: LocalizedText;
+  title: LocalizedText;
+  format: LocalizedText;
+};
+
+const newSmallGoodItems: NewSmallGoodItem[] = [
+  {
+    id: '10',
+    category: 'keychains',
+    image: 'keychain-celestia',
+    price: 30,
+    originalPrice: 50,
+    character: { 'zh-TW': '宇宙公主', en: 'Princess Celestia' },
+    title: { 'zh-TW': '宇宙公主壓克力鑰匙圈', en: 'Princess Celestia Acrylic Keychain' },
+    format: { 'zh-TW': '壓克力鑰匙圈', en: 'Acrylic Keychain' }
+  },
+  {
+    id: '11',
+    category: 'keychains',
+    image: 'keychain-ts',
+    price: 30,
+    originalPrice: 50,
+    character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' },
+    title: { 'zh-TW': '暮光閃閃愛心壓克力鑰匙圈', en: 'Twilight Sparkle Heart Acrylic Keychain' },
+    format: { 'zh-TW': '壓克力鑰匙圈', en: 'Acrylic Keychain' }
+  },
+  {
+    id: '12',
+    category: 'keychains',
+    image: 'keychain-luna',
+    price: 30,
+    originalPrice: 50,
+    character: { 'zh-TW': '月亮公主', en: 'Princess Luna' },
+    title: { 'zh-TW': '月亮公主壓克力鑰匙圈', en: 'Princess Luna Acrylic Keychain' },
+    format: { 'zh-TW': '壓克力鑰匙圈', en: 'Acrylic Keychain' }
+  }
+];
+
+const createNewSmallGoodProduct = (item: NewSmallGoodItem): Product => ({
+  id: item.id,
+  category: item.category,
+  price: item.price,
+  originalPrice: item.originalPrice,
+  stock: 1,
+  stockText: { 'zh-TW': '1 個', en: '1 available' },
+  images: [publicAsset(`products/Badges/${item.image}.avif`)],
+  location: { 'zh-TW': '現場販售', en: 'Available at the Booth' },
+  name: item.title,
+  tag: item.character,
+  description: {
+    'zh-TW': `${item.character['zh-TW']}主題${item.format['zh-TW']}，適合日常使用或角色收藏。`,
+    en: `${item.character.en} themed ${item.format.en.toLowerCase()} for everyday use or character collecting.`
+  },
+  details: {
+    'zh-TW': `${item.title['zh-TW']}，庫存僅 1 個，實際顏色與保存狀態以現場商品為準。`,
+    en: `${item.title.en}. Only one is available, with final color and condition confirmed at the booth.`
+  },
+  shipping: {
+    'zh-TW': '主要提供現場購買與取貨，數量有限，售完為止。',
+    en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+  },
+  badges: [
+    item.character,
+    item.format,
+    { 'zh-TW': '僅 1 個', en: 'Only 1 Available' }
+  ],
+  highlights: [
+    { 'zh-TW': `${item.character['zh-TW']}角色主題設計。`, en: `Features ${item.character.en}.` },
+    { 'zh-TW': `形式為${item.format['zh-TW']}。`, en: `Designed as a ${item.format.en.toLowerCase()}.` },
+    { 'zh-TW': '庫存僅 1 個。', en: 'Only one is available for this item.' }
+  ],
+  specs: [
+    { label: { 'zh-TW': '類別', en: 'Category' }, value: { 'zh-TW': '小物', en: 'Small Goods' } },
+    { label: { 'zh-TW': '形式', en: 'Format' }, value: item.format },
+    { label: { 'zh-TW': '角色', en: 'Character' }, value: item.character },
+    { label: { 'zh-TW': '販售方式', en: 'Sales' }, value: { 'zh-TW': '現場販售', en: 'Available at the Booth' } }
+  ]
+});
+
 export const badgeProducts: Product[] = [
   {
     id: '1',
@@ -645,7 +730,7 @@ export const badgeProducts: Product[] = [
       en: 'Available at the Booth'
     },
     name: {
-      'zh-TW': '暮光閃閃御守鑰匙圈',
+      'zh-TW': '暮光閃閃學業御守鑰匙圈',
       en: 'Twilight Sparkle Omamori Keychain'
     },
     tag: {
@@ -701,7 +786,7 @@ export const badgeProducts: Product[] = [
   {
     id: '3',
     category: 'keychains',
-    price: 70,
+    price: 30,
     originalPrice: 80,
     stock: 1,
     stockText: {
@@ -716,8 +801,8 @@ export const badgeProducts: Product[] = [
       en: 'Available at the Booth'
     },
     name: {
-      'zh-TW': '蘋果嘉兒御守鑰匙圈',
-      en: 'Applejack Omamori Keychain'
+      'zh-TW': '蘋果嘉兒事業御守鑰匙圈 (瑕疵品)',
+      en: 'Applejack Omamori Keychain (Defective)'
     },
     tag: {
       'zh-TW': '御守鑰匙圈',
@@ -787,7 +872,7 @@ export const badgeProducts: Product[] = [
       en: 'Available at the Booth'
     },
     name: {
-      'zh-TW': '珍奇御守鑰匙圈',
+      'zh-TW': '珍奇財運御守鑰匙圈',
       en: 'Rarity Omamori Keychain'
     },
     tag: {
@@ -840,6 +925,16 @@ export const badgeProducts: Product[] = [
       }
     ]
   },
+  ...([{
+    id: '9',
+    category: 'keychains',
+    image: 'protection-charm-pp',
+    price: 30,
+    originalPrice: 50,
+    character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' },
+    title: { 'zh-TW': '碧琪好運御守鑰匙圈', en: 'Pinkie Pie Good Luck Charm Keychain' },
+    format: { 'zh-TW': '御守鑰匙圈', en: 'Charm Keychain' }
+  }] satisfies NewSmallGoodItem[]).map(createNewSmallGoodProduct),
   {
     id: '5',
     category: 'keychains',
@@ -1125,6 +1220,9 @@ export const badgeProducts: Product[] = [
       }
     ]
   },
+  ...newSmallGoodItems
+    .filter((item) => item.category === 'keychains')
+    .map(createNewSmallGoodProduct),
   {
     id: '1',
     category: 'ring-holders',
@@ -1576,6 +1674,16 @@ export const badgeProducts: Product[] = [
       }
     ]
   },
+  ...([{
+    id: '4',
+    category: 'card-skins',
+    image: 'card-skin-ts',
+    price: 30,
+    originalPrice: 50,
+    character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' },
+    title: { 'zh-TW': '暮光閃閃造型卡貼', en: 'Twilight Sparkle Card Sticker' },
+    format: { 'zh-TW': '造型卡貼', en: 'Card Sticker' }
+  }] satisfies NewSmallGoodItem[]).map(createNewSmallGoodProduct),
   {
     id: '1',
     category: 'rulers',
