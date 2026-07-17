@@ -14,6 +14,7 @@ export type ProductCategory =
   | 'figures'
   | 'bandages'
   | 'card-skins'
+  | 'stickers'
   | 'rulers'
   | 'medals'
   | 'postcards'
@@ -23,7 +24,7 @@ export type ProductCategory =
   | 'bookmarks'
   | 'red-envelopes'
   | 'yearly-decorations';
-export type ProductCategoryCode = 'bp' | 'fd' | 'pl' | 'bd' | 'ad' | 'kc' | 'rh' | 'fg' | 'ba' | 'cs' | 'rl' | 'md' | 'pc' | 'bk' | 'ha' | 'pz' | 'bm' | 're' | 'yd';
+export type ProductCategoryCode = 'bp' | 'fd' | 'pl' | 'bd' | 'ad' | 'kc' | 'rh' | 'fg' | 'ba' | 'cs' | 'st' | 'rl' | 'md' | 'pc' | 'bk' | 'ha' | 'pz' | 'bm' | 're' | 'yd';
 export type ProductRouteId = `${ProductCategoryCode}/${ProductId}`;
 export type ProductSort = 'default' | 'price-asc' | 'price-desc' | 'stock-desc' | 'stock-asc';
 

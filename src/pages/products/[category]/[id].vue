@@ -101,6 +101,7 @@ const fallbackFormats: Record<ProductCategory, LocalizedText> = {
   figures: { 'zh-TW': '手辦', en: 'Figure' },
   bandages: { 'zh-TW': 'OK 繃', en: 'Bandage' },
   'card-skins': { 'zh-TW': '造型卡貼', en: 'Card Sticker' },
+  stickers: { 'zh-TW': '貼紙', en: 'Sticker' },
   rulers: { 'zh-TW': '造型尺', en: 'Shaped Ruler' },
   medals: { 'zh-TW': '獎牌', en: 'Medal' },
   postcards: { 'zh-TW': '明信片', en: 'Postcard' },
@@ -199,25 +200,44 @@ const specRows = computed(() => {
 });
 const getAvailableRelatedProducts = () =>
   products.filter((item) => getProductRouteId(item) !== productRouteId);
+const relatedCategoryGroups: Partial<Record<ProductCategory, ProductCategory[]>> = {
+  badges: [
+    'badges',
+    'acrylic-stands',
+    'keychains',
+    'ring-holders',
+    'figures',
+    'bandages',
+    'card-skins',
+    'stickers',
+    'rulers',
+    'medals',
+    'hair-accessories'
+  ],
+  books: ['books', 'postcards']
+};
+const getRelatedFilterCategories = (category: ProductCategory) =>
+  Object.values(relatedCategoryGroups).find((categories) => categories.includes(category)) ?? [category];
 const getRelatedProducts = (randomize = false) => {
   const availableProducts = getAvailableRelatedProducts();
-  const sameCategoryProducts = availableProducts.filter((item) => item.category === product.category);
-  const sameCategoryProduct = randomize
-    ? sameCategoryProducts[Math.floor(Math.random() * sameCategoryProducts.length)]
-    : sameCategoryProducts[0];
+  const sameFilterCategories = getRelatedFilterCategories(product.category);
+  const sameFilterProducts = availableProducts.filter((item) => sameFilterCategories.includes(item.category));
+  const sameFilterProduct = randomize
+    ? sameFilterProducts[Math.floor(Math.random() * sameFilterProducts.length)]
+    : sameFilterProducts[0];
 
-  if (!sameCategoryProduct) {
+  if (!sameFilterProduct) {
     return randomize
-      ? getRandomProductsByUniqueCategories(3, availableProducts)
-      : getProductsByUniqueCategories(3, availableProducts);
+      ? getRandomProductsByUniqueCategories(5, availableProducts)
+      : getProductsByUniqueCategories(5, availableProducts);
   }
 
-  const otherCategoryProducts = availableProducts.filter((item) => item.category !== product.category);
+  const otherCategoryProducts = availableProducts.filter((item) => !sameFilterCategories.includes(item.category));
   const remainingProducts = randomize
-    ? getRandomProductsByUniqueCategories(2, otherCategoryProducts)
-    : getProductsByUniqueCategories(2, otherCategoryProducts);
+    ? getRandomProductsByUniqueCategories(4, otherCategoryProducts)
+    : getProductsByUniqueCategories(4, otherCategoryProducts);
 
-  return [sameCategoryProduct, ...remainingProducts];
+  return [sameFilterProduct, ...remainingProducts];
 };
 const relatedProducts = ref(getRelatedProducts());
 
@@ -677,8 +697,18 @@ h1 {
 
 .related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
+}
+
+@media (min-width: 861px) and (max-width: 1100px) {
+  .related-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .related-grid > :nth-child(n + 5) {
+    display: none;
+  }
 }
 
 @media (max-width: 860px) {
@@ -735,6 +765,14 @@ h1 {
     font-weight: 800;
     text-align: right;
   }
+
+  .related-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .related-grid > :nth-child(n + 4) {
+    display: none;
+  }
 }
 
 @media (max-width: 560px) {
@@ -760,6 +798,29 @@ h1 {
     height: 64px;
     flex-basis: 64px;
     border-radius: 10px;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .related-grid > :nth-child(4) {
+    display: block;
+  }
+
+  .related-grid > :nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .related-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .related-grid > :nth-child(n + 4) {
+    display: none;
   }
 }
 </style>
