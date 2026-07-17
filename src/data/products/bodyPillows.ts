@@ -301,6 +301,162 @@ export const bodyPillows: Product[] = [
         value: { 'zh-TW': '現場販售', en: 'booth sales' }
       }
     ]
+  },
+  {
+    id: '7',
+    ...bodyPillowDefaults,
+    price: 1600,
+    stock: 0,
+    stockText: {
+      'zh-TW': '現場或私訊訂購',
+      en: 'Booth or DM order'
+    },
+    images: [
+      publicAsset('products/BodyPillows/pillow.avif')
+    ],
+    location: {
+      'zh-TW': '現場或私訊訂購',
+      en: 'Booth or DM order'
+    },
+    name: {
+      'zh-TW': '等身抱枕羽絨棉枕芯 180 x 60 cm',
+      en: 'Down-Like Fiberfill Body Pillow Insert 180 x 60 cm'
+    },
+    tag: {
+      'zh-TW': '羽絨棉枕芯',
+      en: 'Down-Like Fiberfill'
+    },
+    description: {
+      'zh-TW': '180 x 60 cm 等身抱枕羽絨棉枕芯，觸感較輕柔蓬鬆、包覆感較強，需現場或私訊訂購。',
+      en: 'A 180 x 60 cm body pillow insert with down-like fiberfill, offering a lighter, softer, fluffier feel by booth or DM order.'
+    },
+    details: {
+      'zh-TW': '此款為羽絨棉等身抱枕枕芯，價格 1600 元，目前不直接販售，需現場或私訊訂購。羽絨棉觸感較輕柔蓬鬆、包覆感較強。訂購時請提供電話、姓名與地址，付款完成後再安排郵寄。',
+      en: 'This down-like fiberfill body pillow insert is NT$1600 and is currently available by booth or DM order only. The fill feels lighter, softer, and fluffier with a more enveloping feel. Please provide your phone number, name, and address when ordering; shipping is arranged after payment is completed.'
+    },
+    shipping: {
+      'zh-TW': '訂購時請提供電話、姓名與收件地址；付款完成後再郵寄寄出。大型枕芯以實際可寄送方式與運費為準。',
+      en: 'Please provide your phone number, name, and shipping address when ordering. The pillow insert will be shipped after payment is completed, with the final delivery method and shipping fee confirmed for the oversized item.'
+    },
+    badges: [
+      { 'zh-TW': '180 x 60 cm', en: '180 x 60 cm' },
+      { 'zh-TW': '羽絨棉', en: 'Down-Like Fiberfill' },
+      { 'zh-TW': '訂購制', en: 'Order Only' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '尺寸為 180 x 60 cm，可搭配等身抱枕套使用。',
+        en: 'Measures 180 x 60 cm for use with body pillow cases.'
+      },
+      {
+        'zh-TW': '羽絨棉 1600 元，主打輕柔、蓬鬆與柔軟包覆感。',
+        en: 'Down-like fiberfill is NT$1600, focused on a light, soft, fluffy feel.'
+      },
+      {
+        'zh-TW': '需現場或私訊訂購，付款完成後再安排郵寄。',
+        en: 'Available by booth or DM order, shipped after payment is completed.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '等身抱枕枕芯', en: 'Body Pillow Insert' }
+      },
+      {
+        label: { 'zh-TW': '尺寸', en: 'Size' },
+        value: { 'zh-TW': '180 x 60 cm', en: '180 x 60 cm' }
+      },
+      {
+        label: { 'zh-TW': '棉種', en: 'Fill' },
+        value: { 'zh-TW': '羽絨棉', en: 'Down-like fiberfill' }
+      },
+      {
+        label: { 'zh-TW': '價格', en: 'Price' },
+        value: { 'zh-TW': '1600 元', en: 'NT$1600' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場或私訊訂購，付款後郵寄', en: 'Booth or DM order, shipped after payment' }
+      }
+    ]
+  },
+  {
+    id: '8',
+    ...bodyPillowDefaults,
+    price: 1400,
+    stock: 0,
+    stockText: {
+      'zh-TW': '現場或私訊訂購',
+      en: 'Booth or DM order'
+    },
+    images: [
+      publicAsset('products/BodyPillows/pillow.avif')
+    ],
+    location: {
+      'zh-TW': '現場或私訊訂購',
+      en: 'Booth or DM order'
+    },
+    name: {
+      'zh-TW': '等身抱枕雲上七孔棉枕芯 180 x 60 cm',
+      en: 'Cloud Seven-Hole Fiberfill Body Pillow Insert 180 x 60 cm'
+    },
+    tag: {
+      'zh-TW': '雲上七孔棉枕芯',
+      en: 'Cloud Seven-Hole Fiberfill'
+    },
+    description: {
+      'zh-TW': '180 x 60 cm 等身抱枕雲上七孔棉枕芯，中空七孔纖維較透氣、回彈支撐較穩，需現場或私訊訂購。',
+      en: 'A 180 x 60 cm body pillow insert with Cloud seven-hole fiberfill, using hollow fibers for breathability, rebound, and steadier support.'
+    },
+    details: {
+      'zh-TW': '此款為雲上七孔棉等身抱枕枕芯，價格 1400 元，目前不直接販售，需現場或私訊訂購。中空七孔纖維較透氣，並提供較穩定的回彈與支撐。訂購時請提供電話、姓名與地址，付款完成後再安排郵寄。',
+      en: 'This Cloud seven-hole fiberfill body pillow insert is NT$1400 and is currently available by booth or DM order only. The hollow seven-hole fiberfill is more breathable and provides steadier rebound and support. Please provide your phone number, name, and address when ordering; shipping is arranged after payment is completed.'
+    },
+    shipping: {
+      'zh-TW': '訂購時請提供電話、姓名與收件地址；付款完成後再郵寄寄出。大型枕芯以實際可寄送方式與運費為準。',
+      en: 'Please provide your phone number, name, and shipping address when ordering. The pillow insert will be shipped after payment is completed, with the final delivery method and shipping fee confirmed for the oversized item.'
+    },
+    badges: [
+      { 'zh-TW': '180 x 60 cm', en: '180 x 60 cm' },
+      { 'zh-TW': '雲上七孔棉', en: 'Cloud Seven-Hole Fiberfill' },
+      { 'zh-TW': '訂購制', en: 'Order Only' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '尺寸為 180 x 60 cm，可搭配等身抱枕套使用。',
+        en: 'Measures 180 x 60 cm for use with body pillow cases.'
+      },
+      {
+        'zh-TW': '雲上七孔棉 1400 元，主打中空纖維的透氣、回彈與支撐。',
+        en: 'Cloud seven-hole fiberfill is NT$1400, focused on breathable hollow fibers with rebound and support.'
+      },
+      {
+        'zh-TW': '需現場或私訊訂購，付款完成後再安排郵寄。',
+        en: 'Available by booth or DM order, shipped after payment is completed.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '等身抱枕枕芯', en: 'Body Pillow Insert' }
+      },
+      {
+        label: { 'zh-TW': '尺寸', en: 'Size' },
+        value: { 'zh-TW': '180 x 60 cm', en: '180 x 60 cm' }
+      },
+      {
+        label: { 'zh-TW': '棉種', en: 'Fill' },
+        value: { 'zh-TW': '雲上七孔棉', en: 'Cloud seven-hole fiberfill' }
+      },
+      {
+        label: { 'zh-TW': '價格', en: 'Price' },
+        value: { 'zh-TW': '1400 元', en: 'NT$1400' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場或私訊訂購，付款後郵寄', en: 'Booth or DM order, shipped after payment' }
+      }
+    ]
   }
   // {//applejack pillow
     // id: '5',
