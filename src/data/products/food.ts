@@ -90,7 +90,7 @@ const createColaCanProduct = (item: ColaCanItem): Product => {
       'zh-TW': `${item.stock} 罐`,
       en: `${item.stock} cans`
     },
-    images: [publicAsset(`products/Food/${item.imageCode}-Cola-330ml.svg`)],
+    images: [publicAsset(`products/Food/cola-${item.imageCode.toLowerCase()}-2.avif`)],
     location: {
       'zh-TW': '現場販售',
       en: 'Available at the Booth'
