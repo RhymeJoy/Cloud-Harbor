@@ -12,7 +12,7 @@ export const getYearlyDecorationStockText = (stock: number) => ({
 
 const yearlyDecorationProducts: Product[] = [
   {
-  id: '01',
+  id: '1',
   ...yearlyDecorationDefaults,
   price: 180,
   originalPrice: 200,//150
@@ -82,7 +82,7 @@ const yearlyDecorationProducts: Product[] = [
   ]
   },
   {
-  id: '02',
+  id: '2',
   ...yearlyDecorationDefaults,
   price: 180,
   originalPrice: 200,//150
@@ -166,7 +166,7 @@ const yearlyDecorationProducts: Product[] = [
   ]
   },
   {
-  id: '03',
+  id: '3',
   ...yearlyDecorationDefaults,
   price: 100,
   originalPrice: 120,//80
@@ -248,7 +248,7 @@ const yearlyDecorationProducts: Product[] = [
   ]
 },
 {
-  id: '04',
+  id: '4',
   ...yearlyDecorationDefaults,
   price: 150,
   originalPrice: 180,//120
@@ -332,7 +332,7 @@ const yearlyDecorationProducts: Product[] = [
   ]
 },
 {
-  id: '05',
+  id: '5',
   ...yearlyDecorationDefaults,
   price: 200,
   originalPrice: 240,//180
@@ -411,7 +411,7 @@ const yearlyDecorationProducts: Product[] = [
   ]
 }
 ,  {
-  id: '06',
+  id: '6',
   ...yearlyDecorationDefaults,
   price: 200,
   originalPrice: 220,//180
@@ -494,7 +494,7 @@ const yearlyDecorationProducts: Product[] = [
 }
 ,
 {
-  id: '07',
+  id: '7',
   ...yearlyDecorationDefaults,
   price: 180,
   originalPrice: 200,//160

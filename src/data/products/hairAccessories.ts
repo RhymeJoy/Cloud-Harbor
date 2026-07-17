@@ -15,7 +15,7 @@ const hairAccessoryDefaults = {
 
 export const hairAccessoryProducts: Product[] = [
   {
-    id: '01',
+    id: '1',
     ...hairAccessoryDefaults,
     price: 30,
     stock: 10,
@@ -77,7 +77,7 @@ export const hairAccessoryProducts: Product[] = [
     ]
   },
   {
-    id: '02',
+    id: '2',
     ...hairAccessoryDefaults,
     price: 40,
     stock: 10,

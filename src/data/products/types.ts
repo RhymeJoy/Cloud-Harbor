@@ -8,15 +8,19 @@ export type ProductCategory =
   | 'food'
   | 'plush'
   | 'badges'
+  | 'acrylic-stands'
+  | 'keychains'
+  | 'ring-holders'
+  | 'figures'
   | 'books'
   | 'hair-accessories'
   | 'puzzles'
   | 'bookmarks'
   | 'red-envelopes'
   | 'yearly-decorations';
-export type ProductCategoryCode = 'bp' | 'fd' | 'pl' | 'bd' | 'bk' | 'ha' | 'pz' | 'bm' | 're' | 'yd';
+export type ProductCategoryCode = 'bp' | 'fd' | 'pl' | 'bd' | 'ad' | 'kc' | 'rh' | 'fg' | 'bk' | 'ha' | 'pz' | 'bm' | 're' | 'yd';
 export type ProductRouteId = `${ProductCategoryCode}/${ProductId}`;
-export type ProductSort = 'default' | 'price-asc' | 'price-desc';
+export type ProductSort = 'default' | 'price-asc' | 'price-desc' | 'stock-desc' | 'stock-asc';
 
 export type ProductSpec = {
   label: LocalizedText;

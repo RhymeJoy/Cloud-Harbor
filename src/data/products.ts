@@ -72,6 +72,22 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
     'zh-TW': '小物',
     en: 'Small Goods'
   },
+  'acrylic-stands': {
+    'zh-TW': '小物',
+    en: 'Small Goods'
+  },
+  keychains: {
+    'zh-TW': '小物',
+    en: 'Small Goods'
+  },
+  'ring-holders': {
+    'zh-TW': '小物',
+    en: 'Small Goods'
+  },
+  figures: {
+    'zh-TW': '小物',
+    en: 'Small Goods'
+  },
   books: {
     'zh-TW': '書籍',
     en: 'Books'
@@ -103,6 +119,10 @@ export const productCategoryCodes: Record<ProductCategory, ProductCategoryCode> 
   food: 'fd',
   plush: 'pl',
   badges: 'bd',
+  'acrylic-stands': 'ad',
+  keychains: 'kc',
+  'ring-holders': 'rh',
+  figures: 'fg',
   books: 'bk',
   'hair-accessories': 'ha',
   puzzles: 'pz',

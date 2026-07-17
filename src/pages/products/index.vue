@@ -38,6 +38,8 @@ const pageCopy = computed(() => ({
   sortDefault: t('products.sortDefault'),
   sortPriceAsc: t('products.sortPriceAsc'),
   sortPriceDesc: t('products.sortPriceDesc'),
+  sortStockDesc: t('products.sortStockDesc'),
+  sortStockAsc: t('products.sortStockAsc'),
   clearFilters: t('products.clearFilters'),
   detailButton: t('products.detailButton'),
   emptyTitle: t('products.emptyTitle'),
@@ -57,7 +59,7 @@ const maxPrice = computed(() => Number.parseInt(maxPriceInput.value, 10));
 const hasMinPrice = computed(() => Number.isFinite(minPrice.value));
 const hasMaxPrice = computed(() => Number.isFinite(maxPrice.value));
 const categoryGroups: Partial<Record<ProductCategory, ProductCategory[]>> = {
-  badges: ['badges', 'hair-accessories']
+  badges: ['badges', 'acrylic-stands', 'keychains', 'ring-holders', 'figures', 'hair-accessories']
 };
 const groupedCategories = new Set(
   Object.values(categoryGroups).flatMap((categories) => categories.slice(1))
@@ -98,7 +100,9 @@ const categoryOptions = computed(() => {
 const sortOptions = computed(() => [
   { value: 'default' as const, label: pageCopy.value.sortDefault },
   { value: 'price-asc' as const, label: pageCopy.value.sortPriceAsc },
-  { value: 'price-desc' as const, label: pageCopy.value.sortPriceDesc }
+  { value: 'price-desc' as const, label: pageCopy.value.sortPriceDesc },
+  { value: 'stock-desc' as const, label: pageCopy.value.sortStockDesc },
+  { value: 'stock-asc' as const, label: pageCopy.value.sortStockAsc }
 ]);
 const filteredProducts = computed(() => {
   const filtered = products.filter((product) => {
@@ -133,15 +137,25 @@ const filteredProducts = computed(() => {
   });
 
   return [...filtered].sort((current, next) => {
+    const defaultOrder = products.indexOf(current) - products.indexOf(next);
+
     if (sortMode.value === 'price-asc') {
-      return current.price - next.price;
+      return current.price - next.price || defaultOrder;
     }
 
     if (sortMode.value === 'price-desc') {
-      return next.price - current.price;
+      return next.price - current.price || defaultOrder;
     }
 
-    return products.indexOf(current) - products.indexOf(next);
+    if (sortMode.value === 'stock-desc') {
+      return next.stock - current.stock || defaultOrder;
+    }
+
+    if (sortMode.value === 'stock-asc') {
+      return current.stock - next.stock || defaultOrder;
+    }
+
+    return defaultOrder;
   });
 });
 const resultText = computed(() => t('products.resultCount', { count: filteredProducts.value.length }));
