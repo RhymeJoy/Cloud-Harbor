@@ -130,6 +130,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-left: 12px;
   width: 30px;
   height: 30px;
   border-radius: 50%;

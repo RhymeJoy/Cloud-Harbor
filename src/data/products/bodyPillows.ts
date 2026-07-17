@@ -456,14 +456,14 @@ export const bodyPillows: Product[] = [
     price: 1600,
     stock: 0,
     stockText: {
-      'zh-TW': '現場或私訊訂購',
+      'zh-TW': '現場訂購或私訊訂購',
       en: 'Booth or DM order'
     },
     images: [
       publicAsset('products/BodyPillows/pillow.avif')
     ],
     location: {
-      'zh-TW': '現場或私訊訂購',
+      'zh-TW': '現場訂購或私訊訂購',
       en: 'Booth or DM order'
     },
     name: {
@@ -534,14 +534,14 @@ export const bodyPillows: Product[] = [
     price: 1400,
     stock: 0,
     stockText: {
-      'zh-TW': '現場或私訊訂購',
+      'zh-TW': '現場訂購或私訊訂購',
       en: 'Booth or DM order'
     },
     images: [
       publicAsset('products/BodyPillows/pillow.avif')
     ],
     location: {
-      'zh-TW': '現場或私訊訂購',
+      'zh-TW': '現場訂購或私訊訂購',
       en: 'Booth or DM order'
     },
     name: {

@@ -96,6 +96,10 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
     'zh-TW': '小物',
     en: 'Small Goods'
   },
+  stickers: {
+    'zh-TW': '小物',
+    en: 'Small Goods'
+  },
   rulers: {
     'zh-TW': '小物',
     en: 'Small Goods'
@@ -145,6 +149,7 @@ export const productCategoryCodes: Record<ProductCategory, ProductCategoryCode> 
   figures: 'fg',
   bandages: 'ba',
   'card-skins': 'cs',
+  stickers: 'st',
   rulers: 'rl',
   medals: 'md',
   postcards: 'pc',

@@ -161,7 +161,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     fileBases: ['20'],
     price: 60,
     originalPrice: 70,
-    stock: 2,
+    stock: 3,
     name: { 'zh-TW': '蘋果嘉兒平安喜樂紅包袋 (6入)', en: 'Applejack Peace and Joy Red Envelope (6-Pack)' },
     characters: { 'zh-TW': 'AJ', en: 'AJ' }
   },

@@ -137,5 +137,65 @@ export const hairAccessoryProducts: Product[] = [
         value: { 'zh-TW': '攤位販售', en: 'Available at the Booth' }
       }
     ]
+  },
+  {
+    id: '3',
+    ...hairAccessoryDefaults,
+    price: 20,
+    originalPrice: 25,
+    stock: 5,
+    stockText: {
+      'zh-TW': '5 個',
+      en: '5 available'
+    },
+    images: [publicAsset('products/HairAccessories/4.avif')],
+    name: {
+      'zh-TW': '彩虹小馬角色長髮夾（單個販售）',
+      en: 'My Little Pony Character Long Hair Clip (Single Item)'
+    },
+    tag: {
+      'zh-TW': '角色髮夾',
+      en: 'Character Hair Clip'
+    },
+    description: {
+      'zh-TW': '長版彩虹小馬角色髮夾，共有雲寶、碧琪、蘋果嘉兒、珍奇與暮光閃閃五款，每款各一個。',
+      en: 'Long My Little Pony character hair clips featuring Rainbow Dash, Pinkie Pie, Applejack, Rarity, or Twilight Sparkle, with one of each design available.'
+    },
+    details: {
+      'zh-TW': '白色長版髮夾搭配角色全身彩色圖案，每次購買為一個，可指定雲寶、碧琪、蘋果嘉兒、珍奇或暮光閃閃。每位角色庫存各一個，售完為止。',
+      en: 'A white elongated hair clip decorated with full-color character artwork. Each purchase includes one clip, with Rainbow Dash, Pinkie Pie, Applejack, Rarity, or Twilight Sparkle available. Stock is limited to one per character.'
+    },
+    badges: [
+      { 'zh-TW': '角色可選', en: 'Character Selectable' },
+      { 'zh-TW': '每款各一', en: 'One Per Design' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '角色包含雲寶、碧琪、蘋果嘉兒、珍奇與暮光閃閃。',
+        en: 'Characters include Rainbow Dash, Pinkie Pie, Applejack, Rarity, and Twilight Sparkle.'
+      },
+      {
+        'zh-TW': '每次購買內含一個長版髮夾。',
+        en: 'Each purchase includes one long hair clip.'
+      },
+      {
+        'zh-TW': '五位角色各一個，數量有限。',
+        en: 'One of each of the five character designs is available.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '長版髮夾', en: 'Long Hair Clip' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '攤位販售', en: 'Available at the Booth' }
+      }
+    ]
   }
 ];

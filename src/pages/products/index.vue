@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import ProductCard from '../../components/ProductCard.vue';
 import { routeHref } from '../../composables/useAppRoute';
 import { useProductFilters } from '../../composables/useProductFilters';
@@ -11,7 +11,8 @@ import {
   localizeProductText,
   productCategoryLabels,
   products,
-  type ProductCategory
+  type ProductCategory,
+  type ProductSort
 } from '../../data/products';
 
 const { locale, t } = useI18n();
@@ -67,6 +68,7 @@ const categoryGroups: Partial<Record<ProductCategory, ProductCategory[]>> = {
     'figures',
     'bandages',
     'card-skins',
+    'stickers',
     'rulers',
     'medals',
     'hair-accessories'
@@ -172,6 +174,52 @@ const filteredProducts = computed(() => {
 });
 const resultText = computed(() => t('products.resultCount', { count: filteredProducts.value.length }));
 const areMobileFiltersOpen = ref(false);
+const productFiltersElement = ref<HTMLElement | null>(null);
+const showMobileFilterFab = ref(false);
+let productFiltersObserver: IntersectionObserver | undefined;
+const handleOutsideFilterPress = (event: PointerEvent) => {
+  if (
+    areMobileFiltersOpen.value &&
+    window.matchMedia('(max-width: 900px)').matches &&
+    productFiltersElement.value &&
+    !productFiltersElement.value.contains(event.target as Node)
+  ) {
+    areMobileFiltersOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  productFiltersObserver = new IntersectionObserver(([entry]) => {
+    showMobileFilterFab.value = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+
+    if (showMobileFilterFab.value) {
+      areMobileFiltersOpen.value = false;
+    }
+  });
+
+  if (productFiltersElement.value) {
+    productFiltersObserver.observe(productFiltersElement.value);
+  }
+
+  document.addEventListener('pointerdown', handleOutsideFilterPress);
+});
+
+onBeforeUnmount(() => {
+  productFiltersObserver?.disconnect();
+  document.removeEventListener('pointerdown', handleOutsideFilterPress);
+});
+
+const openMobileFilters = async () => {
+  areMobileFiltersOpen.value = true;
+  await nextTick();
+  document.getElementById('product-filters')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+const selectCategory = (category: ProductCategory | 'all') => {
+  selectedCategory.value = category;
+};
+const selectSort = (sort: ProductSort) => {
+  sortMode.value = sort;
+};
 const hasActiveFilters = computed(
   () =>
     normalizedSearch.value.length > 0 ||
@@ -180,7 +228,9 @@ const hasActiveFilters = computed(
     minPriceInput.value.trim().length > 0 ||
     maxPriceInput.value.trim().length > 0
 );
-const clearFilters = clearProductFilters;
+const clearFilters = () => {
+  clearProductFilters();
+};
 
 useHead(() => {
   const title = `${pageCopy.value.title} | ${t('site.title')}`;
@@ -230,7 +280,12 @@ useHead(() => {
     </section>
 
     <div class="market-layout">
-      <aside class="market-sidebar" :aria-label="pageCopy.sidebarTitle">
+      <aside
+        id="product-filters"
+        ref="productFiltersElement"
+        class="market-sidebar"
+        :aria-label="pageCopy.sidebarTitle"
+      >
         <button
           class="filter-toggle"
           type="button"
@@ -247,7 +302,7 @@ useHead(() => {
           <div class="filter-panel-inner">
             <div class="sidebar-section">
               <div class="category-list" role="group" :aria-label="pageCopy.filterLabel">
-                <button type="button" :class="{ active: selectedCategory === 'all' }" @click="selectedCategory = 'all'">
+                <button type="button" :class="{ active: selectedCategory === 'all' }" @click="selectCategory('all')">
                   <span>{{ pageCopy.allCategories }}</span>
                   <span>{{ products.length }}</span>
                 </button>
@@ -256,7 +311,7 @@ useHead(() => {
                   :key="option.category"
                   type="button"
                   :class="{ active: isCategoryFilterActive(option.category) }"
-                  @click="selectedCategory = option.category"
+                  @click="selectCategory(option.category)"
                 >
                   <span>{{ option.label }}</span>
                   <span>{{ option.count }}</span>
@@ -272,7 +327,7 @@ useHead(() => {
                   :key="option.value"
                   type="button"
                   :class="{ active: sortMode === option.value }"
-                  @click="sortMode = option.value"
+                  @click="selectSort(option.value)"
                 >
                   {{ option.label }}
                 </button>
@@ -317,6 +372,17 @@ useHead(() => {
         </div>
       </section>
     </div>
+
+    <button
+      v-show="showMobileFilterFab"
+      class="mobile-filter-fab"
+      type="button"
+      aria-controls="product-filter-panel"
+      @click="openMobileFilters"
+    >
+      <span class="mobile-filter-fab-icon" aria-hidden="true"></span>
+      <span>{{ pageCopy.sidebarTitle }}</span>
+    </button>
   </main>
 </template>
 
@@ -513,6 +579,10 @@ h1 {
   display: none;
 }
 
+.mobile-filter-fab {
+  display: none;
+}
+
 .filter-panel-inner {
   display: grid;
   gap: 18px;
@@ -652,12 +722,27 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .market-layout {
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+  }
+
   .shop-intro {
     width: min(100%, 620px);
   }
 
-  .market-sidebar {
+  .market-sidebar,
+  .market-main {
     position: static;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .filter-toggle {
@@ -714,10 +799,48 @@ h1 {
 }
 
 @media (max-width: 640px) {
-  .shop-header,
-  .market-sidebar,
-  .market-main {
+  .shop-header {
     padding: 18px;
+  }
+
+  .mobile-filter-fab {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff7fd8, #7f6cff);
+    color: #ffffff;
+    box-shadow: 0 14px 34px rgba(2, 4, 14, 0.48);
+    font-weight: 900;
+  }
+
+  .mobile-filter-fab-icon {
+    position: relative;
+    width: 16px;
+    height: 14px;
+    border-top: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+  }
+
+  .mobile-filter-fab-icon::after {
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 10px;
+    border-top: 2px solid currentColor;
+    content: '';
+  }
+
+  .market-layout {
+    padding: 12px;
+    border-radius: 20px;
   }
 
   .shop-identity {

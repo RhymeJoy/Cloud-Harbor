@@ -96,8 +96,8 @@ const createColaCanProduct = (item: ColaCanItem): Product => {
       en: 'Available at the Booth'
     },
     name: {
-      'zh-TW': `${characterZh}  330ml 可口可樂`,
-      en: `${characterEn} 330ml Coca Cola`
+      'zh-TW': `${characterZh}  330ml 可口可樂 (單罐)`,
+      en: `${characterEn} 330ml Coca Cola (Single Can)`
     },
     tag: item.character,
     description: {

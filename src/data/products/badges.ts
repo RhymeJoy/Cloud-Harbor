@@ -4,6 +4,8 @@ import type { LocalizedText, Product } from './types';
 type IndividualBadgeItem = {
   id: string;
   imageCode: string;
+  price: number;
+  originalPrice: number;
   character: LocalizedText;
   title: LocalizedText;
 };
@@ -12,76 +14,114 @@ const individualBadgeItems: IndividualBadgeItem[] = [
   {
     id: '4',
     imageCode: '4',
+    price: 50,
+    originalPrice: 60,
     character: { 'zh-TW': '黑化碧琪', en: 'Dark Pinkie Pie' },
     title: { 'zh-TW': '黑化碧琪徽章', en: 'Dark Pinkie Pie Badge' }
   },
   {
     id: '5',
     imageCode: '5',
+    price: 60,
+    originalPrice: 70,
     character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' },
     title: { 'zh-TW': '碧琪亮片徽章', en: 'Pinkie Pie Glitter Badge' }
   },
   {
     id: '6',
     imageCode: '6',
+    price: 30,
+    originalPrice: 40,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' },
     title: { 'zh-TW': '柔柔花束徽章', en: 'Fluttershy Flower Badge' }
   },
   {
     id: '7',
     imageCode: '7',
+    price: 50,
+    originalPrice: 60,
     character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' },
     title: { 'zh-TW': '暮光閃閃文字徽章', en: 'Twilight Sparkle Text Badge' }
   },
   {
     id: '8',
     imageCode: '8',
+    price: 50,
+    originalPrice: 60,
     character: { 'zh-TW': 'Gummy', en: 'Gummy' },
     title: { 'zh-TW': 'Gummy 網路梗徽章', en: 'Gummy Internet Meme Badge' }
   },
   {
     id: '9',
     imageCode: '9',
+    price: 70,
+    originalPrice: 80,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' },
     title: { 'zh-TW': '柔柔毛絨徽章', en: 'Fluttershy Plush Badge' }
   },
   {
     id: '10',
     imageCode: '10',
+    price: 40,
+    originalPrice: 50,
     character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' },
     title: { 'zh-TW': '暮光閃閃聖誕徽章', en: 'Twilight Sparkle Holiday Badge' }
   },
   {
     id: '11',
     imageCode: '11',
+    price: 50,
+    originalPrice: 60,
     character: { 'zh-TW': '穗龍', en: 'Spike' },
     title: { 'zh-TW': '穗龍紳士徽章', en: 'Spike Gentleman Badge' }
   },
   {
     id: '12',
     imageCode: '12',
+    price: 70,
+    originalPrice: 80,
     character: { 'zh-TW': 'Pinkamena', en: 'Pinkamena Diane Pie' },
     title: { 'zh-TW': 'Pinkamena 黑底徽章', en: 'Pinkamena Dark Badge' }
   },
   {
     id: '13',
     imageCode: '13',
+    price: 30,
+    originalPrice: 40,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' },
     title: { 'zh-TW': '柔柔造型徽章', en: 'Fluttershy Shaped Badge' }
   },
   {
     id: '14',
     imageCode: '14',
+    price: 50,
+    originalPrice: 60,
     character: { 'zh-TW': 'DJ Pon-3', en: 'DJ Pon-3' },
     title: { 'zh-TW': 'DJ Pon-3 徽章', en: 'DJ Pon-3 Badge' }
+  },
+  {
+    id: '15',
+    imageCode: '15',
+    price: 90,
+    originalPrice: 100,
+    character: { 'zh-TW': '天星公主', en: 'Princess Skystar' },
+    title: { 'zh-TW': '天星公主海洋亮粉徽章', en: 'Princess Skystar Ocean Glitter Badge' }
+  },
+  {
+    id: '16',
+    imageCode: '16',
+    price: 90,
+    originalPrice: 100,
+    character: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' },
+    title: { 'zh-TW': '蘋果嘉兒亮粉徽章', en: 'Applejack Glitter Badge' }
   }
 ];
 
 const createIndividualBadgeProduct = (item: IndividualBadgeItem): Product => ({
   id: item.id,
   category: 'badges',
-  price: 30,
-  originalPrice: 50,
+  price: item.price,
+  originalPrice: item.originalPrice,
   stock: 1,
   stockText: {
     'zh-TW': '1 個',
@@ -287,6 +327,156 @@ export const badgeProducts: Product[] = [
       {
         label: { 'zh-TW': '角色', en: 'Character' },
         value: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '3',
+    category: 'badges',
+    price: 80,
+    originalPrice: 100,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/graffiti-badge.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '彩虹小馬塗鴉風格徽章',
+      en: 'My Little Pony Graffiti Style Badge'
+    },
+    tag: {
+      'zh-TW': '塗鴉風格徽章',
+      en: 'Graffiti Style Badge'
+    },
+    description: {
+      'zh-TW': '彩虹小馬塗鴉風格隨機徽章，內含角色隨機出貨、不可指定；包裝以活潑的碧琪與鮮明塗鴉配色呈現。',
+      en: 'A My Little Pony graffiti-style mystery badge with a random character that cannot be selected, presented in vivid Pinkie Pie themed packaging.'
+    },
+    details: {
+      'zh-TW': '正版彩虹小馬塗鴉風格徽章商品，內含角色採隨機方式，無法指定款式。外盒為碧琪主題插畫與粉紫、橘色塗鴉設計，包裝圖案不代表實際抽中角色。庫存僅 1 個。',
+      en: 'An officially licensed My Little Pony graffiti-style mystery badge. The included character is random and cannot be selected. Pinkie Pie appears on the pink, purple, and orange packaging but does not indicate the character inside. Only one is available.'
+    },
+    shipping: {
+      'zh-TW': '主要提供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '塗鴉風格', en: 'Graffiti Style' },
+      { 'zh-TW': '隨機角色', en: 'Random Character' },
+      { 'zh-TW': '僅 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '鮮明粉紫與橘色塗鴉風格包裝。',
+        en: 'Vivid pink, purple, and orange graffiti-style packaging.'
+      },
+      {
+        'zh-TW': '內含角色隨機，無法指定款式。',
+        en: 'The included character is random and cannot be selected.'
+      },
+      {
+        'zh-TW': '庫存僅 1 個。',
+        en: 'Only one is available for this item.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '徽章', en: 'Badge' }
+      },
+      {
+        label: { 'zh-TW': '系列', en: 'Series' },
+        value: { 'zh-TW': '塗鴉風格', en: 'Graffiti Style' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '隨機角色（不可指定）', en: 'Random character (cannot be selected)' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '1',
+    category: 'stickers',
+    price: 100,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/sticker-1.avif'),
+      publicAsset('products/Badges/sticker-2.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '彩虹小馬卷卷貼',
+      en: 'My Little Pony Sticker Roll'
+    },
+    tag: {
+      'zh-TW': '角色貼紙',
+      en: 'Character Stickers'
+    },
+    description: {
+      'zh-TW': '彩虹小馬角色卷卷貼，收錄多款角色與動畫場景圖案，適合手帳、卡片與日常裝飾。',
+      en: 'A My Little Pony sticker roll featuring assorted characters and animated scenes for journals, cards, and everyday decorating.'
+    },
+    details: {
+      'zh-TW': '紫色蝴蝶結造型盒裝卷卷貼，包裝主視覺包含暮光閃閃、柔柔與碧琪，側面可看到多款小馬角色及場景貼紙樣式。庫存僅 1 個，商品內容與狀態以現場實品為準。',
+      en: 'A sticker roll in a purple bow-shaped package featuring Twilight Sparkle, Fluttershy, and Pinkie Pie on the front, with assorted pony character and scene designs shown on the side. Only one is available; contents and condition are as shown at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要提供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '卷卷貼', en: 'Sticker Roll' },
+      { 'zh-TW': '多角色圖案', en: 'Assorted Characters' },
+      { 'zh-TW': '僅 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '收錄多款彩虹小馬角色與動畫場景圖案。',
+        en: 'Includes assorted My Little Pony character and animated scene designs.'
+      },
+      {
+        'zh-TW': '蝴蝶結造型盒裝，適合收藏或送禮。',
+        en: 'Presented in a bow-shaped package suitable for collecting or gifting.'
+      },
+      {
+        'zh-TW': '庫存僅 1 個。',
+        en: 'Only one is available for this item.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '卷裝貼紙', en: 'Sticker Roll' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '六主角', en: 'Mane 6' }
       },
       {
         label: { 'zh-TW': '販售方式', en: 'Sales' },
