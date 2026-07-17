@@ -8,11 +8,11 @@ type CharacterBookmarkItem = {
 };
 
 const characterBookmarkItems: CharacterBookmarkItem[] = [
-  { id: '01', imageCode: 'ts', character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' } },
-  { id: '02', imageCode: 'rr', character: { 'zh-TW': '珍奇', en: 'Rarity' } },
-  { id: '03', imageCode: 'rd', character: { 'zh-TW': '雲寶', en: 'Rainbow Dash' } },
-  { id: '04', imageCode: 'pp', character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' } },
-  { id: '05', imageCode: 'aj', character: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' } }
+  { id: '1', imageCode: 'ts', character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' } },
+  { id: '2', imageCode: 'rr', character: { 'zh-TW': '珍奇', en: 'Rarity' } },
+  { id: '3', imageCode: 'rd', character: { 'zh-TW': '雲寶', en: 'Rainbow Dash' } },
+  { id: '4', imageCode: 'pp', character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' } },
+  { id: '5', imageCode: 'aj', character: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' } }
 ];
 
 const createCharacterBookmarkProduct = (item: CharacterBookmarkItem): Product => ({
@@ -86,7 +86,7 @@ const createCharacterBookmarkProduct = (item: CharacterBookmarkItem): Product =>
 });
 
 const soulBeatLaserTicketCards: Product = {
-  id: '06',
+  id: '6',
   category: 'bookmarks',
   price: 100,
   originalPrice: 120,

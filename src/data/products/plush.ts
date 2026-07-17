@@ -12,7 +12,7 @@ type LyingPlushItem = {
 
 const lyingPlushItems: LyingPlushItem[] = [
   {
-    id: '01',
+    id: '1',
     imageCode: 'TS',
     price: 800,
     originalPrice: 900,
@@ -20,7 +20,7 @@ const lyingPlushItems: LyingPlushItem[] = [
     character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
   },
   {
-    id: '02',
+    id: '2',
     imageCode: 'RD',
     price: 800,
     originalPrice: 900,
@@ -28,7 +28,7 @@ const lyingPlushItems: LyingPlushItem[] = [
     character: { 'zh-TW': '雲寶', en: 'Rainbow Dash' }
   },
   {
-    id: '03',
+    id: '3',
     imageCode: 'RR',
     price: 800,
     originalPrice: 900,
@@ -36,7 +36,7 @@ const lyingPlushItems: LyingPlushItem[] = [
     character: { 'zh-TW': '珍奇', en: 'Rarity' }
   },
   {
-    id: '04',
+    id: '4',
     imageCode: 'AJ',
     price: 800,
     originalPrice: 900,
@@ -44,7 +44,7 @@ const lyingPlushItems: LyingPlushItem[] = [
     character: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' }
   },
   {
-    id: '05',
+    id: '5',
     imageCode: 'FS',
     price: 800,
     originalPrice: 900,
@@ -52,7 +52,7 @@ const lyingPlushItems: LyingPlushItem[] = [
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
   },
   {
-    id: '06',
+    id: '6',
     imageCode: 'PP',
     price: 800,
     originalPrice: 900,
@@ -146,7 +146,7 @@ const createLyingPlushProduct = (item: LyingPlushItem): Product => {
 };
 
 const pinkiePieShoulderBag: Product = {
-  id: '07',
+  id: '7',
   category: 'plush',
   price: 700,
   originalPrice: 850,
@@ -220,7 +220,7 @@ const pinkiePieShoulderBag: Product = {
 
 const standingPlushItems: LyingPlushItem[] = [
   {
-    id: '08',
+    id: '8',
     imageCode: 'TS',
     price: 800,
     originalPrice: 900,
@@ -228,7 +228,7 @@ const standingPlushItems: LyingPlushItem[] = [
     character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
   },
   {
-    id: '09',
+    id: '9',
     imageCode: 'FS',
     price: 800,
     originalPrice: 900,

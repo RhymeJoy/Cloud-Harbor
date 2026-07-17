@@ -46,6 +46,8 @@
     "sortDefault": "綜合",
     "sortPriceAsc": "價格低到高",
     "sortPriceDesc": "價格高到低",
+    "sortStockDesc": "庫存多到少",
+    "sortStockAsc": "庫存少到多",
     "resultCount": "顯示 {count} 件商品",
     "clearFilters": "清除條件",
     "detailButton": "查看詳情",

@@ -166,7 +166,7 @@ const existingBookProducts: Product[] = [
     },
     name: {
       'zh-TW': '彩虹小馬絕密圖鑑：珍藏故事集',
-      en: 'My Little Pony Secret Guide: Collector’s Storybook'
+      en: "My Little Pony Secret Guide: Collector's Storybook"
     },
     tag: {
       'zh-TW': '故事集',
@@ -178,14 +178,14 @@ const existingBookProducts: Product[] = [
     },
     details: {
       'zh-TW': '《彩虹小馬絕密圖鑑：珍藏故事集》以 Twilight Sparkle、Rainbow Dash、Pinkie Pie 與 Fluttershy 等角色為主題，收錄小馬谷中的冒險故事與全彩插圖。華麗的封面設計與豐富的故事內容，適合喜愛角色故事、插畫與紙本收藏的粉絲。',
-      en: 'My Little Pony Secret Guide: Collector’s Storybook features characters including Twilight Sparkle, Rainbow Dash, Pinkie Pie, and Fluttershy. It brings together illustrated adventures from Equestria in a decorative collectible edition for fans of character stories, artwork, and printed books.'
+      en: "My Little Pony Secret Guide: Collector's Storybook features characters including Twilight Sparkle, Rainbow Dash, Pinkie Pie, and Fluttershy. It brings together illustrated adventures from Equestria in a decorative collectible edition for fans of character stories, artwork, and printed books."
     },
     shipping: {
       'zh-TW': '以現場販售與取貨為主，書籍數量有限，售完為止。',
       en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
     },
     badges: [
-      { 'zh-TW': '珍藏故事', en: 'Collector’s Stories' },
+      { 'zh-TW': '珍藏故事', en: "Collector's Stories" },
       { 'zh-TW': '全彩插圖', en: 'Full-Color Art' },
       { 'zh-TW': '原價 NT$900', en: 'Original NT$900' }
     ],
@@ -206,7 +206,7 @@ const existingBookProducts: Product[] = [
     specs: [
       {
         label: { 'zh-TW': '類別', en: 'Category' },
-        value: { 'zh-TW': '珍藏故事集', en: 'Collector’s Storybook' }
+        value: { 'zh-TW': '珍藏故事集', en: "Collector's Storybook" }
       },
       {
         label: { 'zh-TW': '形式', en: 'Format' },
@@ -240,7 +240,7 @@ const existingBookProducts: Product[] = [
     },
     name: {
       'zh-TW': '彩虹小馬珍藏畫冊',
-      en: 'My Little Pony Collector’s Art Book'
+      en: "My Little Pony Collector's Art Book"
     },
     tag: {
       'zh-TW': '官方畫冊',
@@ -248,11 +248,11 @@ const existingBookProducts: Product[] = [
     },
     description: {
       'zh-TW': '以《友情就是魔法》的經典角色與動畫畫面為主題，收錄豐富圖像與紀念內容。',
-      en: 'An official collector’s art book featuring classic characters and memorable scenes from Friendship Is Magic.'
+      en: "An official collector's art book featuring classic characters and memorable scenes from Friendship Is Magic."
     },
     details: {
       'zh-TW': '《彩虹小馬珍藏畫冊》以《友情就是魔法》系列為主題，集結六位主角、穗龍與動畫中的經典畫面。內容以角色插圖與動畫美術為主，適合喜愛系列視覺設計、經典場景與紙本收藏的粉絲。',
-      en: 'This collector’s art book celebrates My Little Pony: Friendship Is Magic with the Mane 6, Spike, and memorable scenes from the animated series. Its character illustrations and animation artwork make it suitable for fans of the show’s visual design, classic moments, and printed collectibles.'
+      en: "This collector's art book celebrates My Little Pony: Friendship Is Magic with the Mane 6, Spike, and memorable scenes from the animated series. Its character illustrations and animation artwork make it suitable for fans of the show's visual design, classic moments, and printed collectibles."
     },
     shipping: {
       'zh-TW': '以現場販售與取貨為主，書籍數量有限，售完為止。',
@@ -287,7 +287,7 @@ const existingBookProducts: Product[] = [
         label: { 'zh-TW': '類別', en: 'Category' },
         value: {
           'zh-TW': '官方珍藏畫冊',
-          en: 'Official Collector’s Art Book'
+          en: "Official Collector's Art Book"
         }
       },
       {

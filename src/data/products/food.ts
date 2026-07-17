@@ -17,37 +17,37 @@ type GummySurpriseEggItem = {
 
 const colaCanItems: ColaCanItem[] = [
   {
-    id: '01',
+    id: '1',
     imageCode: 'TS',
     stock: 6,
     character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
   },
   {
-    id: '02',
+    id: '2',
     imageCode: 'RD',
     stock: 6,
     character: { 'zh-TW': '雲寶', en: 'Rainbow Dash' }
   },
   {
-    id: '03',
+    id: '3',
     imageCode: 'RR',
     stock: 6,
     character: { 'zh-TW': '珍奇', en: 'Rarity' }
   },
   {
-    id: '04',
+    id: '4',
     imageCode: 'AJ',
     stock: 6,
     character: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' }
   },
   {
-    id: '05',
+    id: '5',
     imageCode: 'FS',
     stock: 6,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
   },
   {
-    id: '06',
+    id: '6',
     imageCode: 'PP',
     stock: 6,
     character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
@@ -56,19 +56,19 @@ const colaCanItems: ColaCanItem[] = [
 
 const gummySurpriseEggItems: GummySurpriseEggItem[] = [
   {
-    id: '07',
+    id: '7',
     imageCode: 'fs',
     stock: 6,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
   },
   {
-    id: '08',
+    id: '8',
     imageCode: 'rd',
     stock: 6,
     character: { 'zh-TW': '雲寶', en: 'Rainbow Dash' }
   },
   {
-    id: '09',
+    id: '9',
     imageCode: 'rr',
     stock: 6,
     character: { 'zh-TW': '珍奇', en: 'Rarity' }

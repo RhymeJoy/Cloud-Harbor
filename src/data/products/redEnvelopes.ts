@@ -13,7 +13,7 @@ type RedEnvelopeItem = {
 
 const redEnvelopeItems: RedEnvelopeItem[] = [
   {
-    id: '01',
+    id: '1',
     fileBases: ['1'],
     price: 50,
     originalPrice: 60,
@@ -22,7 +22,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'TS、RR', en: 'TS, RR' }
   },
   {
-    id: '02',
+    id: '2',
     fileBases: ['2'],
     price: 70,
     originalPrice: 90,
@@ -31,7 +31,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'RD、RR', en: 'RD, RR' }
   },
   {
-    id: '03',
+    id: '3',
     fileBases: ['3'],
     price: 100,
     originalPrice: 120,
@@ -40,7 +40,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'AJ、FS', en: 'AJ, FS' }
   },
   {
-    id: '04',
+    id: '4',
     fileBases: ['4'],
     price: 120,
     originalPrice: 140,
@@ -49,7 +49,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'PP', en: 'PP' }
   },
   {
-    id: '05',
+    id: '5',
     fileBases: ['5'],
     price: 100,
     originalPrice: 120,
@@ -58,7 +58,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'MANE6', en: 'MANE6' }
   },
   {
-    id: '06',
+    id: '6',
     fileBases: ['6'],
     price: 100,
     originalPrice: 120,
@@ -67,7 +67,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'MANE6', en: 'MANE6' }
   },
   {
-    id: '07',
+    id: '7',
     fileBases: ['7'],
     price: 70,
     originalPrice: 80,
@@ -76,7 +76,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'PP', en: 'PP' }
   },
   {
-    id: '08',
+    id: '8',
     fileBases: ['8'],
     price: 80,
     originalPrice: 90,
@@ -85,7 +85,7 @@ const redEnvelopeItems: RedEnvelopeItem[] = [
     characters: { 'zh-TW': 'MANE6', en: 'MANE6' }
   },
   {
-    id: '09',
+    id: '9',
     fileBases: ['9', '10'],
     price: 120,
     originalPrice: 140,

@@ -46,6 +46,8 @@
     "sortDefault": "Relevant",
     "sortPriceAsc": "Price: low to high",
     "sortPriceDesc": "Price: high to low",
+    "sortStockDesc": "Stock: high to low",
+    "sortStockAsc": "Stock: low to high",
     "resultCount": "Showing {count} products",
     "clearFilters": "Clear",
     "detailButton": "View Details",

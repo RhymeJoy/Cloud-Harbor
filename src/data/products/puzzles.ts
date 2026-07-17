@@ -10,12 +10,12 @@ type MicroBlockCharacter = {
 };
 
 const characters: MicroBlockCharacter[] = [
-  { id: '01', imageCode: 'aj', name: '蘋果嘉兒', nameEn: 'Applejack', pieceCount: 233 },
-  { id: '02', imageCode: 'fs', name: '柔柔', nameEn: 'Fluttershy', pieceCount: 214 },
-  { id: '03', imageCode: 'pp', name: '碧琪', nameEn: 'Pinkie Pie', pieceCount: 207 },
-  { id: '04', imageCode: 'rd', name: '雲寶', nameEn: 'Rainbow Dash', pieceCount: 209 },
-  { id: '05', imageCode: 'rr', name: '珍奇', nameEn: 'Rarity', pieceCount: 219 },
-  { id: '06', imageCode: 'ts', name: '紫悅', nameEn: 'Twilight Sparkle', pieceCount: 200 }
+  { id: '1', imageCode: 'aj', name: '蘋果嘉兒', nameEn: 'Applejack', pieceCount: 233 },
+  { id: '2', imageCode: 'fs', name: '柔柔', nameEn: 'Fluttershy', pieceCount: 214 },
+  { id: '3', imageCode: 'pp', name: '碧琪', nameEn: 'Pinkie Pie', pieceCount: 207 },
+  { id: '4', imageCode: 'rd', name: '雲寶', nameEn: 'Rainbow Dash', pieceCount: 209 },
+  { id: '5', imageCode: 'rr', name: '珍奇', nameEn: 'Rarity', pieceCount: 219 },
+  { id: '6', imageCode: 'ts', name: '紫悅', nameEn: 'Twilight Sparkle', pieceCount: 200 }
 ];
 
 const createMicroBlockProduct = ({

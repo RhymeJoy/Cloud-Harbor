@@ -9,7 +9,7 @@ const bodyPillowDefaults = {
 export const bodyPillows: Product[] = [
   //twilight
   // {
-  //   id: '01',
+  //   id: '1',
   //   ...bodyPillowDefaults,
   //   price: 2000,
   //   originalPrice: 2400,
@@ -83,7 +83,7 @@ export const bodyPillows: Product[] = [
   // },
   //fluttershy
   {
-    id: '02',
+    id: '2',
     ...bodyPillowDefaults,
     price: 2000,
     originalPrice: 2400,
@@ -157,7 +157,7 @@ export const bodyPillows: Product[] = [
   },
   //rainbow
   {
-    id: '03',
+    id: '3',
     ...bodyPillowDefaults,
     price: 2000,
     originalPrice: 2400,
@@ -230,7 +230,7 @@ export const bodyPillows: Product[] = [
     ]
   },
   {//pinkie
-    id: '04',
+    id: '4',
     ...bodyPillowDefaults,
     price: 2000,
     originalPrice: 2400,
@@ -303,7 +303,7 @@ export const bodyPillows: Product[] = [
     ]
   }
   // {//applejack pillow
-    // id: '05',
+    // id: '5',
     // category: 'merch',
     // price: 2000,
     // originalPrice: 2400,
@@ -377,7 +377,7 @@ export const bodyPillows: Product[] = [
   //   ]
   // },
    // {//rarity pillow
-    // id: '06',
+    // id: '6',
     // category: 'merch',
     // price: 2000,
     // originalPrice: 2400,
