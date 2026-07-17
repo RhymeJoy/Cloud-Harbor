@@ -56,13 +56,41 @@ const minPrice = computed(() => Number.parseInt(minPriceInput.value, 10));
 const maxPrice = computed(() => Number.parseInt(maxPriceInput.value, 10));
 const hasMinPrice = computed(() => Number.isFinite(minPrice.value));
 const hasMaxPrice = computed(() => Number.isFinite(maxPrice.value));
+const categoryGroups: Partial<Record<ProductCategory, ProductCategory[]>> = {
+  badges: ['badges', 'hair-accessories']
+};
+const groupedCategories = new Set(
+  Object.values(categoryGroups).flatMap((categories) => categories.slice(1))
+);
+const getCategoryFilterKey = (category: ProductCategory) => {
+  for (const [groupCategory, categories] of Object.entries(categoryGroups) as Array<
+    [ProductCategory, ProductCategory[]]
+  >) {
+    if (categories.includes(category)) {
+      return groupCategory;
+    }
+  }
+
+  return category;
+};
+const getCategoryFilterCategories = (category: ProductCategory) => {
+  const categoryKey = getCategoryFilterKey(category);
+
+  return categoryGroups[categoryKey] ?? [categoryKey];
+};
+const isCategoryFilterActive = (category: ProductCategory) =>
+  selectedCategory.value !== 'all' && getCategoryFilterKey(selectedCategory.value) === category;
 const categoryOptions = computed(() => {
-  const categories = Object.keys(productCategoryLabels) as ProductCategory[];
+  const categories = (Object.keys(productCategoryLabels) as ProductCategory[]).filter(
+    (category) => !groupedCategories.has(category)
+  );
 
   return categories.map((category) => {
+    const matchingCategories = getCategoryFilterCategories(category);
+
     return {
       category,
-      count: products.filter((product) => product.category === category).length,
+      count: products.filter((product) => matchingCategories.includes(product.category)).length,
       label: localizeProductText(productCategoryLabels[category], locale.value)
     };
   });
@@ -74,7 +102,11 @@ const sortOptions = computed(() => [
 ]);
 const filteredProducts = computed(() => {
   const filtered = products.filter((product) => {
-    const matchesCategory = selectedCategory.value === 'all' || product.category === selectedCategory.value;
+    const selectedCategories =
+      selectedCategory.value === 'all'
+        ? null
+        : getCategoryFilterCategories(selectedCategory.value);
+    const matchesCategory = !selectedCategories || selectedCategories.includes(product.category);
     const matchesMinPrice = !hasMinPrice.value || product.price >= minPrice.value;
     const matchesMaxPrice = !hasMaxPrice.value || product.price <= maxPrice.value;
     const searchableText = [
@@ -197,11 +229,26 @@ useHead(() => {
                   v-for="option in categoryOptions"
                   :key="option.category"
                   type="button"
-                  :class="{ active: selectedCategory === option.category }"
+                  :class="{ active: isCategoryFilterActive(option.category) }"
                   @click="selectedCategory = option.category"
                 >
                   <span>{{ option.label }}</span>
                   <span>{{ option.count }}</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <h3>{{ pageCopy.sortLabel }}</h3>
+              <div class="sort-tabs" role="group" :aria-label="pageCopy.sortLabel">
+                <button
+                  v-for="option in sortOptions"
+                  :key="option.value"
+                  type="button"
+                  :class="{ active: sortMode === option.value }"
+                  @click="sortMode = option.value"
+                >
+                  {{ option.label }}
                 </button>
               </div>
             </div>
@@ -231,17 +278,6 @@ useHead(() => {
           </label>
           <div class="toolbar-status">
             <p>{{ resultText }}</p>
-          </div>
-          <div class="sort-tabs" role="group" :aria-label="pageCopy.sortLabel">
-            <button
-              v-for="option in sortOptions"
-              :key="option.value"
-              type="button"
-              :class="{ active: sortMode === option.value }"
-              @click="sortMode = option.value"
-            >
-              {{ option.label }}
-            </button>
           </div>
         </div>
 
@@ -541,14 +577,12 @@ h1 {
 }
 
 .sort-tabs {
-  display: flex;
-  flex: 0 0 auto;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 8px;
+  display: grid;
+  gap: 6px;
 }
 
 .sort-tabs button {
+  width: 100%;
   min-height: 36px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;

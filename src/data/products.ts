@@ -69,16 +69,16 @@ export const productCategoryLabels: Record<ProductCategory, LocalizedText> = {
     en: 'Plush'
   },
   badges: {
-    'zh-TW': '徽章',
-    en: 'Badges'
+    'zh-TW': '小物',
+    en: 'Small Goods'
   },
   books: {
     'zh-TW': '書籍',
     en: 'Books'
   },
   'hair-accessories': {
-    'zh-TW': '髮飾',
-    en: 'Hair Accessories'
+    'zh-TW': '小物',
+    en: 'Small Goods'
   },
   puzzles: {
     'zh-TW': '拼圖',

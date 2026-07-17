@@ -64,7 +64,7 @@ export const hairAccessoryProducts: Product[] = [
     specs: [
       {
         label: { 'zh-TW': '分類', en: 'Category' },
-        value: { 'zh-TW': '髮飾', en: 'Hair Accessory' }
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
       },
       {
         label: { 'zh-TW': '形式', en: 'Format' },
@@ -126,7 +126,7 @@ export const hairAccessoryProducts: Product[] = [
     specs: [
       {
         label: { 'zh-TW': '分類', en: 'Category' },
-        value: { 'zh-TW': '髮飾', en: 'Hair Accessory' }
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
       },
       {
         label: { 'zh-TW': '形式', en: 'Format' },

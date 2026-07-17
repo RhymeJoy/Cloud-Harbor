@@ -62,7 +62,7 @@ export const badgeProducts: Product[] = [
     specs: [
       {
         label: { 'zh-TW': '分類', en: 'Category' },
-        value: { 'zh-TW': '徽章', en: 'Badge' }
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
       },
       {
         label: { 'zh-TW': '款式', en: 'Design' },
