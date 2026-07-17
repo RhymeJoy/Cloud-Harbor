@@ -28,8 +28,8 @@ export const hairAccessoryProducts: Product[] = [
       publicAsset('products/HairAccessories/3.avif')
     ],
     name: {
-      'zh-TW': '彩虹小馬角色髮夾',
-      en: 'My Little Pony Character Hair Clip'
+      'zh-TW': '彩虹小馬角色髮夾（單個販售）',
+      en: 'My Little Pony Character Hair Clip (Single Item)'
     },
     tag: {
       'zh-TW': '角色髮夾',
@@ -90,8 +90,8 @@ export const hairAccessoryProducts: Product[] = [
       publicAsset('products/HairAccessories/3.avif')
     ],
     name: {
-      'zh-TW': '彩虹小馬愛心角色髮圈',
-      en: 'My Little Pony Heart Character Hair Tie'
+      'zh-TW': '彩虹小馬愛心角色髮圈（單個販售）',
+      en: 'My Little Pony Heart Character Hair Tie (Single Item)'
     },
     tag: {
       'zh-TW': '角色髮圈',

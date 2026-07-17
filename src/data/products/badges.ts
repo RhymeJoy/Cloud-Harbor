@@ -1,5 +1,151 @@
 import { publicAsset } from '../../composables/usePublicAssets';
-import type { Product } from './types';
+import type { LocalizedText, Product } from './types';
+
+type IndividualBadgeItem = {
+  id: string;
+  imageCode: string;
+  character: LocalizedText;
+  title: LocalizedText;
+};
+
+const individualBadgeItems: IndividualBadgeItem[] = [
+  {
+    id: '4',
+    imageCode: '4',
+    character: { 'zh-TW': '黑化碧琪', en: 'Dark Pinkie Pie' },
+    title: { 'zh-TW': '黑化碧琪徽章', en: 'Dark Pinkie Pie Badge' }
+  },
+  {
+    id: '5',
+    imageCode: '5',
+    character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' },
+    title: { 'zh-TW': '碧琪亮片徽章', en: 'Pinkie Pie Glitter Badge' }
+  },
+  {
+    id: '6',
+    imageCode: '6',
+    character: { 'zh-TW': '柔柔', en: 'Fluttershy' },
+    title: { 'zh-TW': '柔柔花束徽章', en: 'Fluttershy Flower Badge' }
+  },
+  {
+    id: '7',
+    imageCode: '7',
+    character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' },
+    title: { 'zh-TW': '暮光閃閃文字徽章', en: 'Twilight Sparkle Text Badge' }
+  },
+  {
+    id: '8',
+    imageCode: '8',
+    character: { 'zh-TW': 'Gummy', en: 'Gummy' },
+    title: { 'zh-TW': 'Gummy 網路梗徽章', en: 'Gummy Internet Meme Badge' }
+  },
+  {
+    id: '9',
+    imageCode: '9',
+    character: { 'zh-TW': '柔柔', en: 'Fluttershy' },
+    title: { 'zh-TW': '柔柔毛絨徽章', en: 'Fluttershy Plush Badge' }
+  },
+  {
+    id: '10',
+    imageCode: '10',
+    character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' },
+    title: { 'zh-TW': '暮光閃閃聖誕徽章', en: 'Twilight Sparkle Holiday Badge' }
+  },
+  {
+    id: '11',
+    imageCode: '11',
+    character: { 'zh-TW': '穗龍', en: 'Spike' },
+    title: { 'zh-TW': '穗龍紳士徽章', en: 'Spike Gentleman Badge' }
+  },
+  {
+    id: '12',
+    imageCode: '12',
+    character: { 'zh-TW': 'Pinkamena', en: 'Pinkamena Diane Pie' },
+    title: { 'zh-TW': 'Pinkamena 黑底徽章', en: 'Pinkamena Dark Badge' }
+  },
+  {
+    id: '13',
+    imageCode: '13',
+    character: { 'zh-TW': '柔柔', en: 'Fluttershy' },
+    title: { 'zh-TW': '柔柔造型徽章', en: 'Fluttershy Shaped Badge' }
+  },
+  {
+    id: '14',
+    imageCode: '14',
+    character: { 'zh-TW': 'DJ Pon-3', en: 'DJ Pon-3' },
+    title: { 'zh-TW': 'DJ Pon-3 徽章', en: 'DJ Pon-3 Badge' }
+  }
+];
+
+const createIndividualBadgeProduct = (item: IndividualBadgeItem): Product => ({
+  id: item.id,
+  category: 'badges',
+  price: 30,
+  originalPrice: 50,
+  stock: 1,
+  stockText: {
+    'zh-TW': '1 個',
+    en: '1 available'
+  },
+  images: [
+    publicAsset(`products/Badges/${item.imageCode}.avif`)
+  ],
+  location: {
+    'zh-TW': '現場販售',
+    en: 'Available at the Booth'
+  },
+  name: item.title,
+  tag: item.character,
+  description: {
+    'zh-TW': `${item.title['zh-TW']}，背面有別針，單款庫存僅 1 個，適合角色收藏或別在包包、布面配件、展示板使用。`,
+    en: `${item.title.en} with a pin back. Only one is available, suitable for character collecting, bags, fabric accessories, or display boards.`
+  },
+  details: {
+    'zh-TW': `${item.title['zh-TW']}，角色為 ${item.character['zh-TW']}，背面搭配別針。單款庫存僅 1 個，實際狀態以現場為準。`,
+    en: `${item.title.en} featuring ${item.character.en}, with a pin back. Only one is available, with final condition confirmed at the booth.`
+  },
+  shipping: {
+    'zh-TW': '主要提供現場購買與取貨，數量有限，售完為止。',
+    en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+  },
+  badges: [
+    item.character,
+    { 'zh-TW': '背面別針', en: 'Pin Back' },
+    { 'zh-TW': '僅 1 個', en: 'Only 1 Available' }
+  ],
+  highlights: [
+    {
+      'zh-TW': `${item.character['zh-TW']}角色徽章。`,
+      en: `Character badge featuring ${item.character.en}.`
+    },
+    {
+      'zh-TW': '單款庫存僅 1 個。',
+      en: 'Only one is available for this design.'
+    },
+    {
+      'zh-TW': '背面有別針，可別在包包、布面配件或展示板上。',
+      en: 'Pin back can attach to bags, fabric accessories, or display boards.'
+    }
+  ],
+  specs: [
+    {
+      label: { 'zh-TW': '類別', en: 'Category' },
+      value: { 'zh-TW': '小物', en: 'Small Goods' }
+    },
+    {
+      label: { 'zh-TW': '形式', en: 'Format' },
+      value: { 'zh-TW': '徽章（背面別針）', en: 'Pin-Back Badge' }
+    },
+    {
+      label: { 'zh-TW': '角色', en: 'Character' },
+      value: item.character
+    },
+    {
+      label: { 'zh-TW': '販售方式', en: 'Sales' },
+      value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+    }
+  ]
+});
 
 export const badgeProducts: Product[] = [
   {
@@ -74,6 +220,81 @@ export const badgeProducts: Product[] = [
       }
     ]
   },
+  {
+    id: '2',
+    category: 'badges',
+    price: 50,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/pp-toy.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '碧琪夾娃娃機造型壓克力',
+      en: 'Pinkie Pie Claw Machine Acrylic'
+    },
+    tag: {
+      'zh-TW': '造型壓克力',
+      en: 'Acrylic'
+    },
+    description: {
+      'zh-TW': '碧琪主題的夾娃娃機造型壓克力，內有小配件圖案，適合桌面展示或收藏。',
+      en: 'A Pinkie Pie claw machine themed acrylic item with small charm artwork inside, suitable for desk display or collecting.'
+    },
+    details: {
+      'zh-TW': '外觀為夾娃娃機造型的碧琪壓克力。庫存僅 1 個，實際狀態以現場為準。',
+      en: 'A Pinkie Pie acrylic item shaped like a claw machine. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要提供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '夾娃娃機造型', en: 'Claw Machine Design' },
+      { 'zh-TW': '碧琪', en: 'Pinkie Pie' },
+      { 'zh-TW': '僅 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '碧琪主題夾娃娃機造型。',
+        en: 'Pinkie Pie themed claw machine design.'
+      },
+      {
+        'zh-TW': '造型壓克力，適合桌面展示或收藏。',
+        en: 'Acrylic item for desk display or collecting.'
+      },
+      {
+        'zh-TW': '庫存僅 1 個。',
+        en: 'Only one is available for this item.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '造型壓克力', en: 'Acrylic' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  ...individualBadgeItems.map(createIndividualBadgeProduct),
   {
     id: '1',
     category: 'acrylic-stands',
@@ -858,6 +1079,454 @@ export const badgeProducts: Product[] = [
       {
         label: { 'zh-TW': '角色', en: 'Character' },
         value: { 'zh-TW': '雲寶', en: 'Rainbow Dash' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '1',
+    category: 'bandages',
+    price: 30,
+    originalPrice: 40,
+    stock: 6,
+    stockText: {
+      'zh-TW': '6 個',
+      en: '6 available'
+    },
+    images: [
+      publicAsset('products/Badges/Band-Aid.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '六主角 OK 繃（單個販售）',
+      en: 'Mane 6 Bandage (Single Item)'
+    },
+    tag: {
+      'zh-TW': 'OK 繃',
+      en: 'Bandage'
+    },
+    description: {
+      'zh-TW': '六主角主題 OK 繃，單個售價 30 元，適合日常備用或作為小馬收藏小物。',
+      en: 'A Mane 6 themed bandage sold individually for NT$30, suitable for everyday use or pony collecting.'
+    },
+    details: {
+      'zh-TW': '六主角主題 OK 繃為單個販售，30 元是單一個的價格，不是全部 6 個的價格。庫存 6 個，實際狀態以現場為準。',
+      en: 'Mane 6 themed bandages are sold individually. NT$30 is the price for one item, not the full set of six. Six are available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': 'OK 繃', en: 'Bandage' },
+      { 'zh-TW': '六主角', en: 'Mane 6' },
+      { 'zh-TW': '單個 30 元', en: 'NT$30 Each' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '六主角主題 OK 繃，單個販售。',
+        en: 'Mane 6 themed bandages, sold individually.'
+      },
+      {
+        'zh-TW': '適合日常備用，也能作為小馬收藏小物。',
+        en: 'Useful for everyday carry and pony collecting.'
+      },
+      {
+        'zh-TW': '30 元為單一個價格，此款庫存 6 個。',
+        en: 'NT$30 is the price for one item; six are available.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': 'OK 繃', en: 'Bandage' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '六主角', en: 'Mane 6' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '1',
+    category: 'card-skins',
+    price: 50,
+    originalPrice: 60,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/card-skin-aj.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '蘋果嘉兒造型卡貼',
+      en: 'Applejack Card Sticker'
+    },
+    tag: {
+      'zh-TW': '造型卡貼',
+      en: 'Card Sticker'
+    },
+    description: {
+      'zh-TW': '蘋果嘉兒主題造型卡貼，可黏在悠遊卡、一卡通等卡片上，適合日常使用或收藏。',
+      en: 'An Applejack themed card sticker for EasyCard, iPASS, and similar transit cards.'
+    },
+    details: {
+      'zh-TW': '蘋果嘉兒主題造型卡貼，可黏悠遊卡、一卡通等卡片。庫存僅 1 個，實際狀態以現場為準。',
+      en: 'An Applejack themed card sticker for EasyCard, iPASS, and similar cards. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '造型卡貼', en: 'Card Sticker' },
+      { 'zh-TW': '蘋果嘉兒', en: 'Applejack' },
+      { 'zh-TW': '限量 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '蘋果嘉兒主題造型卡貼。',
+        en: 'Applejack themed card sticker.'
+      },
+      {
+        'zh-TW': '可黏悠遊卡、一卡通等卡片。',
+        en: 'Fits EasyCard, iPASS, and similar cards.'
+      },
+      {
+        'zh-TW': '此款庫存僅 1 個。',
+        en: 'Only one is available for this design.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '造型卡貼', en: 'Card Sticker' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '2',
+    category: 'card-skins',
+    price: 50,
+    originalPrice: 60,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/card-skin-pp.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '碧琪造型卡貼',
+      en: 'Pinkie Pie Card Sticker'
+    },
+    tag: {
+      'zh-TW': '造型卡貼',
+      en: 'Card Sticker'
+    },
+    description: {
+      'zh-TW': '碧琪主題造型卡貼，可黏在悠遊卡、一卡通等卡片上，適合日常使用或收藏。',
+      en: 'A Pinkie Pie themed card sticker for EasyCard, iPASS, and similar transit cards.'
+    },
+    details: {
+      'zh-TW': '碧琪主題造型卡貼，可黏悠遊卡、一卡通等卡片。庫存僅 1 個，實際狀態以現場為準。',
+      en: 'A Pinkie Pie themed card sticker for EasyCard, iPASS, and similar cards. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '造型卡貼', en: 'Card Sticker' },
+      { 'zh-TW': '碧琪', en: 'Pinkie Pie' },
+      { 'zh-TW': '限量 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '碧琪主題造型卡貼。',
+        en: 'Pinkie Pie themed card sticker.'
+      },
+      {
+        'zh-TW': '可黏悠遊卡、一卡通等卡片。',
+        en: 'Fits EasyCard, iPASS, and similar cards.'
+      },
+      {
+        'zh-TW': '此款庫存僅 1 個。',
+        en: 'Only one is available for this design.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '造型卡貼', en: 'Card Sticker' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '3',
+    category: 'card-skins',
+    price: 50,
+    originalPrice: 60,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/card-skin-rr.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '珍奇造型卡貼',
+      en: 'Rarity Card Sticker'
+    },
+    tag: {
+      'zh-TW': '造型卡貼',
+      en: 'Card Sticker'
+    },
+    description: {
+      'zh-TW': '珍奇主題造型卡貼，可黏在悠遊卡、一卡通等卡片上，適合日常使用或收藏。',
+      en: 'A Rarity themed card sticker for EasyCard, iPASS, and similar transit cards.'
+    },
+    details: {
+      'zh-TW': '珍奇主題造型卡貼，可黏悠遊卡、一卡通等卡片。庫存僅 1 個，實際狀態以現場為準。',
+      en: 'A Rarity themed card sticker for EasyCard, iPASS, and similar cards. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '造型卡貼', en: 'Card Sticker' },
+      { 'zh-TW': '珍奇', en: 'Rarity' },
+      { 'zh-TW': '限量 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '珍奇主題造型卡貼。',
+        en: 'Rarity themed card sticker.'
+      },
+      {
+        'zh-TW': '可黏悠遊卡、一卡通等卡片。',
+        en: 'Fits EasyCard, iPASS, and similar cards.'
+      },
+      {
+        'zh-TW': '此款庫存僅 1 個。',
+        en: 'Only one is available for this design.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '造型卡貼', en: 'Card Sticker' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '珍奇', en: 'Rarity' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '1',
+    category: 'rulers',
+    price: 50,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/ruler-ts.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '暮光閃閃造型尺',
+      en: 'Twilight Sparkle Shaped Ruler'
+    },
+    tag: {
+      'zh-TW': '造型尺',
+      en: 'Shaped Ruler'
+    },
+    description: {
+      'zh-TW': '暮光閃閃主題造型尺，適合日常書寫、桌面使用或收藏展示。',
+      en: 'A Twilight Sparkle themed shaped ruler for writing, desk use, or collecting.'
+    },
+    details: {
+      'zh-TW': '暮光閃閃造型尺，庫存僅 1 個，實際狀態以現場為準。',
+      en: 'A Twilight Sparkle shaped ruler. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要提供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '造型尺', en: 'Shaped Ruler' },
+      { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' },
+      { 'zh-TW': '僅 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '暮光閃閃主題造型尺。',
+        en: 'Twilight Sparkle themed shaped ruler.'
+      },
+      {
+        'zh-TW': '適合日常書寫、桌面使用或收藏展示。',
+        en: 'Works for writing, desk use, or collectible display.'
+      },
+      {
+        'zh-TW': '庫存僅 1 個。',
+        en: 'Only one is available for this design.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '造型尺', en: 'Shaped Ruler' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
+      },
+      {
+        label: { 'zh-TW': '販售方式', en: 'Sales' },
+        value: { 'zh-TW': '現場販售', en: 'Available at the Booth' }
+      }
+    ]
+  },
+  {
+    id: '1',
+    category: 'medals',
+    price: 300,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 個',
+      en: '1 available'
+    },
+    images: [
+      publicAsset('products/Badges/medal.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '2017 小馬路跑獎牌',
+      en: '2017 Pony Run Medal'
+    },
+    tag: {
+      'zh-TW': '路跑獎牌',
+      en: 'Run Medal'
+    },
+    description: {
+      'zh-TW': '2017 小馬路跑活動獎牌，保存良好且未配戴過，適合活動紀念收藏。',
+      en: 'A 2017 pony run event medal in good condition and never worn, suitable for event memorabilia collecting.'
+    },
+    details: {
+      'zh-TW': '2017 小馬路跑獎牌，保存良好，未配戴過。庫存僅 1 個，實際狀態以現場為準。',
+      en: 'A 2017 pony run medal in good condition and never worn. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要提供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '路跑獎牌', en: 'Run Medal' },
+      { 'zh-TW': '保存良好', en: 'Good Condition' },
+      { 'zh-TW': '僅 1 個', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '2017 小馬路跑活動獎牌。',
+        en: '2017 pony run event medal.'
+      },
+      {
+        'zh-TW': '保存良好，未配戴過。',
+        en: 'Good condition and never worn.'
+      },
+      {
+        'zh-TW': '庫存僅 1 個。',
+        en: 'Only one is available for this item.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '類別', en: 'Category' },
+        value: { 'zh-TW': '小物', en: 'Small Goods' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '路跑獎牌', en: 'Run Medal' }
+      },
+      {
+        label: { 'zh-TW': '保存狀態', en: 'Condition' },
+        value: { 'zh-TW': '保存良好，未配戴過', en: 'Good condition, never worn' }
       },
       {
         label: { 'zh-TW': '販售方式', en: 'Sales' },

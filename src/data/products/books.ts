@@ -392,7 +392,154 @@ const createCharacterNoteProduct = (item: CharacterNoteItem): Product => ({
   ]
 });
 
+const postcardProducts: Product[] = [
+  {
+    id: '1',
+    category: 'postcards',
+    price: 30,
+    originalPrice: 50,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 張',
+      en: '1 postcard'
+    },
+    images: [
+      publicAsset('products/Books/postcard-luna-1-1.avif'),
+      publicAsset('products/Books/postcard-luna-1-2.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '月亮公主雙面明信片',
+      en: 'Princess Luna Double-Sided Postcard'
+    },
+    tag: {
+      'zh-TW': '明信片',
+      en: 'Postcard'
+    },
+    description: {
+      'zh-TW': '月亮公主主題雙面明信片，正反面皆有圖案，適合收藏、展示或書寫短訊。',
+      en: 'A Princess Luna themed double-sided postcard with artwork on both sides, suitable for collecting, display, or short messages.'
+    },
+    details: {
+      'zh-TW': '此款明信片為雙面設計，正面與背面皆有圖案。庫存僅 1 張，實際狀態以現場為準。',
+      en: 'This postcard has a double-sided design with artwork on the front and back. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '明信片', en: 'Postcard' },
+      { 'zh-TW': '月亮公主', en: 'Princess Luna' },
+      { 'zh-TW': '限量 1 張', en: 'Only 1 Available' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '月亮公主主題雙面明信片。',
+        en: 'Princess Luna themed double-sided postcard.'
+      },
+      {
+        'zh-TW': '正面與背面皆有圖案設計。',
+        en: 'Artwork appears on both the front and back.'
+      },
+      {
+        'zh-TW': '此款庫存僅 1 張。',
+        en: 'Only one is available for this design.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '書籍', en: 'Books' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '明信片', en: 'Postcard' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '月亮公主', en: 'Princess Luna' }
+      }
+    ]
+  },
+  {
+    id: '2',
+    category: 'postcards',
+    price: 30,
+    originalPrice: 50,
+    stock: 1,
+    stockText: {
+      'zh-TW': '1 張',
+      en: '1 postcard'
+    },
+    images: [
+      publicAsset('products/Books/postcard-luna-2.avif')
+    ],
+    location: {
+      'zh-TW': '現場販售',
+      en: 'Available at the Booth'
+    },
+    name: {
+      'zh-TW': '月亮公主單面明信片',
+      en: 'Princess Luna Single-Sided Postcard'
+    },
+    tag: {
+      'zh-TW': '明信片',
+      en: 'Postcard'
+    },
+    description: {
+      'zh-TW': '月亮公主主題單面明信片，背面全空白，適合收藏、展示或書寫短訊。',
+      en: 'A Princess Luna themed single-sided postcard with a completely blank back, suitable for collecting, display, or short messages.'
+    },
+    details: {
+      'zh-TW': '此款明信片為單面圖案，背面全空白。庫存僅 1 張，實際狀態以現場為準。',
+      en: 'This postcard has artwork on one side and a completely blank back. Only one is available, with final condition confirmed at the booth.'
+    },
+    shipping: {
+      'zh-TW': '主要供現場購買與取貨，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantities are limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '明信片', en: 'Postcard' },
+      { 'zh-TW': '月亮公主', en: 'Princess Luna' },
+      { 'zh-TW': '背面空白', en: 'Blank Back' }
+    ],
+    highlights: [
+      {
+        'zh-TW': '月亮公主主題單面明信片。',
+        en: 'Princess Luna themed single-sided postcard.'
+      },
+      {
+        'zh-TW': '背面全空白，可自行書寫。',
+        en: 'The back is completely blank for writing.'
+      },
+      {
+        'zh-TW': '此款庫存僅 1 張。',
+        en: 'Only one is available for this design.'
+      }
+    ],
+    specs: [
+      {
+        label: { 'zh-TW': '分類', en: 'Category' },
+        value: { 'zh-TW': '書籍', en: 'Books' }
+      },
+      {
+        label: { 'zh-TW': '形式', en: 'Format' },
+        value: { 'zh-TW': '明信片', en: 'Postcard' }
+      },
+      {
+        label: { 'zh-TW': '角色', en: 'Character' },
+        value: { 'zh-TW': '月亮公主', en: 'Princess Luna' }
+      }
+    ]
+  }
+];
+
 export const bookProducts: Product[] = [
   ...existingBookProducts,
-  ...characterNoteItems.map(createCharacterNoteProduct)
+  ...characterNoteItems.map(createCharacterNoteProduct),
+  ...postcardProducts
 ];

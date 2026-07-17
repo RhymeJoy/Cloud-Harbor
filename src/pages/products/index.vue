@@ -59,7 +59,19 @@ const maxPrice = computed(() => Number.parseInt(maxPriceInput.value, 10));
 const hasMinPrice = computed(() => Number.isFinite(minPrice.value));
 const hasMaxPrice = computed(() => Number.isFinite(maxPrice.value));
 const categoryGroups: Partial<Record<ProductCategory, ProductCategory[]>> = {
-  badges: ['badges', 'acrylic-stands', 'keychains', 'ring-holders', 'figures', 'hair-accessories']
+  badges: [
+    'badges',
+    'acrylic-stands',
+    'keychains',
+    'ring-holders',
+    'figures',
+    'bandages',
+    'card-skins',
+    'rulers',
+    'medals',
+    'hair-accessories'
+  ],
+  books: ['books', 'postcards']
 };
 const groupedCategories = new Set(
   Object.values(categoryGroups).flatMap((categories) => categories.slice(1))
