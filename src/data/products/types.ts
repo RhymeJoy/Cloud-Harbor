@@ -12,13 +12,18 @@ export type ProductCategory =
   | 'keychains'
   | 'ring-holders'
   | 'figures'
+  | 'bandages'
+  | 'card-skins'
+  | 'rulers'
+  | 'medals'
+  | 'postcards'
   | 'books'
   | 'hair-accessories'
   | 'puzzles'
   | 'bookmarks'
   | 'red-envelopes'
   | 'yearly-decorations';
-export type ProductCategoryCode = 'bp' | 'fd' | 'pl' | 'bd' | 'ad' | 'kc' | 'rh' | 'fg' | 'bk' | 'ha' | 'pz' | 'bm' | 're' | 'yd';
+export type ProductCategoryCode = 'bp' | 'fd' | 'pl' | 'bd' | 'ad' | 'kc' | 'rh' | 'fg' | 'ba' | 'cs' | 'rl' | 'md' | 'pc' | 'bk' | 'ha' | 'pz' | 'bm' | 're' | 'yd';
 export type ProductRouteId = `${ProductCategoryCode}/${ProductId}`;
 export type ProductSort = 'default' | 'price-asc' | 'price-desc' | 'stock-desc' | 'stock-asc';
 
