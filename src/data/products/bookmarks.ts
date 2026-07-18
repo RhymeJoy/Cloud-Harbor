@@ -158,7 +158,101 @@ const soulBeatLaserTicketCards: Product = {
   ]
 };
 
+const doubleSidedBookmarkProducts: Product[] = [
+  {
+    id: '7',
+    category: 'bookmarks',
+    price: 100,
+    originalPrice: 120,
+    stock: 1,
+    stockText: { 'zh-TW': '1 個', en: '1 bookmark' },
+    images: [
+      publicAsset('products/Bookmarks/3.avif'),
+      publicAsset('products/Bookmarks/4.avif')
+    ],
+    location: { 'zh-TW': '現場販售', en: 'Available at the Booth' },
+    name: {
+      'zh-TW': '伊茲＆晴晴雙面雷射書籤',
+      en: 'Izzy Moonbow & Sunny Starscout Double-Sided Holographic Bookmark'
+    },
+    tag: { 'zh-TW': '伊茲、晴晴', en: 'Izzy Moonbow, Sunny Starscout' },
+    description: {
+      'zh-TW': '雙面雷射書籤，一面為伊茲，另一面為晴晴，轉動角度可呈現不同彩色光澤。',
+      en: 'A double-sided holographic bookmark featuring Izzy Moonbow on one side and Sunny Starscout on the other.'
+    },
+    details: {
+      'zh-TW': '長版雙面角色書籤，伊茲面採紫粉星空背景，晴晴面搭配藍色場景與雷射光澤。庫存僅 1 個，實際色澤以現場商品為準。',
+      en: 'A long double-sided character bookmark with Izzy against a purple-pink cosmic background and Sunny against a blue holographic scene. Only one is available; shine may vary by viewing angle.'
+    },
+    shipping: {
+      'zh-TW': '以現場販售與取貨為主，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantity is limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '伊茲＆晴晴', en: 'Izzy & Sunny' },
+      { 'zh-TW': '雙面圖樣', en: 'Two-Sided Design' },
+      { 'zh-TW': '雷射光澤', en: 'Holographic Finish' }
+    ],
+    highlights: [
+      { 'zh-TW': '伊茲與晴晴各自呈現於書籤一面。', en: 'Izzy and Sunny each appear on one side of the bookmark.' },
+      { 'zh-TW': '雷射表面會隨觀看角度呈現不同光澤。', en: 'The holographic surface shifts in color with the viewing angle.' },
+      { 'zh-TW': '庫存僅 1 個。', en: 'Only one is available.' }
+    ],
+    specs: [
+      { label: { 'zh-TW': '類別', en: 'Category' }, value: { 'zh-TW': '書籤', en: 'Bookmark' } },
+      { label: { 'zh-TW': '形式', en: 'Format' }, value: { 'zh-TW': '正反雙面雷射圖樣', en: 'Double-Sided Holographic Artwork' } },
+      { label: { 'zh-TW': '角色', en: 'Character' }, value: { 'zh-TW': '伊茲、晴晴', en: 'Izzy Moonbow, Sunny Starscout' } }
+    ]
+  },
+  {
+    id: '8',
+    category: 'bookmarks',
+    price: 100,
+    originalPrice: 120,
+    stock: 1,
+    stockText: { 'zh-TW': '1 個', en: '1 bookmark' },
+    images: [
+      publicAsset('products/Bookmarks/5.avif'),
+      publicAsset('products/Bookmarks/6.avif')
+    ],
+    location: { 'zh-TW': '現場販售', en: 'Available at the Booth' },
+    name: {
+      'zh-TW': '珍奇＆暮光閃閃雙面雷射書籤',
+      en: 'Rarity & Twilight Sparkle Double-Sided Holographic Bookmark'
+    },
+    tag: { 'zh-TW': '珍奇、暮光閃閃', en: 'Rarity, Twilight Sparkle' },
+    description: {
+      'zh-TW': '雙面雷射書籤，一面為珍奇，另一面為暮光閃閃，搭配深色夜景與彩色光澤。',
+      en: 'A double-sided holographic bookmark featuring Rarity on one side and Twilight Sparkle on the other.'
+    },
+    details: {
+      'zh-TW': '長版雙面角色書籤，珍奇面與暮光閃閃面皆搭配深藍紫場景及雷射效果，適合閱讀使用或角色收藏。庫存僅 1 個。',
+      en: 'A long double-sided character bookmark featuring Rarity and Twilight Sparkle against deep blue and purple holographic scenes. Suitable for reading or collecting, with only one available.'
+    },
+    shipping: {
+      'zh-TW': '以現場販售與取貨為主，數量有限，售完為止。',
+      en: 'Primarily available for onsite purchase and pickup. Quantity is limited and available while supplies last.'
+    },
+    badges: [
+      { 'zh-TW': '珍奇＆暮光閃閃', en: 'Rarity & Twilight' },
+      { 'zh-TW': '雙面圖樣', en: 'Two-Sided Design' },
+      { 'zh-TW': '雷射光澤', en: 'Holographic Finish' }
+    ],
+    highlights: [
+      { 'zh-TW': '珍奇與暮光閃閃各自呈現於書籤一面。', en: 'Rarity and Twilight Sparkle each appear on one side.' },
+      { 'zh-TW': '深藍紫背景搭配雷射光澤效果。', en: 'Deep blue and purple backgrounds feature a holographic finish.' },
+      { 'zh-TW': '庫存僅 1 個。', en: 'Only one is available.' }
+    ],
+    specs: [
+      { label: { 'zh-TW': '類別', en: 'Category' }, value: { 'zh-TW': '書籤', en: 'Bookmark' } },
+      { label: { 'zh-TW': '形式', en: 'Format' }, value: { 'zh-TW': '正反雙面雷射圖樣', en: 'Double-Sided Holographic Artwork' } },
+      { label: { 'zh-TW': '角色', en: 'Character' }, value: { 'zh-TW': '珍奇、暮光閃閃', en: 'Rarity, Twilight Sparkle' } }
+    ]
+  }
+];
+
 export const bookmarkProducts: Product[] = [
   ...characterBookmarkItems.map(createCharacterBookmarkProduct),
-  soulBeatLaserTicketCards
+  soulBeatLaserTicketCards,
+  ...doubleSidedBookmarkProducts
 ];
