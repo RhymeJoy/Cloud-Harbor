@@ -114,6 +114,14 @@ const individualBadgeItems: IndividualBadgeItem[] = [
     originalPrice: 100,
     character: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' },
     title: { 'zh-TW': '蘋果嘉兒亮粉徽章', en: 'Applejack Glitter Badge' }
+  },
+  {
+    id: '17',
+    imageCode: '17',
+    price: 80,
+    originalPrice: 90,
+    character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' },
+    title: { 'zh-TW': '碧琪雷射光澤徽章', en: 'Pinkie Pie Holographic Badge' }
   }
 ];
 
