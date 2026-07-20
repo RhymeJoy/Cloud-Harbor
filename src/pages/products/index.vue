@@ -190,6 +190,10 @@ const handleOutsideFilterPress = (event: PointerEvent) => {
 
 onMounted(() => {
   productFiltersObserver = new IntersectionObserver(([entry]) => {
+    if (!entry) {
+      return;
+    }
+
     showMobileFilterFab.value = !entry.isIntersecting && entry.boundingClientRect.top < 0;
 
     if (showMobileFilterFab.value) {

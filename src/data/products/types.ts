@@ -37,7 +37,7 @@ export type Product = {
   id: ProductId;
   category: ProductCategory;
   price: number;
-  originalPrice?: number;
+  originalPrice?: number | string;
   stock: number;
   stockText?: LocalizedText;
   thumbnail?: string;

@@ -5,7 +5,7 @@ type RedEnvelopeItem = {
   id: string;
   fileBases: [string, ...string[]];
   price: number;
-  originalPrice: number;
+  originalPrice: number | string;
   stock: number;
   name: LocalizedText;
   characters: LocalizedText;

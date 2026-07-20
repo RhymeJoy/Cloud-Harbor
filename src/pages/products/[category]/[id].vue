@@ -7,6 +7,7 @@ import { createSiteOgMeta } from '../../../composables/useSiteSeo';
 import { useI18n } from '../../../i18n';
 import {
   getProductPath,
+  getAvailableProducts,
   getProductImageThumbnail,
   getProductThumbnail,
   getProductById,
@@ -64,6 +65,16 @@ const productImages = product.images.map((image, index) => ({
 }));
 const selectedImage = ref(defaultImage);
 const pricePrefix = computed(() => t('productSection.pricePrefix'));
+const isSoldOut = computed(() => typeof product.originalPrice === 'string');
+const originalPriceText = computed(() => {
+  if (!product.originalPrice) {
+    return '';
+  }
+
+  return typeof product.originalPrice === 'string'
+    ? product.originalPrice
+    : `${pricePrefix.value} ${product.originalPrice}`;
+});
 const badgeTexts = computed(() => product.badges.map((badge) => localizeProductTagText(badge, locale.value)));
 const highlightTexts = computed(() => product.highlights.map((highlight) => localizeProductText(highlight, locale.value)));
 const stockText = computed(() => {
@@ -199,7 +210,7 @@ const specRows = computed(() => {
   return orderedSpecRows(rows);
 });
 const getAvailableRelatedProducts = () =>
-  products.filter((item) => getProductRouteId(item) !== productRouteId);
+  getAvailableProducts(products.filter((item) => getProductRouteId(item) !== productRouteId));
 const relatedCategoryGroups: Partial<Record<ProductCategory, ProductCategory[]>> = {
   badges: [
     'badges',
@@ -276,7 +287,7 @@ useHead(() => ({
       <span>{{ productName }}</span>
     </nav>
 
-    <section class="product-shell">
+    <section class="product-shell" :class="{ 'product-shell--sold': isSoldOut }">
       <div class="product-gallery">
         <div class="product-main-image">
           <img
@@ -318,7 +329,7 @@ useHead(() => ({
 
         <div class="price-panel">
           <span class="price">{{ pricePrefix }} {{ product.price }}</span>
-          <span v-if="product.originalPrice" class="original-price">{{ pricePrefix }} {{ product.originalPrice }}</span>
+          <span v-if="originalPriceText" class="original-price" :class="{ 'sold-label': isSoldOut }">{{ originalPriceText }}</span>
           <span class="mobile-stock">{{ copy.stockTitle }}：{{ stockText }}</span>
         </div>
 
@@ -434,6 +445,14 @@ useHead(() => ({
   color: #f7f3ff;
   box-shadow: 0 22px 55px rgba(2, 4, 14, 0.35);
   backdrop-filter: blur(18px);
+}
+
+.product-shell--sold {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(27, 29, 40, 0.72);
+  box-shadow: none;
+  filter: grayscale(1);
+  opacity: 0.7;
 }
 
 .product-gallery {
@@ -589,6 +608,12 @@ h1 {
   color: rgba(216, 214, 247, 0.58);
   font-size: 1rem;
   text-decoration: line-through;
+}
+
+.original-price.sold-label {
+  color: #ffffff;
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .mobile-stock {

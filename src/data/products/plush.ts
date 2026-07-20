@@ -5,7 +5,7 @@ type LyingPlushItem = {
   id: string;
   imageCode: string;
   price: number;
-  originalPrice: number;
+  originalPrice: number | string;
   stock: number;
   character: LocalizedText;
 };
@@ -231,7 +231,7 @@ const standingPlushItems: LyingPlushItem[] = [
     id: '9',
     imageCode: 'FS',
     price: 800,
-    originalPrice: 900,
+    originalPrice: "已售出 待補貨",
     stock: 1,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
   }

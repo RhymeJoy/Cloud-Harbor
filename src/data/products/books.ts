@@ -5,8 +5,8 @@ const existingBookProducts: Product[] = [
   {
     id: '1',
     category: 'books',
-    price: 500,
-    originalPrice: 700,//485
+    price: 900,
+    originalPrice: "已售出 待補貨",//485
     stock: 1,
     stockText: {
       'zh-TW': '各 1 本，共 1 套',
@@ -22,7 +22,7 @@ const existingBookProducts: Product[] = [
       en: 'Available at the Booth'
     },
     name: {
-      'zh-TW': '彩虹小馬典藏書籍',
+      'zh-TW': '彩虹小馬典藏書籍兩本套組：秘密日記與絕密檔案',
       en: 'My Little Pony Collectible Books'
     },
     tag: {
@@ -80,7 +80,7 @@ const existingBookProducts: Product[] = [
     id: '2',
     category: 'books',
     price: 1000,
-    originalPrice: 1200,//758
+    originalPrice: "已售出 待補貨",//758
     stock: 1,
     stockText: {
       'zh-TW': '1 本',
