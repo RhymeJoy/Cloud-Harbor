@@ -5,7 +5,7 @@ type IndividualBadgeItem = {
   id: string;
   imageCode: string;
   price: number;
-  originalPrice: number;
+  originalPrice: number | string;
   character: LocalizedText;
   title: LocalizedText;
 };
@@ -200,7 +200,7 @@ type NewSmallGoodItem = {
   category: 'keychains' | 'card-skins';
   image: string;
   price: number;
-  originalPrice: number;
+  originalPrice: number | string;
   character: LocalizedText;
   title: LocalizedText;
   format: LocalizedText;
@@ -1160,7 +1160,7 @@ export const badgeProducts: Product[] = [
     id: '8',
     category: 'keychains',
     price: 30,
-    originalPrice: 50,
+    originalPrice: "已售出",
     stock: 1,
     stockText: {
       'zh-TW': '1 個',
@@ -1696,6 +1696,7 @@ export const badgeProducts: Product[] = [
     id: '1',
     category: 'rulers',
     price: 50,
+    originalPrice: "已售出 待補貨",
     stock: 1,
     stockText: {
       'zh-TW': '1 個',
@@ -1770,6 +1771,7 @@ export const badgeProducts: Product[] = [
     id: '1',
     category: 'medals',
     price: 300,
+    originalPrice: "已售出",
     stock: 1,
     stockText: {
       'zh-TW': '1 個',

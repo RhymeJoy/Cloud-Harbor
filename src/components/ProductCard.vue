@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, resolveComponent } from 'vue';
 import { routeHref } from '../composables/useAppRoute';
 import { useI18n } from '../i18n';
 import {
@@ -12,6 +12,7 @@ import {
 } from '../data/products';
 
 const { locale, t } = useI18n();
+const NuxtLink = resolveComponent('NuxtLink');
 
 type ImageLoading = 'eager' | 'lazy';
 type ImageFetchPriority = 'high' | 'low' | 'auto';
@@ -37,13 +38,34 @@ const productTag = computed(() => localizeProductTagText(props.item.tag, locale.
 const productDescription = computed(() => localizeProductText(props.item.description, locale.value));
 const productLocation = computed(() => localizeProductText(props.item.location, locale.value));
 const pricePrefix = computed(() => t('productSection.pricePrefix'));
+const isSoldOut = computed(() => typeof props.item.originalPrice === 'string');
+const originalPriceText = computed(() => {
+  const { originalPrice } = props.item;
+
+  if (!originalPrice) {
+    return '';
+  }
+
+  return typeof originalPrice === 'string' ? originalPrice : `${pricePrefix.value} ${originalPrice}`;
+});
 const detailHref = computed(() => routeHref(getProductPath(props.item)));
+const cardTag = computed(() => (isSoldOut.value ? 'article' : NuxtLink));
+const cardAttrs = computed(() =>
+  isSoldOut.value
+    ? { 'aria-label': productName.value, 'aria-disabled': 'true' }
+    : { to: detailHref.value, 'aria-label': productName.value }
+);
 const productRouteId = computed(() => getProductRouteId(props.item));
 const productImage = computed(() => getProductThumbnail(props.item));
 </script>
 
 <template>
-  <NuxtLink class="product-card" :to="detailHref" :aria-label="productName">
+  <component
+    :is="cardTag"
+    class="product-card"
+    :class="{ 'product-card--sold': isSoldOut }"
+    v-bind="cardAttrs"
+  >
     <div class="product-image-wrap">
       <img
         :src="productImage"
@@ -61,14 +83,14 @@ const productImage = computed(() => getProductThumbnail(props.item));
       <p>{{ productDescription }}</p>
       <div class="product-price-row">
         <span class="price">{{ pricePrefix }} {{ item.price }}</span>
-        <span v-if="item.originalPrice" class="original-price">{{ pricePrefix }} {{ item.originalPrice }}</span>
+        <span v-if="originalPriceText" class="original-price" :class="{ 'sold-label': isSoldOut }">{{ originalPriceText }}</span>
       </div>
       <div class="product-meta">
         <span class="tag">#{{ productRouteId }} {{ productTag }}</span>
         <span>{{ productLocation }}</span>
       </div>
     </div>
-  </NuxtLink>
+  </component>
 </template>
 
 <style scoped>
@@ -85,10 +107,19 @@ const productImage = computed(() => getProductThumbnail(props.item));
   transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
-.product-card:hover {
+.product-card:not(.product-card--sold):hover {
   transform: translateY(-3px);
   border-color: rgba(255, 184, 222, 0.42);
   box-shadow: 0 22px 48px rgba(2, 4, 14, 0.36);
+}
+
+.product-card--sold {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(27, 29, 40, 0.72);
+  box-shadow: none;
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.58;
 }
 
 .product-image-wrap {
@@ -166,6 +197,12 @@ const productImage = computed(() => getProductThumbnail(props.item));
   color: rgba(216, 214, 247, 0.58);
   font-size: 0.82rem;
   text-decoration: line-through;
+}
+
+.original-price.sold-label {
+  color: #ffffff;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 h4,

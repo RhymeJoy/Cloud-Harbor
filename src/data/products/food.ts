@@ -11,6 +11,8 @@ type ColaCanItem = {
 type GummySurpriseEggItem = {
   id: string;
   imageCode: string;
+  price: number;
+  originalPrice: number | string;
   stock: number;
   character: LocalizedText;
 };
@@ -19,7 +21,7 @@ const colaCanItems: ColaCanItem[] = [
   {
     id: '1',
     imageCode: 'TS',
-    stock: 6,
+    stock: 1,
     character: { 'zh-TW': '暮光閃閃', en: 'Twilight Sparkle' }
   },
   {
@@ -31,25 +33,25 @@ const colaCanItems: ColaCanItem[] = [
   {
     id: '3',
     imageCode: 'RR',
-    stock: 6,
+    stock: 2,
     character: { 'zh-TW': '珍奇', en: 'Rarity' }
   },
   {
     id: '4',
     imageCode: 'AJ',
-    stock: 6,
+    stock: 5,
     character: { 'zh-TW': '蘋果嘉兒', en: 'Applejack' }
   },
   {
     id: '5',
     imageCode: 'FS',
-    stock: 6,
+    stock: 2,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
   },
   {
     id: '6',
     imageCode: 'PP',
-    stock: 6,
+    stock: 5,
     character: { 'zh-TW': '碧琪', en: 'Pinkie Pie' }
   }
 ];
@@ -58,18 +60,24 @@ const gummySurpriseEggItems: GummySurpriseEggItem[] = [
   {
     id: '7',
     imageCode: 'fs',
+    price: 90,
+    originalPrice: 100,
     stock: 6,
     character: { 'zh-TW': '柔柔', en: 'Fluttershy' }
   },
   {
     id: '8',
     imageCode: 'rd',
+    price: 90,
+    originalPrice: 100,
     stock: 6,
     character: { 'zh-TW': '雲寶', en: 'Rainbow Dash' }
   },
   {
     id: '9',
     imageCode: 'rr',
+    price: 90,
+    originalPrice: "已售出 待補貨",
     stock: 6,
     character: { 'zh-TW': '珍奇', en: 'Rarity' }
   }
@@ -84,7 +92,7 @@ const createColaCanProduct = (item: ColaCanItem): Product => {
   return {
     id: item.id,
     category: 'food',
-    price: 50,
+    price: 60,
     stock: item.stock,
     stockText: {
       'zh-TW': `${item.stock} 罐`,
@@ -159,8 +167,8 @@ const createGummySurpriseEggProduct = (item: GummySurpriseEggItem): Product => {
   return {
     id: item.id,
     category: 'food',
-    price: 90,
-    originalPrice: 100,
+    price: item.price,
+    originalPrice: item.originalPrice,
     stock: item.stock,
     stockText: {
       'zh-TW': `${item.stock} 顆`,

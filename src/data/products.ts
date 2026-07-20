@@ -167,6 +167,9 @@ export const getProductRouteId = (product: Pick<Product, 'category' | 'id'>): Pr
 export const getProductPath = (product: Pick<Product, 'category' | 'id'>) =>
   `/products/${getProductRouteId(product)}`;
 
+export const isProductSoldOut = (product: Pick<Product, 'originalPrice'>) =>
+  typeof product.originalPrice === 'string';
+
 export const products: Product[] = [
   ...bodyPillows,
   ...foodProducts,
@@ -238,5 +241,8 @@ export const getRandomProductsByUniqueCategories = (
   sourceProducts: readonly Product[] = products
 ) => getProductsByUniqueCategories(count, shuffleProducts(sourceProducts));
 
+export const getAvailableProducts = (sourceProducts: readonly Product[] = products) =>
+  sourceProducts.filter((product) => !isProductSoldOut(product));
+
 export const getRandomFeaturedProducts = (count = featuredProductIds.length) =>
-  getRandomProductsByUniqueCategories(count);
+  getRandomProductsByUniqueCategories(count, getAvailableProducts());

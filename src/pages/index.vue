@@ -3,9 +3,14 @@ import { onMounted, ref } from 'vue';
 import HeroSection from '../components/HeroSection.vue';
 import AboutSection from '../components/AboutSection.vue';
 import ProductGrid from '../components/ProductGrid.vue';
-import { getProductsByUniqueCategories, getRandomFeaturedProducts, type Product } from '../data/products';
+import {
+  getAvailableProducts,
+  getProductsByUniqueCategories,
+  getRandomFeaturedProducts,
+  type Product
+} from '../data/products';
 
-const mainProducts = ref<Product[]>(getProductsByUniqueCategories());
+const mainProducts = ref<Product[]>(getProductsByUniqueCategories(undefined, getAvailableProducts()));
 
 onMounted(() => {
   mainProducts.value = getRandomFeaturedProducts();
